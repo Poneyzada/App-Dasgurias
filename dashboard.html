@@ -133,7 +133,7 @@
         class="glass-card w-full max-w-[400px] h-[850px] max-h-[90vh] rounded-[40px] relative z-10 flex flex-col overflow-hidden shadow-2xl">
 
         <!-- Header -->
-        <div class="px-6 pt-9 pb-3 flex justify-between items-center fade-up">
+        <div class="px-6 pt-8 pb-3 flex justify-between items-center fade-up">
             <div class="flex items-center gap-3">
                 <img src="./assets/logo.png" alt="Logo Treinão das Gurias" class="w-10 h-10 object-cover rounded-full border border-fit-cream/30 shadow-md">
                 <div class="space-y-0.5">
@@ -147,42 +147,27 @@
             </a>
         </div>
 
-        <!-- View: Home -->
+        <!-- VIEW: HOME (TREINOS + VOZ DA GIU + RANKING) -->
         <div class="flex-1 overflow-y-auto px-6 pb-36 scrollbar-hide" id="view-home">
 
-            <!-- Minha Evolução -->
-            <div class="mt-3 mb-3 fade-up delay-100">
-                <h3 class="font-heading font-semibold text-base mb-2.5 text-fit-cream">Minha Evolução & Saúde</h3>
-
-                <div class="glass-card rounded-3xl p-4 flex items-center justify-between">
-                    <div>
-                        <p class="text-fit-textMain font-medium text-xs mb-2.5">Frequência Semanal</p>
-                        <div class="flex gap-2.5">
-                            <div class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-cream">
-                                <i data-feather="activity" class="w-4 h-4"></i>
-                            </div>
-                            <div class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-accent">
-                                <i data-feather="clock" class="w-4 h-4"></i>
-                            </div>
-                            <div class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-cream">
-                                <i data-feather="flame" class="w-4 h-4"></i>
-                            </div>
-                            <div class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-accent">
-                                <i data-feather="award" class="w-4 h-4"></i>
-                            </div>
+            <!-- RANKING DE FREQUÊNCIA DAS GURIAS (GAMIFICAÇÃO 5) -->
+            <div class="mt-2 mb-3 fade-up delay-100">
+                <div class="glass-card rounded-2xl p-3 border border-amber-400/25 bg-amber-500/10 flex items-center justify-between">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-full bg-amber-400/20 flex items-center justify-center text-amber-300">
+                            <i data-feather="award" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold text-white">🏆 Ranking do Treinão das Gurias</h4>
+                            <p class="text-[10px] text-amber-200">Você está em <strong class="text-fit-cream">3º Lugar</strong> (18 Treinos no Mês)!</p>
                         </div>
                     </div>
-
-                    <div onclick="switchStudentView('analytics')"
-                        class="flex flex-col items-center justify-center w-16 h-16 rounded-2xl glass-button cursor-pointer hover:bg-white/10 transition-colors border border-fit-cream/20">
-                        <i data-feather="bar-chart-2" class="w-5 h-5 text-fit-cream mb-1"></i>
-                        <span class="text-[9px] text-center leading-tight text-fit-cream font-medium">Medidas &<br>Evolução</span>
-                    </div>
+                    <button onclick="switchStudentView('feed')" class="text-[9px] bg-amber-400 text-black font-extrabold px-2 py-1 rounded-lg uppercase">Ver Pódio</button>
                 </div>
             </div>
 
-            <!-- MODALIDADE / ONDE VOCÊ VAI TREINAR HOJE? (RECURSO IA DE ACADEMIA CHEIA / EM CASA) -->
-            <div class="mt-3 mb-3 fade-up delay-100">
+            <!-- ONDE VOCÊ VAI TREINAR HOJE? -->
+            <div class="mt-2 mb-3 fade-up delay-100">
                 <label class="text-[10px] text-fit-cream uppercase font-bold tracking-wider mb-1.5 block flex items-center gap-1">
                     <i data-feather="map-pin" class="w-3 h-3 text-amber-400"></i> Onde você vai treinar hoje?
                 </label>
@@ -204,11 +189,10 @@
             </div>
 
             <!-- Treino do Dia Card -->
-            <div class="mt-4 mb-3 fade-up delay-200">
+            <div class="mt-3 mb-3 fade-up delay-200">
                 <h3 class="font-heading font-semibold text-base mb-2 text-fit-cream">Treino de Hoje</h3>
 
-                <div
-                    class="glass-card rounded-3xl p-4 bg-gradient-to-br from-white/10 to-transparent relative overflow-hidden flex items-center justify-between border border-fit-cream/20">
+                <div class="glass-card rounded-3xl p-4 bg-gradient-to-br from-white/10 to-transparent relative overflow-hidden flex items-center justify-between border border-fit-cream/20">
                     <div>
                         <span id="badge-modo-treino"
                             class="inline-block px-2.5 py-0.5 bg-[#C88C64]/30 text-fit-cream rounded text-[9px] font-bold uppercase tracking-widest mb-1.5 border border-fit-cream/20">
@@ -234,12 +218,12 @@
                 </div>
             </div>
 
-            <!-- Lista de Exercícios -->
+            <!-- Lista de Exercícios com VOZ DA GIU (IA 1) & APARELHO OCUPADO -->
             <div class="mt-4 fade-up delay-300">
                 <div class="flex justify-between items-center mb-2.5">
                     <h3 class="font-heading font-semibold text-sm text-fit-cream">Exercícios do Treinão</h3>
                     <span class="text-[10px] text-amber-300 flex items-center gap-1 font-medium">
-                        <i data-feather="help-circle" class="w-3 h-3"></i> Aparelho cheio? Clique no botão!
+                        <i data-feather="mic" class="w-3 h-3 text-fit-cream"></i> Áudios da Giu com IA
                     </span>
                 </div>
 
@@ -262,12 +246,14 @@
                             </div>
                         </div>
 
-                        <!-- BOTÃO IA: APARELHO OCUPADO? SUBTITUIR EM 1 CLIQUE -->
-                        <div class="pt-2 border-t border-white/5 flex justify-between items-center">
-                            <button onclick="substituirAparelhoOcupado(0)" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/15 px-2.5 py-1 rounded-lg border border-amber-400/25">
-                                <i data-feather="refresh-cw" class="w-3 h-3"></i> Aparelho Ocupado? Trocar com IA
+                        <!-- VOZ DA GIU (IA 1) & APARELHO OCUPADO BOTOES -->
+                        <div class="pt-2 border-t border-white/5 flex flex-wrap justify-between items-center gap-2">
+                            <button onclick="tocarVozGiu('Agachamento Búlgaro com Halteres')" class="text-[10px] text-fit-cream hover:text-white font-semibold flex items-center gap-1 bg-[#C88C64]/20 px-2.5 py-1 rounded-lg border border-fit-cream/20">
+                                <i data-feather="volume-2" class="w-3 h-3 text-fit-cream animate-pulse"></i> 🎙️ Ouvir Giu Guiando o Treino
                             </button>
-                            <span class="text-[9px] text-fit-textMuted">Giu IA Sugere</span>
+                            <button onclick="substituirAparelhoOcupado(0)" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/15 px-2 py-1 rounded-lg border border-amber-400/25">
+                                <i data-feather="refresh-cw" class="w-3 h-3"></i> Ocupado? Trocar
+                            </button>
                         </div>
                     </div>
 
@@ -288,11 +274,13 @@
                             </div>
                         </div>
 
-                        <div class="pt-2 border-t border-white/5 flex justify-between items-center">
-                            <button onclick="substituirAparelhoOcupado(1)" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/15 px-2.5 py-1 rounded-lg border border-amber-400/25">
-                                <i data-feather="refresh-cw" class="w-3 h-3"></i> Aparelho Ocupado? Trocar com IA
+                        <div class="pt-2 border-t border-white/5 flex flex-wrap justify-between items-center gap-2">
+                            <button onclick="tocarVozGiu('Elevação Pélvica na Barra')" class="text-[10px] text-fit-cream hover:text-white font-semibold flex items-center gap-1 bg-[#C88C64]/20 px-2.5 py-1 rounded-lg border border-fit-cream/20">
+                                <i data-feather="volume-2" class="w-3 h-3 text-fit-cream animate-pulse"></i> 🎙️ Ouvir Giu Guiando o Treino
                             </button>
-                            <span class="text-[9px] text-fit-textMuted">Giu IA Sugere</span>
+                            <button onclick="substituirAparelhoOcupado(1)" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/15 px-2 py-1 rounded-lg border border-amber-400/25">
+                                <i data-feather="refresh-cw" class="w-3 h-3"></i> Ocupado? Trocar
+                            </button>
                         </div>
                     </div>
 
@@ -313,11 +301,13 @@
                             </div>
                         </div>
 
-                        <div class="pt-2 border-t border-white/5 flex justify-between items-center">
-                            <button onclick="substituirAparelhoOcupado(2)" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/15 px-2.5 py-1 rounded-lg border border-amber-400/25">
-                                <i data-feather="refresh-cw" class="w-3 h-3"></i> Aparelho Ocupado? Trocar com IA
+                        <div class="pt-2 border-t border-white/5 flex flex-wrap justify-between items-center gap-2">
+                            <button onclick="tocarVozGiu('Cadeira Extensora Drop-set')" class="text-[10px] text-fit-cream hover:text-white font-semibold flex items-center gap-1 bg-[#C88C64]/20 px-2.5 py-1 rounded-lg border border-fit-cream/20">
+                                <i data-feather="volume-2" class="w-3 h-3 text-fit-cream animate-pulse"></i> 🎙️ Ouvir Giu Guiando o Treino
                             </button>
-                            <span class="text-[9px] text-fit-textMuted">Giu IA Sugere</span>
+                            <button onclick="substituirAparelhoOcupado(2)" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/15 px-2 py-1 rounded-lg border border-amber-400/25">
+                                <i data-feather="refresh-cw" class="w-3 h-3"></i> Ocupado? Trocar
+                            </button>
                         </div>
                     </div>
 
@@ -337,28 +327,152 @@
 
         </div>
 
-        <!-- View: Analytics -->
-        <div class="flex-1 overflow-y-auto px-6 pb-24 scrollbar-hide hidden" id="view-analytics">
+        <!-- VIEW: FEED DA COMUNIDADE DAS GURIAS (REDE SOCIAL PRIVADA 3) -->
+        <div class="flex-1 overflow-y-auto px-6 pb-36 scrollbar-hide hidden" id="view-feed">
             <div class="mt-4 mb-3 fade-up">
-                <h3 class="font-heading font-semibold text-lg mb-3 text-fit-cream">Seu Progresso no Treinão</h3>
-                <div class="glass-card rounded-3xl p-6 flex flex-col items-center justify-center h-64 border border-fit-cream/15 text-center">
-                    <i data-feather="bar-chart-2" class="w-10 h-10 text-fit-cream/40 mb-3"></i>
-                    <p class="text-sm text-fit-textMuted leading-relaxed">Sua evolução de cargas e avaliação física com a Personal Giu estarão disponíveis aqui em breve.</p>
+                <div class="flex justify-between items-center mb-3">
+                    <div>
+                        <h3 class="font-heading font-bold text-xl text-fit-cream">Feed das Gurias 📸</h3>
+                        <p class="text-xs text-fit-textMuted">Comunidade exclusiva e motivação diária.</p>
+                    </div>
+                    <button onclick="alert('📸 Abra a câmera para publicar seu treino no Feed!')" class="bg-[#C88C64] hover:bg-[#d49a6a] text-white p-2 rounded-xl text-xs font-bold flex items-center gap-1 shadow-md">
+                        <i data-feather="camera" class="w-4 h-4"></i> Postar
+                    </button>
+                </div>
+
+                <!-- POST 1 NO FEED -->
+                <div class="space-y-4">
+                    <div class="glass-card rounded-3xl p-4 border border-fit-cream/20 bg-gradient-to-br from-[#3B2219] to-[#2A1710]">
+                        <div class="flex items-center gap-3 mb-3">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop" class="w-10 h-10 rounded-full object-cover border border-fit-cream/30">
+                            <div>
+                                <h4 class="font-bold text-xs text-white">Amora Maria <span class="text-[9px] bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded ml-1">🥇 1º Lugar Ranking</span></h4>
+                                <span class="text-[10px] text-fit-textMuted">Há 35 minutos • Treinão de Pernas</span>
+                            </div>
+                        </div>
+
+                        <div class="rounded-2xl overflow-hidden mb-3 h-48 border border-white/10 relative">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover">
+                            <span class="absolute bottom-2 left-2 bg-black/60 text-fit-cream text-[9px] font-bold px-2 py-1 rounded-lg backdrop-blur">🔥 Treino Concluído em 48 min</span>
+                        </div>
+
+                        <p class="text-xs text-white/90 mb-3 leading-relaxed">"Treinão de glúteos e pernas finalizado com a voz da Giu no fone! A elevação pélvica hoje foi insana! 💪✨"</p>
+
+                        <div class="flex items-center justify-between pt-2 border-t border-white/10 text-xs">
+                            <button onclick="curtirPost(this)" class="text-fit-cream hover:text-white font-bold flex items-center gap-1.5">
+                                <i data-feather="heart" class="w-4 h-4 text-red-400 fill-red-400"></i> <span class="count-curtidas">18 Gurias</span> Arrasou!
+                            </button>
+                            <span class="text-fit-textMuted text-[10px]">4 Comentários</span>
+                        </div>
+                    </div>
+
+                    <!-- POST 2 NO FEED -->
+                    <div class="glass-card rounded-3xl p-4 border border-fit-cream/20 bg-gradient-to-br from-[#3B2219] to-[#2A1710]">
+                        <div class="flex items-center gap-3 mb-3">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop" class="w-10 h-10 rounded-full object-cover border border-fit-cream/30">
+                            <div>
+                                <h4 class="font-bold text-xs text-white">Beatriz Lima</h4>
+                                <span class="text-[10px] text-fit-textMuted">Há 2 horas • Modo Em Casa</span>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-white/90 mb-3 leading-relaxed">"Hoje usei o modo Em Casa com mini-band e halteres! O app adaptou tudo perfeito! Vooou!"</p>
+
+                        <div class="flex items-center justify-between pt-2 border-t border-white/10 text-xs">
+                            <button onclick="curtirPost(this)" class="text-fit-cream hover:text-white font-bold flex items-center gap-1.5">
+                                <i data-feather="heart" class="w-4 h-4 text-red-400 fill-red-400"></i> <span class="count-curtidas">12 Gurias</span> Arrasou!
+                            </button>
+                            <span class="text-fit-textMuted text-[10px]">2 Comentários</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- View: Chat -->
+        <!-- VIEW: NUTRIÇÃO & LISTA DE COMPRAS DO MERCADO (4) -->
+        <div class="flex-1 overflow-y-auto px-6 pb-36 scrollbar-hide hidden" id="view-nutri">
+            <div class="mt-4 mb-3 fade-up">
+                <div class="flex justify-between items-center mb-3">
+                    <div>
+                        <h3 class="font-heading font-bold text-xl text-fit-cream">O Prato das Gurias 🥗</h3>
+                        <p class="text-xs text-fit-textMuted">Sugestões de refeições & Lista de supermercado.</p>
+                    </div>
+                </div>
+
+                <!-- LISTA DE COMPRAS DO MERCADO (RECURSO 4) -->
+                <div class="glass-card rounded-3xl p-4 mb-4 border border-fit-cream/20 bg-black/30">
+                    <div class="flex justify-between items-center mb-3">
+                        <h4 class="text-xs font-bold text-fit-cream flex items-center gap-1.5">
+                            <i data-feather="shopping-cart" class="w-4 h-4 text-amber-400"></i> 🛒 Lista de Compras da Semana
+                        </h4>
+                        <span class="text-[9px] bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded font-mono font-bold">1 Clique</span>
+                    </div>
+
+                    <div class="space-y-2 text-xs">
+                        <label class="flex items-center gap-2 p-2 rounded-xl bg-white/5 cursor-pointer">
+                            <input type="checkbox" checked class="accent-[#C88C64]"> <span>Ovos caipiras / Claras de ovo</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2 rounded-xl bg-white/5 cursor-pointer">
+                            <input type="checkbox" checked class="accent-[#C88C64]"> <span>Peito de frango & Patinho moído</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2 rounded-xl bg-white/5 cursor-pointer">
+                            <input type="checkbox" class="accent-[#C88C64]"> <span>Batata doce & Mandioca</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2 rounded-xl bg-white/5 cursor-pointer">
+                            <input type="checkbox" class="accent-[#C88C64]"> <span>Abacate, Morangos & Banana</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2 rounded-xl bg-white/5 cursor-pointer">
+                            <input type="checkbox" class="accent-[#C88C64]"> <span>Whey Protein & Creatina</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW: EVOLUÇÃO & GERADOR ANTES E DEPOIS P/ STORIES (2) -->
+        <div class="flex-1 overflow-y-auto px-6 pb-24 scrollbar-hide hidden" id="view-analytics">
+            <div class="mt-4 mb-3 fade-up">
+                <h3 class="font-heading font-semibold text-lg mb-3 text-fit-cream">Seu Progresso & Evolução</h3>
+
+                <!-- GERADOR DE ANTES E DEPOIS PARA STORIES (RECURSO 2) -->
+                <div class="glass-card rounded-3xl p-4 mb-5 border border-amber-400/30 bg-gradient-to-br from-[#3B2219] to-[#2A1710] shadow-xl">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <span class="text-[9px] bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded font-mono font-bold uppercase">📸 Stories Instagram</span>
+                            <h4 class="font-bold text-sm text-white mt-1">Comparador Antes & Depois</h4>
+                        </div>
+                    </div>
+                    <p class="text-xs text-white/80 mb-3">Gere um card lindo com a sua evolução para publicar nos Stories do seu Instagram!</p>
+
+                    <!-- VISUALIZAÇÃO LADO A LADO -->
+                    <div class="grid grid-cols-2 gap-2 mb-3 text-center">
+                        <div class="bg-black/50 rounded-2xl p-2 border border-white/10">
+                            <span class="text-[9px] text-fit-cream font-bold block mb-1">Mês 1 (Início)</span>
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=200&auto=format&fit=crop" class="w-full h-24 object-cover rounded-xl opacity-80">
+                        </div>
+                        <div class="bg-black/50 rounded-2xl p-2 border border-fit-cream/30">
+                            <span class="text-[9px] text-amber-300 font-bold block mb-1">Mês 3 (Hoje ✨)</span>
+                            <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=200&auto=format&fit=crop" class="w-full h-24 object-cover rounded-xl border border-amber-400/40">
+                        </div>
+                    </div>
+
+                    <button onclick="gerarCardStories()" class="w-full bg-[#C88C64] hover:bg-[#d49a6a] text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all text-xs shadow-md">
+                        <i data-feather="instagram" class="w-4 h-4"></i> EXPORTAR CARD PARA STORIES INSTAGRAM
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- View: Chat com Giu -->
         <div class="flex-1 overflow-y-auto px-6 scrollbar-hide hidden relative" id="view-chat">
             <div class="min-h-full flex flex-col pb-36">
                 <div class="mt-4 mb-3 fade-up flex-1">
                     <h3 class="font-heading font-semibold text-lg mb-3 text-fit-cream">Chat com a Personal Giu</h3>
-
                     <div class="space-y-4">
                         <div class="flex gap-3 items-end">
                             <img src="./assets/logo.png" alt="Giu Personal" class="w-8 h-8 rounded-full border border-fit-cream/30 object-cover shrink-0">
                             <div class="bg-fit-panelDark p-3.5 rounded-2xl rounded-bl-sm max-w-[85%] text-sm text-white/90 border border-fit-cream/15">
-                                Fala, Guria! Pronta para o Treinão de hoje? Se a academia tiver cheia é só usar o botão "Aparelho Ocupado" que a IA troca o exercício na hora! 💪✨
+                                Fala, Guria! Qualquer dúvida no treino, na lista de compras ou nos áudios com IA é só me mandar aqui! 💪✨
                             </div>
                         </div>
                     </div>
@@ -392,28 +506,28 @@
             </div>
         </div>
 
-        <!-- Bottom Nav -->
+        <!-- Bottom Nav Completa com Feed e Nutri -->
         <div
-            class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[85%] glass-card rounded-full p-2 flex justify-between items-center z-50 border border-fit-cream/25 shadow-xl" style="background: rgba(35, 19, 13, 0.9);">
+            class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] glass-card rounded-full p-2 flex justify-around items-center z-50 border border-fit-cream/25 shadow-xl" style="background: rgba(35, 19, 13, 0.9);">
             <a onclick="switchStudentView('home')" id="nav-student-home"
-                class="nav-item active w-11 h-11 flex items-center justify-center text-fit-textMuted relative transition-colors cursor-pointer rounded-full hover:bg-white/5">
+                class="nav-item active w-10 h-10 flex items-center justify-center text-fit-textMuted relative transition-colors cursor-pointer rounded-full hover:bg-white/5">
                 <i data-feather="home" class="w-5 h-5"></i>
             </a>
-            <a onclick="switchStudentView('analytics')" id="nav-student-analytics"
-                class="nav-item w-11 h-11 flex items-center justify-center text-fit-textMuted relative transition-colors cursor-pointer rounded-full hover:bg-white/5">
-                <i data-feather="bar-chart-2" class="w-5 h-5"></i>
+            <a onclick="switchStudentView('feed')" id="nav-student-feed"
+                class="nav-item w-10 h-10 flex items-center justify-center text-fit-textMuted relative transition-colors cursor-pointer rounded-full hover:bg-white/5">
+                <i data-feather="camera" class="w-5 h-5"></i>
             </a>
             <div onclick="checkIn()"
-                class="w-13 h-13 bg-[#C88C64] hover:bg-[#d49a6a] rounded-full shadow-lg shadow-fit-accent/30 flex items-center justify-center cursor-pointer transform -translate-y-2 hover:-translate-y-3 transition-transform relative group">
+                class="w-12 h-12 bg-[#C88C64] hover:bg-[#d49a6a] rounded-full shadow-lg shadow-fit-accent/30 flex items-center justify-center cursor-pointer transform -translate-y-2 hover:-translate-y-3 transition-transform relative group">
                 <i data-feather="map-pin" class="w-5 h-5 text-white font-bold"></i>
             </div>
-            <a onclick="switchStudentView('chat')" id="nav-student-chat"
-                class="nav-item w-11 h-11 flex items-center justify-center text-fit-textMuted relative transition-colors cursor-pointer rounded-full hover:bg-white/5">
-                <i data-feather="message-circle" class="w-5 h-5"></i>
+            <a onclick="switchStudentView('nutri')" id="nav-student-nutri"
+                class="nav-item w-10 h-10 flex items-center justify-center text-fit-textMuted relative transition-colors cursor-pointer rounded-full hover:bg-white/5">
+                <i data-feather="shopping-cart" class="w-5 h-5"></i>
             </a>
-            <a onclick="switchStudentView('profile')" id="nav-student-profile"
-                class="nav-item w-11 h-11 flex items-center justify-center text-fit-textMuted relative transition-colors cursor-pointer rounded-full hover:bg-white/5">
-                <i data-feather="user" class="w-5 h-5"></i>
+            <a onclick="switchStudentView('analytics')" id="nav-student-analytics"
+                class="nav-item w-10 h-10 flex items-center justify-center text-fit-textMuted relative transition-colors cursor-pointer rounded-full hover:bg-white/5">
+                <i data-feather="instagram" class="w-5 h-5"></i>
             </a>
         </div>
 
@@ -434,15 +548,17 @@
 
         const studentViews = {
             'home': document.getElementById('view-home'),
+            'feed': document.getElementById('view-feed'),
+            'nutri': document.getElementById('view-nutri'),
             'analytics': document.getElementById('view-analytics'),
             'chat': document.getElementById('view-chat'),
             'profile': document.getElementById('view-profile')
         };
         const studentNavs = {
             'home': document.getElementById('nav-student-home'),
-            'analytics': document.getElementById('nav-student-analytics'),
-            'chat': document.getElementById('nav-student-chat'),
-            'profile': document.getElementById('nav-student-profile')
+            'feed': document.getElementById('nav-student-feed'),
+            'nutri': document.getElementById('nav-student-nutri'),
+            'analytics': document.getElementById('nav-student-analytics')
         };
 
         function switchStudentView(target) {
@@ -457,39 +573,38 @@
             alert("📍 Check-in presencial no Treinão das Gurias realizado!\nBom treino, Guria! 💪✨");
         }
 
-        // SUBSTITUIÇÃO DE APARELHO OCUPADO (RECURSO IA DA ALUNA NA HORA)
+        // SIMULAÇÃO DA VOZ DA GIU COM IA (RECURSO 1)
+        function tocarVozGiu(exercicio) {
+            alert(`🎙️ Áudio IA da Personal Giu tocando:\n\n"Bora guria! No ${exercicio}, mantenha a postura firme, solta o ar na subida e foca na contração! Vamos juntas!" ✨💪`);
+        }
+
+        function curtirPost(btn) {
+            const span = btn.querySelector('.count-curtidas');
+            span.textContent = "19 Gurias";
+            alert("🔥 Você curtiu o treino da sua amiga!");
+        }
+
+        function gerarCardStories() {
+            alert("📸 Card 'Antes & Depois Treinão das Gurias' gerado com sucesso!\nPronto para compartilhar no seu Instagram Stories!");
+        }
+
         const sugestoesAparelhoOcupado = {
-            0: [
-                { name: "Elevação Pélvica com Halter no Banco", reps: "4x 12 REPS" },
-                { name: "Passada com Halteres", reps: "3x 10 REPS CADA LADO" }
-            ],
-            1: [
-                { name: "Glúteo no Cabo Unilateral", reps: "4x 15 REPS" },
-                { name: "Abdução com Mini-band e Peso Corporal", reps: "4x 20 REPS" }
-            ],
-            2: [
-                { name: "Sissy Squat Corporal com Anilha", reps: "3x ATÉ A FALHA" },
-                { name: "Agachamento Isométrico na Parede", reps: "3x 45 SEGUNDOS" }
-            ]
+            0: [{ name: "Elevação Pélvica com Halter no Banco", reps: "4x 12 REPS" }],
+            1: [{ name: "Glúteo no Cabo Unilateral", reps: "4x 15 REPS" }],
+            2: [{ name: "Sissy Squat Corporal com Anilha", reps: "3x ATÉ A FALHA" }]
         };
 
         function substituirAparelhoOcupado(index) {
             const item = document.querySelector(`.exercise-item[data-index="${index}"]`);
             if (item) {
                 const opcs = sugestoesAparelhoOcupado[index] || sugestoesAparelhoOcupado[0];
-                const opt = opcs[Math.floor(Math.random() * opcs.length)];
-                
+                const opt = opcs[0];
                 item.querySelector('.nome-ex-aluna').textContent = opt.name;
                 item.querySelector('.reps-ex-aluna').textContent = opt.reps;
-
-                item.querySelector('.nome-ex-aluna').classList.add('text-amber-300');
-                setTimeout(() => item.querySelector('.nome-ex-aluna').classList.remove('text-amber-300'), 1200);
-
-                alert(`💡 IA Treinão: Aparelho ocupado?\nSubstituído com sucesso por "${opt.name}" (${opt.reps})! Good workout, Guria! 🔥`);
+                alert(`💡 IA Treinão: Substituído por "${opt.name}" (${opt.reps})! Good workout, Guria! 🔥`);
             }
         }
 
-        // TROCA DE MODO / LOCAL DE TREINO (ACADEMIA / EM CASA / AR LIVRE)
         const treinosPorModo = {
             'academia': {
                 badge: '🏋️‍♀️ Modo Academia',
@@ -545,9 +660,7 @@
             });
         }
 
-        function getDynamicExercises() {
-            return document.querySelectorAll('.exercise-item');
-        }
+        function getDynamicExercises() { return document.querySelectorAll('.exercise-item'); }
 
         function updateProgress() {
             const exercisesList = getDynamicExercises();
@@ -570,7 +683,6 @@
 
         function toggleExercise(el) {
             const statusIcon = el.querySelector('.status-icon');
-
             if (el.getAttribute('data-status') === 'pending') {
                 el.setAttribute('data-status', 'completed');
                 statusIcon.classList.remove('bg-white/5', 'border-fit-cream/20', 'text-white/30');
@@ -582,7 +694,6 @@
                 statusIcon.classList.remove('bg-[#EFE1C6]', 'border-[#EFE1C6]', 'text-[#2A1710]');
                 el.classList.remove('bg-white/10');
             }
-
             updateProgress();
         }
 
