@@ -78,12 +78,10 @@
             background: rgba(239, 225, 198, 0.2);
         }
 
-        /* Active highlight for bottom nav */
         .nav-item.active {
             color: #EFE1C6;
         }
 
-        /* Slide up animations */
         .fade-up {
             animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
@@ -97,17 +95,9 @@
             }
         }
 
-        .delay-100 {
-            animation-delay: 0.1s;
-        }
-
-        .delay-200 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-300 {
-            animation-delay: 0.3s;
-        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
 
         @media print {
             body {
@@ -144,12 +134,7 @@
                 overflow: visible !important;
             }
 
-            h1,
-            h2,
-            h3,
-            h4,
-            span,
-            p {
+            h1, h2, h3, h4, span, p {
                 color: black !important;
             }
 
@@ -178,7 +163,7 @@
     class="antialiased min-h-screen flex items-start md:items-center justify-center selection:bg-fit-accent selection:text-white relative"
     id="app-container-bg">
 
-    <!-- Container do App (Mobile-first) -->
+    <!-- Container do App -->
     <div
         class="app-container w-full h-screen md:max-h-[900px] relative z-10 flex flex-col overflow-hidden md:shadow-2xl md:glass-card">
 
@@ -199,8 +184,39 @@
 
             <!-- Welcome Header -->
             <div class="mb-4 fade-up">
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="text-[10px] bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded font-mono font-bold uppercase">✨ Novo: IA Geradora Ativa</span>
+                </div>
                 <h1 class="font-heading font-bold text-2xl text-white">Olá, Personal Giu! ✨</h1>
-                <p class="text-xs text-fit-textMuted">Acompanhe suas alunas e o gerador de treinos do Treinão.</p>
+                <p class="text-xs text-fit-textMuted">Crie treinos com IA, faça trocas em 1 clique e gerencie alunas.</p>
+            </div>
+
+            <!-- CARD DESTAQUE: GERADOR DE TREINOS COM IA (VISÍVEL DE CARA NA HOME) -->
+            <div class="mb-5 fade-up delay-100">
+                <div class="glass-card rounded-3xl p-4 border border-fit-cream/25 bg-gradient-to-br from-[#3B2219] via-[#2A1710] to-[#1F100A] shadow-xl relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-2">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-xl bg-[#C88C64]/30 flex items-center justify-center text-fit-cream border border-fit-cream/20">
+                                <i data-feather="cpu" class="w-4 h-4 text-amber-300"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-sm text-fit-cream">Gerador de Treinos por IA</h3>
+                                <p class="text-[10px] text-fit-textMuted">Criação em 5 segundos + Troca Rápida</p>
+                            </div>
+                        </div>
+                        <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">Pronto</span>
+                    </div>
+
+                    <p class="text-xs text-white/90 mb-3 leading-relaxed">
+                        Gere planilhas inteiras personalizadas e use os botões de <strong>1 clique</strong> para trocar qualquer exercício se a IA vacilar!
+                    </p>
+
+                    <button onclick="switchView('treino')"
+                        class="w-full bg-[#C88C64] hover:bg-[#d49a6a] text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all text-xs shadow-md">
+                        <i data-feather="zap" class="w-4 h-4 text-amber-300"></i>
+                        ABRIR GERADOR DE IA & AJUSTES
+                    </button>
+                </div>
             </div>
 
             <!-- Core Metrics Cards -->
@@ -223,7 +239,7 @@
                 </div>
             </div>
 
-            <!-- ALERTAS AUTOMÁTICOS DE MUDANÇA DE TREINO (PONTO 2) -->
+            <!-- ALERTAS AUTOMÁTICOS DE MUDANÇA DE TREINO -->
             <div class="mb-6 fade-up delay-100">
                 <div class="flex justify-between items-center mb-2.5">
                     <h3 class="font-heading font-semibold text-sm text-fit-cream flex items-center gap-1.5">
@@ -304,17 +320,9 @@
                 </div>
             </div>
 
-            <div class="mt-6 mb-4 fade-up delay-300">
-                <button onclick="switchView('treino')"
-                    class="w-full glass-button bg-[#EFE1C6]/15 hover:bg-[#EFE1C6]/25 text-fit-cream border border-fit-cream/30 font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg">
-                    <i data-feather="cpu" class="w-5 h-5"></i>
-                    ABRIR GERADOR DE TREINOS COM IA
-                </button>
-            </div>
-
         </div>
 
-        <!-- View: GERADOR DE TREINOS COM IA & PRESCRIÇÃO (PONTO 1 & EDIT FLEXÍVEL) -->
+        <!-- View: GERADOR DE TREINOS COM IA & PRESCRIÇÃO -->
         <div class="flex-1 overflow-y-auto px-6 pb-28 pt-4 scrollbar-hide hidden" id="view-treino">
             <div class="mb-5 fade-up flex justify-between items-start">
                 <div>
@@ -386,7 +394,6 @@
                             <span class="bg-black/40 px-2.5 py-1 rounded text-fit-cream border border-fit-cream/15 font-mono text-[11px] reps-ex" contenteditable="true">10 a 12 Reps</span>
                         </div>
 
-                        <!-- ATALHOS RÁPIDOS DE AJUSTE DE SÉRIE -->
                         <div class="flex items-center gap-1 no-print">
                             <button onclick="ajustarSeries(0, 1)" class="bg-white/10 hover:bg-white/20 text-fit-cream px-2 py-0.5 rounded text-[10px] font-bold">+1 Série</button>
                             <button onclick="ajustarSeries(0, -1)" class="bg-white/10 hover:bg-white/20 text-fit-cream px-2 py-0.5 rounded text-[10px] font-bold">-1 Série</button>
@@ -454,14 +461,14 @@
             </div>
         </div>
 
-        <!-- View: ALUNAS & MÓDULO DE MENTORIAS (PONTO 3) -->
+        <!-- View: ALUNAS & MÓDULO DE MENTORIAS -->
         <div class="flex-1 overflow-y-auto px-6 pb-28 pt-4 scrollbar-hide hidden" id="view-alunos">
             <div class="mb-5 fade-up">
                 <h1 class="font-heading font-bold text-2xl text-white">Alunas & Mentorias</h1>
                 <p class="text-xs text-fit-textMuted">Gerenciamento de planos, mentorias e vigências.</p>
             </div>
 
-            <!-- MÓDULO DE MENTORIAS & PLANOS EXCLUSIVOS (PONTO 3) -->
+            <!-- MÓDULO DE MENTORIAS & PLANOS EXCLUSIVOS -->
             <div class="mb-6 fade-up delay-100">
                 <h3 class="font-heading font-semibold text-sm text-fit-cream mb-2.5">Planos & Mentorias Ativas</h3>
                 <div class="grid grid-cols-2 gap-3">
@@ -637,25 +644,6 @@
                 window.chartRendered = true;
             }
         }
-
-        // BANCO DE SUGESTÕES DA IA PARA ATALHO DE EDICAO RAPIDA
-        const sugestoesIA = {
-            "Glúteos & Pernas": [
-                { name: "Agachamento Búlgaro com Halteres", series: "4 Séries", reps: "10 a 12 Reps" },
-                { name: "Elevação Pélvica na Barra", series: "4 Séries", reps: "12 Reps + Isometria" },
-                { name: "Cadeira Extensora Drop-set", series: "3 Séries", reps: "Até a Falha" }
-            ],
-            "Sem Impacto Lombar": [
-                { name: "Cadeira Abdutora no Cabo", series: "4 Séries", reps: "15 Reps" },
-                { name: "Leg Press 45 Pés Altos", series: "4 Séries", reps: "12 Reps" },
-                { name: "Stiff Unilateral com Halter", series: "3 Séries", reps: "10 Reps cada" }
-            ],
-            "Superior & Postura": [
-                { name: "Puxada Articulada Aberta", series: "4 Séries", reps: "12 Reps" },
-                { name: "Desenvolvimento com Halteres", series: "3 Séries", reps: "10 Reps" },
-                { name: "Remada Baixa no Triângulo", series: "4 Séries", reps: "12 Reps" }
-            ]
-        };
 
         const alternativasTroca = [
             "Agachamento Sumo na Barra",
