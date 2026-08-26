@@ -163,7 +163,6 @@
     class="antialiased min-h-screen flex items-start md:items-center justify-center selection:bg-fit-accent selection:text-white relative"
     id="app-container-bg">
 
-    <!-- Container do App -->
     <div
         class="app-container w-full h-screen md:max-h-[900px] relative z-10 flex flex-col overflow-hidden md:shadow-2xl md:glass-card">
 
@@ -176,22 +175,22 @@
                     <span class="text-[10px] text-fit-textMuted font-medium uppercase mt-0.5">Painel da Personal</span>
                 </div>
             </div>
-            <span class="font-heading font-semibold text-xs bg-[#C88C64] text-white px-2.5 py-1 rounded-full text-[10px] uppercase tracking-widest shadow-md">Giu Baldissera</span>
+            <span class="font-heading font-semibold text-xs bg-[#C88C64] text-white px-2.5 py-1 rounded-full text-[10px] uppercase tracking-widest shadow-md">Giu / Julia</span>
         </div>
 
-        <!-- Dynamic View Content (Central de Treinos - Home) -->
+        <!-- Dynamic View Content (Home) -->
         <div class="flex-1 overflow-y-auto px-6 pb-28 pt-4 scrollbar-hide" id="view-home">
 
             <!-- Welcome Header -->
             <div class="mb-4 fade-up">
                 <div class="flex items-center gap-2 mb-1">
-                    <span class="text-[10px] bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded font-mono font-bold uppercase">✨ Novo: IA Geradora Ativa</span>
+                    <span class="text-[10px] bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded font-mono font-bold uppercase">✨ Gerador de Treinos & Modos Ativos</span>
                 </div>
-                <h1 class="font-heading font-bold text-2xl text-white">Olá, Personal Giu! ✨</h1>
-                <p class="text-xs text-fit-textMuted">Crie treinos com IA, faça trocas em 1 clique e gerencie alunas.</p>
+                <h1 class="font-heading font-bold text-2xl text-white">Olá, Personal! ✨</h1>
+                <p class="text-xs text-fit-textMuted">Analise, personalize e aprove treinos para Academia, Em Casa e Ar Livre.</p>
             </div>
 
-            <!-- CARD DESTAQUE: GERADOR DE TREINOS COM IA (VISÍVEL DE CARA NA HOME) -->
+            <!-- CARD DESTAQUE: GERADOR DE TREINOS COM IA & RECURSO ACADEMIA CHEIA -->
             <div class="mb-5 fade-up delay-100">
                 <div class="glass-card rounded-3xl p-4 border border-fit-cream/25 bg-gradient-to-br from-[#3B2219] via-[#2A1710] to-[#1F100A] shadow-xl relative overflow-hidden">
                     <div class="flex justify-between items-start mb-2">
@@ -200,21 +199,21 @@
                                 <i data-feather="cpu" class="w-4 h-4 text-amber-300"></i>
                             </div>
                             <div>
-                                <h3 class="font-heading font-bold text-sm text-fit-cream">Gerador de Treinos por IA</h3>
-                                <p class="text-[10px] text-fit-textMuted">Criação em 5 segundos + Troca Rápida</p>
+                                <h3 class="font-heading font-bold text-sm text-fit-cream">Gerador de Treinos com IA</h3>
+                                <p class="text-[10px] text-fit-textMuted">Academia • Em Casa • Ar Livre • Aparelho Ocupado</p>
                             </div>
                         </div>
-                        <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">Pronto</span>
+                        <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">Painel Controle</span>
                     </div>
 
                     <p class="text-xs text-white/90 mb-3 leading-relaxed">
-                        Gere planilhas inteiras personalizadas e use os botões de <strong>1 clique</strong> para trocar qualquer exercício se a IA vacilar!
+                        A IA gera a ficha principal e as alternativas automáticas para quando a academia estiver lotada ou se a aluna for treinar em casa!
                     </p>
 
                     <button onclick="switchView('treino')"
                         class="w-full bg-[#C88C64] hover:bg-[#d49a6a] text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all text-xs shadow-md">
                         <i data-feather="zap" class="w-4 h-4 text-amber-300"></i>
-                        ABRIR GERADOR DE IA & AJUSTES
+                        GERAR & APROVAR MODOS DE TREINO
                     </button>
                 </div>
             </div>
@@ -250,7 +249,6 @@
                 </div>
 
                 <div class="space-y-2.5">
-                    <!-- Alerta 1 -->
                     <div class="glass-card rounded-2xl p-3.5 flex items-center justify-between border-l-4 border-l-amber-400 border border-fit-cream/15 bg-amber-500/5">
                         <div class="flex items-center gap-3">
                             <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop" class="w-9 h-9 rounded-full object-cover border border-fit-cream/30">
@@ -264,7 +262,6 @@
                         </button>
                     </div>
 
-                    <!-- Alerta 2 -->
                     <div class="glass-card rounded-2xl p-3.5 flex items-center justify-between border-l-4 border-l-amber-400 border border-fit-cream/15 bg-amber-500/5">
                         <div class="flex items-center gap-3">
                             <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop" class="w-9 h-9 rounded-full object-cover border border-fit-cream/30">
@@ -322,29 +319,29 @@
 
         </div>
 
-        <!-- View: GERADOR DE TREINOS COM IA & PRESCRIÇÃO -->
+        <!-- View: GERADOR DE TREINOS COM IA & CONFIGURAÇÃO DE MODOS PARA A PROFESSORA -->
         <div class="flex-1 overflow-y-auto px-6 pb-28 pt-4 scrollbar-hide hidden" id="view-treino">
-            <div class="mb-5 fade-up flex justify-between items-start">
+            <div class="mb-4 fade-up flex justify-between items-start">
                 <div>
-                    <h1 class="font-heading font-bold text-2xl text-white">Gerador de Treinos ✨</h1>
-                    <p class="text-xs text-fit-textMuted">Crie com IA, ajuste em 1 clique e libere para a aluna.</p>
+                    <h1 class="font-heading font-bold text-2xl text-white">Gerador & Análise ✨</h1>
+                    <p class="text-xs text-fit-textMuted">Analise os treinos e alternativas antes de liberar para a aluna.</p>
                 </div>
                 <div class="flex items-center gap-2">
                     <button onclick="aprovarELiberarTreino()"
                         class="no-print bg-emerald-600 hover:bg-emerald-500 text-white p-2 px-3 rounded-xl transition-colors shadow-lg flex items-center gap-1.5 group">
                         <i data-feather="check-circle" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
-                        <span class="text-[10px] font-bold uppercase tracking-wide">Aprovar & Liberar</span>
+                        <span class="text-[10px] font-bold uppercase tracking-wide">Aprovar Todos os Modos</span>
                     </button>
                 </div>
             </div>
 
             <!-- PAINEL DA IA -->
-            <div class="glass-card rounded-3xl p-4 mb-6 border border-fit-cream/20 bg-gradient-to-br from-[#3B2219] to-[#2A1710] shadow-xl no-print">
+            <div class="glass-card rounded-3xl p-4 mb-4 border border-fit-cream/20 bg-gradient-to-br from-[#3B2219] to-[#2A1710] shadow-xl no-print">
                 <div class="flex items-center justify-between mb-3">
                     <span class="text-xs font-bold text-fit-cream flex items-center gap-1.5">
-                        <i data-feather="zap" class="w-4 h-4 text-amber-400"></i> Assistente Virtual Giu (IA)
+                        <i data-feather="zap" class="w-4 h-4 text-amber-400"></i> Assistente Virtual da Personal (IA)
                     </span>
-                    <span class="text-[10px] bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded font-mono font-bold">Modo Inteligente</span>
+                    <span class="text-[10px] bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded font-mono font-bold">Análise & Liberação</span>
                 </div>
 
                 <div class="space-y-3">
@@ -354,7 +351,6 @@
                             class="w-full bg-black/40 border border-fit-cream/20 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-fit-cream">
                     </div>
 
-                    <!-- ATALHOS RÁPIDOS DE PROMPT -->
                     <div class="flex flex-wrap gap-1.5">
                         <button onclick="setPromptPreset('Glúteos & Pernas (Intenso)')" class="text-[10px] bg-white/5 hover:bg-white/15 border border-fit-cream/15 text-fit-cream px-2 py-1 rounded-lg">🔥 Glúteos & Pernas</button>
                         <button onclick="setPromptPreset('Definição & Core (Sem Impacto)')" class="text-[10px] bg-white/5 hover:bg-white/15 border border-fit-cream/15 text-fit-cream px-2 py-1 rounded-lg">✨ Definição sem Impacto</button>
@@ -364,16 +360,55 @@
                     <button onclick="executarGeracaoIA()" id="btn-gerar-ia"
                         class="w-full bg-[#C88C64] hover:bg-[#d49a6a] text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all text-xs shadow-md">
                         <i data-feather="cpu" class="w-4 h-4"></i>
-                        GERAR PLANILHA COM IA
+                        GERAR TREINO PRINCIPAL E ALTERNATIVAS
                     </button>
                 </div>
             </div>
 
-            <!-- FICHA GERADA PELA IA COM EDIÇÃO FLEXÍVEL RÁPIDA -->
+            <!-- PAINEL DE CONTROLE DA PROFESSORA: RECURSO ACADEMIA CHEIA / EM CASA / AR LIVRE (NOVO) -->
+            <div class="glass-card rounded-2xl p-3.5 mb-4 border border-fit-cream/20 bg-black/30 no-print">
+                <h4 class="text-xs font-bold text-fit-cream flex items-center gap-1.5 mb-2">
+                    <i data-feather="sliders" class="w-3.5 h-3.5 text-amber-400"></i> Modos & Substitutos Pré-Aprovados pela Personal
+                </h4>
+                <p class="text-[11px] text-fit-textMuted mb-3 leading-relaxed">
+                    Abaixo você pode analisar os treinos substitutos para a aluna caso a academia esteja cheia ou ela precise treinar em casa:
+                </p>
+
+                <div class="space-y-2">
+                    <!-- Alternativa 1: Academia Cheia -->
+                    <div class="p-2.5 rounded-xl bg-white/5 border border-fit-cream/10 text-xs flex justify-between items-center">
+                        <div>
+                            <span class="text-[10px] text-amber-300 font-bold uppercase block">⚡ Troca p/ Academia Lotada</span>
+                            <span class="text-white font-medium">Agachamento Búlgaro $\rightarrow$ Elevação Pélvica c/ Halter</span>
+                        </div>
+                        <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded">Pré-aprovado</span>
+                    </div>
+
+                    <!-- Alternativa 2: Modo Em Casa -->
+                    <div class="p-2.5 rounded-xl bg-white/5 border border-fit-cream/10 text-xs flex justify-between items-center">
+                        <div>
+                            <span class="text-[10px] text-fit-cream font-bold uppercase block">🏠 Variante Modo Em Casa</span>
+                            <span class="text-white font-medium">Agachamento Sumô c/ Mini-band + Elevação Solo</span>
+                        </div>
+                        <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded">Pré-aprovado</span>
+                    </div>
+
+                    <!-- Alternativa 3: Modo Ar Livre -->
+                    <div class="p-2.5 rounded-xl bg-white/5 border border-fit-cream/10 text-xs flex justify-between items-center">
+                        <div>
+                            <span class="text-[10px] text-fit-cream font-bold uppercase block">🌳 Variante Ar Livre / Parque</span>
+                            <span class="text-white font-medium">Passada Afundo + Subida no Banco do Parque</span>
+                        </div>
+                        <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded">Pré-aprovado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FICHA PRINCIPAL DA ACADEMIA -->
             <div class="space-y-3" id="lista-exercicios-ia">
                 <div class="flex justify-between items-center mb-1 no-print">
-                    <h3 class="font-heading font-semibold text-sm text-fit-cream" id="titulo-ficha">Ficha Sugerida pela IA (Glúteos & Pernas)</h3>
-                    <span class="text-[10px] text-fit-textMuted">Clique nos campos para editar rápido</span>
+                    <h3 class="font-heading font-semibold text-sm text-fit-cream" id="titulo-ficha">Ficha Principal (Academia Completa)</h3>
+                    <span class="text-[10px] text-fit-textMuted">Clique nos campos para editar</span>
                 </div>
 
                 <!-- Exercício 1 -->
@@ -456,7 +491,7 @@
                 <button onclick="aprovarELiberarTreino()"
                     class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all text-sm shadow-xl">
                     <i data-feather="check-circle" class="w-5 h-5"></i>
-                    APROVAR & LIBERAR TREINO PARA A ALUNA
+                    APROVAR & LIBERAR TODOS OS MODOS PARA A ALUNA
                 </button>
             </div>
         </div>
@@ -468,7 +503,6 @@
                 <p class="text-xs text-fit-textMuted">Gerenciamento de planos, mentorias e vigências.</p>
             </div>
 
-            <!-- MÓDULO DE MENTORIAS & PLANOS EXCLUSIVOS -->
             <div class="mb-6 fade-up delay-100">
                 <h3 class="font-heading font-semibold text-sm text-fit-cream mb-2.5">Planos & Mentorias Ativas</h3>
                 <div class="grid grid-cols-2 gap-3">
@@ -486,11 +520,9 @@
                 </div>
             </div>
 
-            <!-- LISTA DE ALUNAS -->
             <div class="space-y-3.5 fade-up delay-200">
                 <h3 class="font-heading font-semibold text-sm text-fit-cream">Alunas Registradas</h3>
 
-                <!-- Aluna 1 -->
                 <div class="glass-card rounded-[24px] p-4 relative overflow-hidden border border-fit-cream/15">
                     <div class="flex items-center justify-between mb-3">
                         <div class="flex items-center gap-3">
@@ -515,7 +547,6 @@
                     </div>
                 </div>
 
-                <!-- Aluna 2 -->
                 <div class="glass-card rounded-[24px] p-4 relative overflow-hidden border border-fit-cream/15">
                     <div class="flex items-center justify-between mb-3">
                         <div class="flex items-center gap-3">
@@ -668,9 +699,9 @@
             feather.replace();
 
             setTimeout(() => {
-                btn.innerHTML = `<i data-feather="cpu" class="w-4 h-4"></i> GERAR PLANILHA COM IA`;
+                btn.innerHTML = `<i data-feather="cpu" class="w-4 h-4"></i> GERAR TREINO PRINCIPAL E ALTERNATIVAS`;
                 feather.replace();
-                alert(`✨ Treino gerado pela IA com sucesso!\nVocê pode clicar nos nomes, repetições ou usar o botão "Sugerir Outro (IA)" para ajustar rapidamente antes de aprovar.`);
+                alert(`✨ Treino Principal e Variantes (Academia Cheia, Em Casa e Ar Livre) gerados e pré-aprovados pela IA!\nVocê pode analisar a lista abaixo e clicar em "Aprovar & Liberar Todos os Modos".`);
             }, 800);
         }
 
@@ -708,7 +739,7 @@
             localStorage.setItem('daviApp_treinoA', JSON.stringify(exercicios));
             localStorage.setItem('treinaoGurias_treinoA', JSON.stringify(exercicios));
 
-            alert("✅ Treino Aprovado & Liberado para a Aluna com Sucesso! 🚀✨\nEla já pode acessar e executar a nova ficha no app!");
+            alert("✅ Todos os Modos (Academia, Em Casa, Ar Livre e Trocas de Emergência) foram Aprovados e Liberados para a Aluna com Sucesso! 🚀✨");
         }
 
         function renderChart() {
