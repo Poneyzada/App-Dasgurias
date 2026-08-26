@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinão das Gurias | Painel da Aluna</title>
+
+    <!-- PWA Manifest & Settings -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#C88C64">
+    <link rel="apple-touch-icon" href="./assets/logo.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fit: {
+                            bg: '#2A1710',        /* Warm chocolate brown background */
+                            panel: 'rgba(59, 34, 25, 0.65)', /* Glassy warm panels */
+                            panelDark: 'rgba(35, 19, 13, 0.85)',
+                            cream: '#EFE1C6',     /* Logo champagne cream gold */
+                            accent: '#C88C64',    /* Warm terracotta accent */
+                            blue: '#C88C64',      /* Primary accent */
+                            textMain: '#FFFDF9',
+                            textMuted: '#C7B8AD'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Feather Icons for lightweight SVGs -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        body {
+            background-color: #2A1710;
+            color: #fffdf9;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 0% 0%, rgba(200, 140, 100, 0.18) 0%, transparent 45%),
+                radial-gradient(circle at 100% 100%, rgba(239, 225, 198, 0.12) 0%, transparent 45%);
+        }
+
+        .glass-card {
+            background: rgba(59, 34, 25, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(239, 225, 198, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .glass-button {
+            background: rgba(239, 225, 198, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(239, 225, 198, 0.15);
+            transition: all 0.3s;
+        }
+
+        .glass-button:hover {
+            background: rgba(239, 225, 198, 0.2);
+        }
+
+        /* Active highlight for bottom nav */
+        .nav-item.active {
+            color: #EFE1C6;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background-color: #EFE1C6;
+            border-radius: 50%;
+        }
+
+        /* SVG Circular Progress Bar Logic */
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.8s ease-in-out;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+        }
+
+        /* Slide up animations */
+        .fade-up {
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+
+<body
+    class="antialiased min-h-screen flex items-center justify-center p-4 selection:bg-fit-accent selection:text-white relative">
+
+    <!-- Atmospheric background image -->
+    <div class="fixed top-0 left-0 w-full h-[50vh] pointer-events-none z-0">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2070&auto=format&fit=crop"
+            class="w-full h-full object-cover opacity-20 mix-blend-screen"
+            style="mask-image: linear-gradient(to bottom, black 0%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);"
+            alt="Treinão das Gurias">
+    </div>
+
+    <!-- Mobile-sized App Container -->
+    <div
+        class="glass-card w-full max-w-[400px] h-[850px] max-h-[90vh] rounded-[40px] relative z-10 flex flex-col overflow-hidden shadow-2xl">
+
+        <!-- Header (Greeting & Logo) -->
+        <div class="px-6 pt-9 pb-3 flex justify-between items-center fade-up">
+            <div class="flex items-center gap-3">
+                <img src="./assets/logo.png" alt="Logo Treinão das Gurias" class="w-10 h-10 object-cover rounded-full border border-fit-cream/30 shadow-md">
+                <div class="space-y-0.5">
+                    <span class="text-[11px] text-fit-cream font-medium tracking-wide uppercase block">Personal Giu Baldissera</span>
+                    <h2 class="font-heading font-bold text-xl text-white leading-tight">Bem-vinda, Guria! ✨</h2>
+                </div>
+            </div>
+            <a href="index.html"
+                class="w-10 h-10 rounded-full glass-button flex items-center justify-center cursor-pointer hover:scale-105 border border-fit-cream/20">
+                <i data-feather="user" class="w-4 h-4 text-fit-cream"></i>
+            </a>
+        </div>
+
+        <!-- View: Home (Treino do Dia) -->
+        <div class="flex-1 overflow-y-auto px-6 pb-36 scrollbar-hide" id="view-home">
+
+            <!-- Section: Minha Saúde & Métricas -->
+            <div class="mt-3 mb-3 fade-up delay-100">
+                <h3 class="font-heading font-semibold text-base mb-2.5 text-fit-cream">Minha Evolução & Saúde</h3>
+
+                <div class="glass-card rounded-3xl p-4 flex items-center justify-between">
+                    <div>
+                        <p class="text-fit-textMain font-medium text-xs mb-2.5">Frequência Semanal</p>
+                        <div class="flex gap-2.5">
+                            <!-- Mini icons -->
+                            <div
+                                class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-cream">
+                                <i data-feather="activity" class="w-4 h-4"></i>
+                            </div>
+                            <div
+                                class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-accent">
+                                <i data-feather="clock" class="w-4 h-4"></i>
+                            </div>
+                            <div
+                                class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-cream">
+                                <i data-feather="flame" class="w-4 h-4"></i>
+                            </div>
+                            <div
+                                class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-accent">
+                                <i data-feather="award" class="w-4 h-4"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div onclick="switchStudentView('analytics')"
+                        class="flex flex-col items-center justify-center w-16 h-16 rounded-2xl glass-button cursor-pointer hover:bg-white/10 transition-colors border border-fit-cream/20">
+                        <i data-feather="bar-chart-2" class="w-5 h-5 text-fit-cream mb-1"></i>
+                        <span class="text-[9px] text-center leading-tight text-fit-cream font-medium">Medidas &<br>Evolução</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section: Calendário de Treinos -->
+            <div
+                class="mt-3 mb-3 fade-up delay-100 flex justify-between items-center bg-fit-panelDark p-2 rounded-2xl glass-card border border-fit-cream/10">
+                <div class="text-center px-3.5 py-1.5 opacity-50">
+                    <p class="text-[10px] text-fit-textMuted uppercase mb-0.5">Seg</p>
+                    <p class="font-bold text-xs">09</p>
+                </div>
+                <div class="text-center px-3.5 py-1.5 bg-[#C88C64] text-white rounded-xl shadow-lg shadow-fit-accent/20">
+                    <p class="text-[10px] font-semibold uppercase mb-0.5">Ter</p>
+                    <p class="font-bold text-xs">10</p>
+                </div>
+                <div class="text-center px-3.5 py-1.5 opacity-50">
+                    <p class="text-[10px] text-fit-textMuted uppercase mb-0.5">Qua</p>
+                    <p class="font-bold text-xs">11</p>
+                </div>
+                <div class="text-center px-3.5 py-1.5 opacity-50">
+                    <p class="text-[10px] text-fit-textMuted uppercase mb-0.5">Qui</p>
+                    <p class="font-bold text-xs">12</p>
+                </div>
+                <div class="text-center px-3.5 py-1.5 opacity-50">
+                    <p class="text-[10px] text-fit-textMuted uppercase mb-0.5">Sex</p>
+                    <p class="font-bold text-xs">13</p>
+                </div>
+            </div>
+
+            <!-- Section: Treino do Dia -->
+            <div class="mt-5 mb-3 fade-up delay-200">
+                <h3 class="font-heading font-semibold text-base mb-2.5 text-fit-cream">Treino de Hoje</h3>
+
+                <div
+                    class="glass-card rounded-3xl p-5 bg-gradient-to-br from-white/10 to-transparent relative overflow-hidden flex items-center justify-between border border-fit-cream/20">
+                    <div>
+                        <span
+                            class="inline-block px-2.5 py-0.5 bg-[#C88C64]/30 text-fit-cream rounded text-[10px] font-bold uppercase tracking-widest mb-2 border border-fit-cream/20">Plano
+                            Treinão das Gurias</span>
+                        <h4 class="font-heading font-bold text-xl text-white mb-2 leading-tight">Glúteos &<br>Pernas Complete
+                        </h4>
+                        <div class="flex items-center gap-2 text-fit-textMuted text-xs font-medium">
+                            <i data-feather="clock" class="w-3.5 h-3.5 text-fit-cream"></i> 50 Min
+                            <span class="px-1 text-fit-cream">•</span>
+                            <i data-feather="zap" class="w-3.5 h-3.5 text-fit-cream"></i> Alta Inten.
+                        </div>
+                    </div>
+
+                    <!-- Progress Ring Graphic -->
+                    <div class="relative w-22 h-22">
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                            <circle class="text-white/10 stroke-current" stroke-width="8" cx="50" cy="50" r="40"
+                                fill="transparent"></circle>
+                            <circle id="workout-progress-ring"
+                                class="text-[#EFE1C6] progress-ring__circle stroke-current" stroke-width="8"
+                                stroke-linecap="round" cx="50" cy="50" r="40" fill="transparent"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <span
+                                class="text-white text-[9px] text-center leading-tight font-medium uppercase tracking-widest text-fit-textMuted">Concluído<br><span
+                                    id="workout-progress-text" class="text-base font-bold text-fit-cream">0%</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section: Exercícios do Treinão -->
+            <div class="mt-5 fade-up delay-300">
+                <div class="flex justify-between items-end mb-3">
+                    <h3 class="font-heading font-semibold text-base text-fit-cream">Exercícios Prescritos (3)</h3>
+                </div>
+
+                <div class="space-y-3" id="exercise-list">
+
+                    <!-- Exec 1 -->
+                    <div class="glass-card rounded-2xl p-4 flex items-center justify-between exercise-item group transition-all cursor-pointer hover:bg-white/5 border border-fit-cream/15"
+                        data-status="pending" onclick="toggleExercise(this)">
+                        <div class="flex gap-3.5 items-center">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0">
+                                <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=200&auto=format&fit=crop"
+                                    class="w-full h-full object-cover opacity-75" alt="Exercicio">
+                                <div
+                                    class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-fit-accent/30 transition-colors">
+                                    <i data-feather="play" class="w-4 h-4 text-fit-cream fill-fit-cream"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="text-sm font-bold text-white mb-1">Agachamento Búlgaro com Halteres</h5>
+                                <div class="flex items-center gap-2">
+                                    <span
+                                        class="text-[11px] font-medium bg-black/40 border border-fit-cream/20 px-2 py-0.5 rounded text-fit-cream font-mono">4x
+                                        10 A 12 REPS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="w-8 h-8 rounded-full border border-fit-cream/20 bg-white/5 flex items-center justify-center transition-all text-white/30 status-icon">
+                            <i data-feather="check" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+
+                    <!-- Exec 2 -->
+                    <div class="glass-card rounded-2xl p-4 flex items-center justify-between exercise-item group transition-all cursor-pointer hover:bg-white/5 border border-fit-cream/15"
+                        data-status="pending" onclick="toggleExercise(this)">
+                        <div class="flex gap-3.5 items-center">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0">
+                                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=200&auto=format&fit=crop"
+                                    class="w-full h-full object-cover opacity-75" alt="Exercicio">
+                                <div
+                                    class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-fit-accent/30 transition-colors">
+                                    <i data-feather="play" class="w-4 h-4 text-fit-cream fill-fit-cream"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="text-sm font-bold text-white mb-1">Elevação Pélvica na Barra</h5>
+                                <div class="flex items-center gap-2">
+                                    <span
+                                        class="text-[11px] font-medium bg-black/40 border border-fit-cream/20 px-2 py-0.5 rounded text-fit-cream font-mono">4x
+                                        12 REPS + ISOMETRIA</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="w-8 h-8 rounded-full border border-fit-cream/20 bg-white/5 flex items-center justify-center transition-all text-white/30 status-icon">
+                            <i data-feather="check" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+
+                    <!-- Exec 3 -->
+                    <div class="glass-card rounded-2xl p-4 flex items-center justify-between exercise-item group transition-all cursor-pointer hover:bg-white/5 border border-fit-cream/15"
+                        data-status="pending" onclick="toggleExercise(this)">
+                        <div class="flex gap-3.5 items-center">
+                            <div
+                                class="w-14 h-14 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0">
+                                <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=200&auto=format&fit=crop"
+                                    class="w-full h-full object-cover opacity-75" alt="Exercicio">
+                                <div
+                                    class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-fit-accent/30 transition-colors">
+                                    <i data-feather="play" class="w-4 h-4 text-fit-cream fill-fit-cream"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="text-sm font-bold text-white mb-1">Cadeira Extensora Drop-set</h5>
+                                <div class="flex items-center gap-2">
+                                    <span
+                                        class="text-[11px] font-medium bg-black/40 border border-fit-cream/20 px-2 py-0.5 rounded text-fit-cream font-mono">3x
+                                        ATÉ A FALHA</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="w-8 h-8 rounded-full border border-fit-cream/20 bg-white/5 flex items-center justify-center transition-all text-white/30 status-icon">
+                            <i data-feather="check" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+
+                    <!-- Botão Finalizar Treino -->
+                    <div class="pt-4">
+                        <button id="finish-workout-btn" onclick="finishWorkout()"
+                            class="w-full glass-button bg-[#EFE1C6]/15 text-[#EFE1C6] font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all opacity-50 cursor-not-allowed border border-fit-cream/20">
+                            <i data-feather="award" class="w-5 h-5"></i>
+                            FINALIZAR TREINÃO
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="h-8"></div>
+
+        </div> <!-- End view-home -->
+
+        <!-- View: Analytics (Histórico) -->
+        <div class="flex-1 overflow-y-auto px-6 pb-24 scrollbar-hide hidden" id="view-analytics">
+            <div class="mt-4 mb-3 fade-up">
+                <h3 class="font-heading font-semibold text-lg mb-3 text-fit-cream">Seu Progresso no Treinão</h3>
+                <div
+                    class="glass-card rounded-3xl p-6 flex flex-col items-center justify-center h-64 border border-fit-cream/15 text-center">
+                    <i data-feather="bar-chart-2" class="w-10 h-10 text-fit-cream/40 mb-3"></i>
+                    <p class="text-sm text-fit-textMuted leading-relaxed">Sua evolução de cargas e avaliação física com a Personal Giu estarão disponíveis aqui em breve.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- View: Chat (Mensagens com Giu) -->
+        <div class="flex-1 overflow-y-auto px-6 scrollbar-hide hidden relative" id="view-chat">
+            <div class="min-h-full flex flex-col pb-36">
+                <div class="mt-4 mb-3 fade-up flex-1">
+                    <h3 class="font-heading font-semibold text-lg mb-3 text-fit-cream">Chat com a Personal Giu</h3>
+
+                    <div class="space-y-4">
+                        <div class="flex gap-3 items-end">
+                            <img src="./assets/logo.png" alt="Giu Personal" class="w-8 h-8 rounded-full border border-fit-cream/30 object-cover shrink-0">
+                            <div class="bg-fit-panelDark p-3.5 rounded-2xl rounded-bl-sm max-w-[85%] text-sm text-white/90 border border-fit-cream/15">
+                                Fala, Guria! Pronta para o Treinão de hoje? Qualquer dúvida nas séries me avisa aqui! 💪✨
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full flex gap-2 mt-auto pt-4 sticky bottom-2 z-10 fade-up delay-100">
+                    <input type="text" placeholder="Digite sua mensagem..."
+                        class="flex-1 bg-[#1A0E0A] border border-fit-cream/20 rounded-full px-4 py-3 text-sm text-white focus:outline-none focus:border-fit-cream shadow-lg">
+                    <button
+                        class="w-12 h-12 bg-[#C88C64] hover:bg-[#d49a6a] rounded-full flex items-center justify-center text-white shrink-0 shadow-lg shadow-fit-accent/30"><i
+                            data-feather="send" class="w-4 h-4 ml-[-2px]"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- View: Profile (Configurações) -->
+        <div class="flex-1 overflow-y-auto px-6 pb-24 scrollbar-hide hidden" id="view-profile">
+            <div class="mt-4 mb-3 fade-up">
+                <h3 class="font-heading font-semibold text-lg mb-3 text-fit-cream">Seu Perfil no App</h3>
+                <div class="space-y-2.5">
+                    <div
+                        class="glass-card rounded-2xl p-4 flex items-center justify-between cursor-pointer hover:bg-white/5 border border-fit-cream/15">
+                        <div class="flex items-center gap-3 text-white"><i data-feather="user"
+                                class="w-4 h-4 text-fit-cream"></i> Dados Cadastrais</div>
+                        <i data-feather="chevron-right" class="w-4 h-4 text-fit-cream/40"></i>
+                    </div>
+                    <div
+                        class="glass-card rounded-2xl p-4 flex items-center justify-between cursor-pointer hover:bg-white/5 border border-fit-cream/15">
+                        <div class="flex items-center gap-3 text-white"><i data-feather="credit-card"
+                                class="w-4 h-4 text-fit-cream"></i> Plano Treinão das Gurias</div>
+                        <i data-feather="chevron-right" class="w-4 h-4 text-fit-cream/40"></i>
+                    </div>
+                    <a href="index.html"
+                        class="glass-card rounded-2xl p-4 flex items-center justify-between cursor-pointer hover:bg-red-500/10 mt-6 border-red-500/30 text-red-300">
+                        <div class="flex items-center gap-3"><i data-feather="log-out" class="w-4 h-4"></i> Sair do App
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Bottom Navigation -->
+        <div
+            class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[85%] glass-card rounded-full p-2 flex justify-between items-center z-50 border border-fit-cream/25 shadow-xl" style="background: rgba(35, 19, 13, 0.9);">
+            <a onclick="switchStudentView('home')" id="nav-student-home"
+                class="nav-item active w-11 h-11 flex items-center justify-center text-fit-textMuted relative transition-colors cursor-pointer rounded-full hover:bg-white/5">
+                <i data-feather="home" class="w-5 h-5"></i>
+            </a>
+            <a onclick="switchStudentView('analytics')" id="nav-student-analytics"
+                class="nav-item w-11 h-11 flex items-center justify-center text-fit-textMuted relative transition-colors cursor-pointer rounded-full hover:bg-white/5">
+                <i data-feather="bar-chart-2" class="w-5 h-5"></i>
+            </a>
+            <div onclick="checkIn()"
+                class="w-13 h-13 bg-[#C88C64] hover:bg-[#d49a6a] rounded-full shadow-lg shadow-fit-accent/30 flex items-center justify-center cursor-pointer transform -translate-y-2 hover:-translate-y-3 transition-transform relative group">
+                <i data-feather="map-pin" class="w-5 h-5 text-white font-bold"></i>
+            </div>
+            <a onclick="switchStudentView('chat')" id="nav-student-chat"
+                class="nav-item w-11 h-11 flex items-center justify-center text-fit-textMuted relative transition-colors cursor-pointer rounded-full hover:bg-white/5">
+                <i data-feather="message-circle" class="w-5 h-5"></i>
+            </a>
+            <a onclick="switchStudentView('profile')" id="nav-student-profile"
+                class="nav-item w-11 h-11 flex items-center justify-center text-fit-textMuted relative transition-colors cursor-pointer rounded-full hover:bg-white/5">
+                <i data-feather="user" class="w-5 h-5"></i>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Initialization Scripts -->
+    <script>
+        feather.replace();
+
+        const circle = document.querySelector('.progress-ring__circle');
+        const radius = circle.r.baseVal.value;
+        const circumference = radius * 2 * Math.PI;
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        circle.style.strokeDashoffset = circumference;
+
+        const progressText = document.getElementById('workout-progress-text');
+        const finishBtn = document.getElementById('finish-workout-btn');
+
+        // SPA Navigation Logic
+        const studentViews = {
+            'home': document.getElementById('view-home'),
+            'analytics': document.getElementById('view-analytics'),
+            'chat': document.getElementById('view-chat'),
+            'profile': document.getElementById('view-profile')
+        };
+        const studentNavs = {
+            'home': document.getElementById('nav-student-home'),
+            'analytics': document.getElementById('nav-student-analytics'),
+            'chat': document.getElementById('nav-student-chat'),
+            'profile': document.getElementById('nav-student-profile')
+        };
+
+        function switchStudentView(target) {
+            Object.values(studentViews).forEach(el => { if (el) el.classList.add('hidden') });
+            Object.values(studentNavs).forEach(el => { if (el) el.classList.remove('text-fit-cream', 'bg-white/10') });
+
+            if (studentViews[target]) studentViews[target].classList.remove('hidden');
+            if (studentNavs[target]) studentNavs[target].classList.add('text-fit-cream', 'bg-white/10');
+        }
+
+        function checkIn() {
+            alert("📍 Check-in presencial no Treinão das Gurias realizado!\nBom treino, Guria! 💪✨");
+        }
+
+        function getDynamicExercises() {
+            return document.querySelectorAll('.exercise-item');
+        }
+
+        function updateProgress() {
+            const exercisesList = getDynamicExercises();
+            const totalExercises = exercisesList.length || 1;
+            const completed = document.querySelectorAll('.exercise-item[data-status="completed"]').length;
+            const percent = Math.round((completed / totalExercises) * 100);
+
+            progressText.textContent = `${percent}%`;
+
+            const offset = circumference - (percent / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+
+            if (percent === 100 && completed > 0) {
+                finishBtn.classList.remove('opacity-50', 'cursor-not-allowed', 'bg-[#EFE1C6]/15', 'text-[#EFE1C6]');
+                finishBtn.classList.add('bg-[#EFE1C6]', 'text-[#2A1710]', 'shadow-lg', 'shadow-fit-cream/30', 'hover:bg-white');
+            } else {
+                finishBtn.classList.add('opacity-50', 'cursor-not-allowed', 'bg-[#EFE1C6]/15', 'text-[#EFE1C6]');
+                finishBtn.classList.remove('bg-[#EFE1C6]', 'text-[#2A1710]', 'shadow-lg', 'shadow-fit-cream/30', 'hover:bg-white');
+            }
+        }
+
+        function toggleExercise(el) {
+            const statusIcon = el.querySelector('.status-icon');
+
+            if (el.getAttribute('data-status') === 'pending') {
+                el.setAttribute('data-status', 'completed');
+                statusIcon.classList.remove('bg-white/5', 'border-fit-cream/20', 'text-white/30');
+                statusIcon.classList.add('bg-[#EFE1C6]', 'border-[#EFE1C6]', 'text-[#2A1710]');
+                el.classList.add('bg-white/10');
+            } else {
+                el.setAttribute('data-status', 'pending');
+                statusIcon.classList.add('bg-white/5', 'border-fit-cream/20', 'text-white/30');
+                statusIcon.classList.remove('bg-[#EFE1C6]', 'border-[#EFE1C6]', 'text-[#2A1710]');
+                el.classList.remove('bg-white/10');
+            }
+
+            updateProgress();
+        }
+
+        function finishWorkout() {
+            const exercises = getDynamicExercises();
+            const totalExercises = exercises.length;
+            const completed = document.querySelectorAll('.exercise-item[data-status="completed"]').length;
+            if (completed === totalExercises && totalExercises > 0) {
+                alert("Parabéns, Guria! Treinão Finalizado com Sucesso! 🔥💪✨");
+                exercises.forEach(el => {
+                    if (el.getAttribute('data-status') === 'completed') toggleExercise(el);
+                });
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const listEl = document.getElementById('exercise-list');
+            const savedData = localStorage.getItem('daviApp_treinoA');
+
+            if (savedData) {
+                try {
+                    const exercises = JSON.parse(savedData);
+                    let html = '';
+                    exercises.forEach(ex => {
+                        html += `
+                        <div class="glass-card rounded-2xl p-4 flex items-center justify-between exercise-item group transition-all cursor-pointer hover:bg-white/5 border border-fit-cream/15"
+                            data-status="pending" onclick="toggleExercise(this)">
+                            <div class="flex gap-3.5 items-center">
+                                <div class="w-14 h-14 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0 flex items-center justify-center">
+                                    <i data-feather="video" class="w-5 h-5 text-fit-cream opacity-60"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-sm font-bold text-white mb-1">${ex.name}</h5>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-[11px] font-medium bg-black/40 border border-fit-cream/20 px-2 py-0.5 rounded text-fit-cream font-mono">${ex.series}</span>
+                                        <span class="text-[11px] font-medium bg-black/40 border border-fit-cream/20 px-2 py-0.5 rounded text-fit-cream font-mono">${ex.reps}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 rounded-full border border-fit-cream/20 bg-white/5 flex items-center justify-center transition-all text-white/30 status-icon">
+                                <i data-feather="check" class="w-4 h-4"></i>
+                            </div>
+                        </div>`;
+                    });
+                    listEl.innerHTML = html;
+                    feather.replace();
+                } catch (e) { console.error("Error loading saved workout:", e); }
+            }
+
+            setTimeout(() => {
+                updateProgress();
+            }, 100);
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js').catch(err => console.log('SW error', err));
+            }
+        });
+    </script>
+</body>
+
+</html>

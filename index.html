@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinão das Gurias | Autenticação</title>
+
+    <!-- PWA Manifest & Settings -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#C88C64">
+    <link rel="apple-touch-icon" href="./assets/logo.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fit: {
+                            bg: '#2A1710',        /* Warm chocolate brown background */
+                            panel: 'rgba(59, 34, 25, 0.65)', /* Glassy warm panels */
+                            cream: '#EFE1C6',     /* Logo champagne cream gold */
+                            accent: '#C88C64',    /* Warm terracotta accent */
+                            blue: '#C88C64',      /* Accent color mapped for existing classes */
+                            textMain: '#FFFDF9',
+                            textMuted: '#C7B8AD'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Feather Icons for lightweight SVGs -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        body {
+            background-color: #2A1710;
+            color: #fffdf9;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 70% 30%, rgba(200, 140, 100, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(239, 225, 198, 0.12) 0%, transparent 50%);
+        }
+
+        /* Glassmorphism Classes */
+        .glass-card {
+            background: rgba(59, 34, 25, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(239, 225, 198, 0.15);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .input-glass {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(239, 225, 198, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .input-glass:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #EFE1C6;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(239, 225, 198, 0.25);
+        }
+
+        .fade-up {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="antialiased min-h-screen flex items-center justify-center p-4 selection:bg-fit-accent selection:text-white relative">
+
+    <!-- Ambient background light & female fitness athlete banner -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2000&auto=format&fit=crop"
+            class="absolute top-0 w-full object-cover opacity-25 mix-blend-luminosity mask-image-gradient"
+            style="mask-image: linear-gradient(to bottom, black 30%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);"
+            alt="Treinão das Gurias">
+    </div>
+
+    <!-- Mobile-sized App Container holding the UI -->
+    <div
+        class="glass-card w-full max-w-[400px] min-h-[800px] max-h-[90vh] rounded-[40px] relative z-10 flex flex-col overflow-hidden shadow-2xl overflow-y-auto scrollbar-hide">
+
+        <!-- Header / Logo Area -->
+        <div class="px-6 pt-10 pb-4 flex justify-between items-center relative z-20 fade-up"
+            style="animation-delay: 0.1s;">
+            <div class="flex items-center gap-3">
+                <img src="./assets/logo.png" alt="Logo Treinão das Gurias" class="w-11 h-11 object-cover rounded-full border border-fit-cream/30 shadow-lg">
+                <div class="flex flex-col leading-none">
+                    <span class="font-heading font-extrabold text-lg tracking-tight text-fit-cream">TREINÃO DAS GURIAS</span>
+                    <span class="text-[11px] text-fit-textMuted font-medium tracking-wider uppercase mt-0.5">Giu Baldissera</span>
+                </div>
+            </div>
+            <div class="w-10 h-10 rounded-full glass-card flex items-center justify-center border border-fit-cream/20">
+                <i data-feather="heart" class="w-4 h-4 text-fit-cream"></i>
+            </div>
+        </div>
+
+        <!-- Spacer to push login card down with fitness graphic -->
+        <div class="flex-grow min-h-[230px] relative z-20 flex items-center justify-center p-6">
+            <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=1000&auto=format&fit=crop"
+                class="absolute inset-0 w-full h-full object-cover opacity-45 mix-blend-screen"
+                style="mask-image: linear-gradient(to bottom, transparent, black 30%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, transparent);"
+                alt="Giu Baldissera Fitness">
+        </div>
+
+        <!-- Login Card Area -->
+        <div class="glass-card mx-4 mb-8 p-7 rounded-3xl relative z-20 fade-up"
+            style="animation-delay: 0.3s; background: rgba(35, 19, 13, 0.85); border: 1px solid rgba(239, 225, 198, 0.2);">
+
+            <h2 class="font-heading text-2xl font-bold leading-tight mb-2 text-fit-cream">Bem-vinda ao<br>Treinão das Gurias ✨</h2>
+            <p class="text-fit-textMuted text-xs mb-6 leading-relaxed">Conecte-se para acessar seus treinos exclusivos e acompanhamento com a Personal Giu Baldissera.</p>
+
+            <form class="space-y-3.5" onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+
+                <div>
+                    <input type="email" placeholder="E-mail da aluna"
+                        class="w-full input-glass rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-fit-textMuted/70"
+                        required>
+                </div>
+                <div>
+                    <input type="password" placeholder="Sua senha"
+                        class="w-full input-glass rounded-xl px-4 py-3.5 text-sm text-white placeholder:text-fit-textMuted/70"
+                        required>
+                </div>
+
+                <div class="flex flex-col gap-3 pt-2">
+                    <!-- Entrar como Aluna Button -->
+                    <button type="submit"
+                        class="w-full bg-[#EFE1C6] hover:bg-[#f5ebd8] text-[#2A1710] font-bold py-3.5 px-6 rounded-full flex items-center justify-between transition-all duration-200 shadow-md group">
+                        <span class="ml-2 font-heading tracking-wide text-sm uppercase">ENTRAR (ALUNA)</span>
+                        <div
+                            class="w-8 h-8 rounded-full bg-[#2A1710] flex items-center justify-center text-[#EFE1C6] group-hover:bg-[#C88C64] transition-colors">
+                            <i data-feather="arrow-right" class="w-4 h-4"></i>
+                        </div>
+                    </button>
+                    <!-- Área da Personal Button -->
+                    <button type="button" onclick="window.location.href='trainer.html'"
+                        class="w-full py-3 rounded-full text-fit-cream hover:text-white glass-card hover:bg-fit-accent/30 border border-fit-cream/30 transition-colors font-medium text-xs flex items-center justify-center gap-2 relative overflow-hidden group shadow-lg">
+                        <i data-feather="briefcase" class="w-4 h-4 relative z-10 text-fit-cream"></i>
+                        <span class="relative z-10 font-bold tracking-wide uppercase">ÁREA DA PERSONAL (GIU)</span>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Initialize Icons & PWA -->
+    <script>
+        feather.replace();
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then(registration => {
+                    console.log('SW registered: ', registration);
+                }).catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

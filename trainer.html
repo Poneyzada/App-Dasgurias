@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinão das Gurias | Painel da Personal (Giu Baldissera)</title>
+
+    <!-- PWA Manifest & Settings -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#C88C64">
+    <link rel="apple-touch-icon" href="./assets/logo.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fit: {
+                            bg: '#2A1710',        /* Warm chocolate brown background */
+                            panel: 'rgba(59, 34, 25, 0.65)', /* Glassy warm panels */
+                            panelDark: 'rgba(35, 19, 13, 0.85)',
+                            cream: '#EFE1C6',     /* Logo champagne cream gold */
+                            accent: '#C88C64',    /* Warm terracotta accent */
+                            blue: '#C88C64',      /* Primary accent */
+                            textMain: '#FFFDF9',
+                            textMuted: '#C7B8AD'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Feather Icons for lightweight SVGs -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Chart.js for beautiful graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            background-color: #2A1710;
+            color: #fffdf9;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 10% 10%, rgba(200, 140, 100, 0.18) 0%, transparent 45%),
+                radial-gradient(circle at 90% 90%, rgba(239, 225, 198, 0.12) 0%, transparent 45%);
+        }
+
+        .glass-card {
+            background: rgba(59, 34, 25, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(239, 225, 198, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .glass-button {
+            background: rgba(239, 225, 198, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(239, 225, 198, 0.15);
+            transition: all 0.3s;
+        }
+
+        .glass-button:hover {
+            background: rgba(239, 225, 198, 0.2);
+        }
+
+        /* Active highlight for bottom nav */
+        .nav-item.active {
+            color: #EFE1C6;
+        }
+
+        /* Slide up animations */
+        .fade-up {
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        /* Print specifics for PDF Export */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            .no-print,
+            .nav-item,
+            #app-container-bg {
+                display: none !important;
+            }
+
+            .print-only {
+                display: block !important;
+            }
+
+            .glass-card {
+                background: none;
+                border: 1px solid #ccc;
+                color: black !important;
+                filter: none !important;
+            }
+
+            .app-container {
+                box-shadow: none !important;
+                height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            #view-treino {
+                display: block !important;
+                overflow: visible !important;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            span,
+            p {
+                color: black !important;
+            }
+
+            .text-fit-textMuted {
+                color: #555 !important;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Tablet scaling tweaks */
+        @media (min-width: 768px) {
+            .app-container {
+                max-width: 800px !important;
+                height: 90vh !important;
+                border-radius: 40px !important;
+                margin: 5vh auto 0 auto !important;
+            }
+
+            .grid-responsive {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="antialiased min-h-screen flex items-start md:items-center justify-center selection:bg-fit-accent selection:text-white relative"
+    id="app-container-bg">
+
+    <!-- Container do App (Mobile-first, mas estica lindo em tablets/desktops) -->
+    <div
+        class="app-container w-full h-screen md:max-h-[900px] relative z-10 flex flex-col overflow-hidden md:shadow-2xl md:glass-card">
+
+        <!-- Top Header for App Brand/Logo -->
+        <div class="px-6 pt-9 pb-3 flex justify-between items-center relative z-20 border-b border-fit-cream/10">
+            <div class="flex items-center gap-3">
+                <img src="./assets/logo.png" alt="Logo Treinão das Gurias" class="w-10 h-10 object-cover rounded-full border border-fit-cream/30 shadow-md">
+                <div class="flex flex-col leading-none">
+                    <span class="font-heading font-extrabold text-base tracking-tight text-fit-cream">TREINÃO DAS GURIAS</span>
+                    <span class="text-[10px] text-fit-textMuted font-medium uppercase mt-0.5">Painel da Personal</span>
+                </div>
+            </div>
+            <span class="font-heading font-semibold text-xs bg-[#C88C64] text-white px-2.5 py-1 rounded-full text-[10px] uppercase tracking-widest shadow-md">Giu Baldissera</span>
+        </div>
+
+        <!-- Dynamic View Content (Central de Treinos - Home) -->
+        <div class="flex-1 overflow-y-auto px-6 pb-28 pt-4 scrollbar-hide" id="view-home">
+
+            <!-- Welcome Header -->
+            <div class="mb-5 fade-up">
+                <h1 class="font-heading font-bold text-2xl text-white">Olá, Personal Giu! ✨</h1>
+                <p class="text-xs text-fit-textMuted">Acompanhe suas alunas e métricas do Treinão das Gurias.</p>
+            </div>
+
+            <!-- Top Core Metrics Cards -->
+            <div class="grid grid-cols-3 gap-3 mb-6 fade-up delay-100">
+                <div class="glass-card rounded-2xl p-4 flex flex-col items-center justify-center text-center border border-fit-cream/15">
+                    <i data-feather="users" class="w-5 h-5 text-fit-cream mb-1.5"></i>
+                    <span class="text-2xl font-bold text-white leading-none mb-1">48</span>
+                    <span class="text-[9px] text-fit-textMuted uppercase tracking-wider font-semibold">Total Alunas</span>
+                </div>
+                <div class="glass-card rounded-2xl p-4 flex flex-col items-center justify-center text-center border border-fit-cream/15">
+                    <i data-feather="user-check" class="w-5 h-5 text-emerald-400 mb-1.5"></i>
+                    <span class="text-2xl font-bold text-white leading-none mb-1">46</span>
+                    <span class="text-[9px] text-fit-textMuted uppercase tracking-wider font-semibold">Ativas</span>
+                </div>
+                <div
+                    class="glass-card rounded-2xl p-4 flex flex-col items-center justify-center text-center border border-amber-500/30 bg-amber-500/5 relative overflow-hidden">
+                    <i data-feather="alert-circle" class="w-5 h-5 text-amber-400 mb-1.5"></i>
+                    <span class="text-2xl font-bold text-white leading-none mb-1">2</span>
+                    <span class="text-[9px] text-amber-300 uppercase tracking-wider font-semibold">Renovações</span>
+                </div>
+            </div>
+
+            <div class="grid-responsive grid gap-6">
+                <!-- Treinos Realizados Graph Overview -->
+                <div class="fade-up delay-200">
+                    <div class="flex justify-between items-end mb-3">
+                        <h3 class="font-heading font-semibold text-base text-fit-cream">Frequência da Semana</h3>
+                        <a onclick="switchView('alunos')"
+                            class="cursor-pointer text-xs text-fit-cream font-medium hover:underline flex items-center gap-1">Ver Alunas
+                            <i data-feather="chevron-right" class="w-3 h-3"></i></a>
+                    </div>
+                    <div class="glass-card rounded-3xl p-5 relative overflow-hidden border border-fit-cream/15">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div>
+                                <span class="text-3xl font-bold text-white leading-none block">34</span>
+                                <span
+                                    class="text-[10px] text-fit-textMuted uppercase tracking-wider font-semibold">Treinos
+                                    Concluídos pelas Gurias</span>
+                            </div>
+                        </div>
+                        <!-- Mini Bar Chart Container -->
+                        <div class="h-24 w-full flex items-end justify-between gap-2 px-2">
+                            <div class="w-1/7 flex flex-col items-center gap-2 group">
+                                <div class="w-3 rounded-t-sm bg-white/20 group-hover:bg-fit-accent transition-all h-8">
+                                </div><span class="text-[10px] text-fit-textMuted">D</span>
+                            </div>
+                            <div class="w-1/7 flex flex-col items-center gap-2 group">
+                                <div class="w-3 rounded-t-sm bg-white/20 group-hover:bg-fit-accent transition-all h-12">
+                                </div><span class="text-[10px] text-fit-textMuted">S</span>
+                            </div>
+                            <div class="w-1/7 flex flex-col items-center gap-2 group">
+                                <div class="w-3 rounded-t-sm bg-white/20 group-hover:bg-fit-accent transition-all h-16">
+                                </div><span class="text-[10px] text-fit-textMuted">T</span>
+                            </div>
+                            <div class="w-1/7 flex flex-col items-center gap-2 group">
+                                <div
+                                    class="w-3 rounded-t-sm bg-[#C88C64] transition-all h-20 shadow-[0_0_10px_rgba(200,140,100,0.5)]">
+                                </div><span class="text-[10px] text-fit-cream font-bold">Q</span>
+                            </div>
+                            <div class="w-1/7 flex flex-col items-center gap-2 group">
+                                <div class="w-3 rounded-t-sm bg-white/20 group-hover:bg-fit-accent transition-all h-14">
+                                </div><span class="text-[10px] text-fit-textMuted">Q</span>
+                            </div>
+                            <div class="w-1/7 flex flex-col items-center gap-2 group">
+                                <div class="w-3 rounded-t-sm bg-white/20 group-hover:bg-fit-accent transition-all h-10">
+                                </div><span class="text-[10px] text-fit-textMuted">S</span>
+                            </div>
+                            <div class="w-1/7 flex flex-col items-center gap-2 group">
+                                <div class="w-3 rounded-t-sm bg-white/20 group-hover:bg-fit-accent transition-all h-6">
+                                </div><span class="text-[10px] text-fit-textMuted">S</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedbacks Recentes -->
+                <div class="fade-up delay-300">
+                    <div class="flex justify-between items-end mb-3">
+                        <h3 class="font-heading font-semibold text-base text-fit-cream">Feedbacks das Alunas</h3>
+                        <a onclick="switchView('chat')"
+                            class="cursor-pointer text-xs text-fit-cream font-medium hover:underline flex items-center gap-1">Ver Chat
+                            <i data-feather="chevron-right" class="w-3 h-3"></i></a>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div
+                            class="glass-card rounded-2xl p-4 relative overflow-hidden group cursor-pointer hover:bg-white/5 transition-all border border-fit-cream/15">
+                            <div class="flex items-start gap-3.5">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop"
+                                    class="w-10 h-10 rounded-full object-cover border border-fit-cream/20">
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <h5 class="text-sm font-bold text-white">Amora Maria</h5>
+                                        <span class="text-[10px] text-fit-textMuted">Há 2 horas</span>
+                                    </div>
+                                    <div class="flex items-center gap-1 text-amber-400 mb-1.5">
+                                        <i data-feather="star" class="w-3 h-3 fill-amber-400"></i>
+                                        <i data-feather="star" class="w-3 h-3 fill-amber-400"></i>
+                                        <i data-feather="star" class="w-3 h-3 fill-amber-400"></i>
+                                        <i data-feather="star" class="w-3 h-3 fill-amber-400"></i>
+                                        <i data-feather="star" class="w-3 h-3 fill-amber-400"></i>
+                                    </div>
+                                    <p class="text-xs text-white/90 line-clamp-2">"Giu, o treino de glúteos de hoje foi surreal! Adorei a combinação de agachamento búlgaro com elevação pélvica!"</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="glass-card rounded-2xl p-4 relative overflow-hidden group cursor-pointer hover:bg-white/5 transition-all border border-fit-cream/15">
+                            <div class="flex items-start gap-3.5">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop"
+                                    class="w-10 h-10 rounded-full object-cover border border-fit-cream/20">
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <h5 class="text-sm font-bold text-white">Beatriz Lima</h5>
+                                        <span class="text-[10px] text-fit-textMuted">Ontem</span>
+                                    </div>
+                                    <div class="flex items-center gap-1 text-amber-400 mb-1.5">
+                                        <i data-feather="star" class="w-3 h-3 fill-amber-400"></i>
+                                        <i data-feather="star" class="w-3 h-3 fill-amber-400"></i>
+                                        <i data-feather="star" class="w-3 h-3 fill-amber-400"></i>
+                                        <i data-feather="star" class="w-3 h-3 fill-amber-400"></i>
+                                        <i data-feather="star" class="w-3 h-3 fill-amber-400"></i>
+                                    </div>
+                                    <p class="text-xs text-white/90 line-clamp-2">"Ameiiiii o novo plano! Consegui aumentar a carga com a técnica que você me ensinou."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-7 mb-6 fade-up delay-300">
+                <button onclick="switchView('alunos')"
+                    class="w-full glass-button bg-[#EFE1C6]/15 hover:bg-[#EFE1C6]/25 text-fit-cream border border-fit-cream/30 font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg">
+                    <i data-feather="user-plus" class="w-5 h-5"></i>
+                    CADASTRAR NOVA ALUNA
+                </button>
+            </div>
+
+        </div>
+
+        <!-- View: Montagem de Treino -->
+        <div class="flex-1 overflow-y-auto px-6 pb-28 pt-4 scrollbar-hide hidden" id="view-treino">
+            <div class="mb-6 fade-up flex justify-between items-start">
+                <div>
+                    <h1 class="font-heading font-bold text-2xl text-white">Prescrição de Treino</h1>
+                    <p class="text-xs text-fit-textMuted">Monte e atribua fichas para as alunas.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="salvarTreinoAluno()"
+                        class="no-print bg-[#C88C64] hover:bg-[#d49a6a] text-white p-2 px-3 rounded-xl transition-colors shadow-lg flex items-center gap-2 group">
+                        <i data-feather="save" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+                        <span class="text-[10px] font-bold uppercase tracking-wide">Salvar para Aluna</span>
+                    </button>
+                    <button onclick="window.print()"
+                        class="no-print bg-white/10 hover:bg-white/20 text-white p-2 rounded-xl transition-colors border border-white/10 flex items-center gap-2">
+                        <i data-feather="printer" class="w-4 h-4"></i>
+                        <span class="text-[10px] font-bold uppercase tracking-wide">PDF</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Print Header (Hidden on screen) -->
+            <div class="hidden print-only mb-8 text-center border-b border-gray-300 pb-4">
+                <h1 class="font-black text-3xl mb-1">TREINÃO DAS GURIAS</h1>
+                <h2 class="text-xl font-bold">Ficha de Treino - Aluna: <span
+                        class="border-b border-black inline-block w-48"></span></h2>
+                <div class="text-sm mt-2 flex justify-between px-10">
+                    <span>Data: __/__/____</span>
+                    <span>Personal: Giu Baldissera</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 fade-up delay-100">
+                <!-- Busca de Exercícios -->
+                <div class="relative no-print">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i data-feather="search" class="w-4 h-4 text-fit-textMuted"></i>
+                    </div>
+                    <input type="text" placeholder="Buscar exercício (Ex: Agachamento búlgaro)..."
+                        class="w-full bg-black/30 border border-fit-cream/20 rounded-2xl py-3 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-fit-cream transition-all">
+                </div>
+
+                <!-- Lista de Exercícios Adicionados -->
+                <div class="space-y-3 mt-6">
+                    <h3 class="font-heading font-semibold text-base text-fit-cream no-print">Treino A - Glúteos & Pernas</h3>
+
+                    <!-- Item de Treino 1 -->
+                    <div class="glass-card rounded-[20px] p-4 relative group border border-fit-cream/15">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-fit-accent/20 flex items-center justify-center border border-fit-accent/30 shrink-0">
+                                <i data-feather="video" class="w-5 h-5 text-fit-cream"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-sm text-white">Agachamento Búlgaro com Halteres</h4>
+                                <div class="flex items-center gap-2 mt-2 text-xs text-fit-textMuted">
+                                    <span class="bg-black/30 px-2 py-1 rounded text-fit-cream border border-fit-cream/10">4 Séries</span>
+                                    <span class="bg-black/30 px-2 py-1 rounded text-fit-cream border border-fit-cream/10">10 a 12 Reps</span>
+                                </div>
+                            </div>
+                            <button class="no-print opacity-50 hover:opacity-100 hover:text-red-400 p-2"><i
+                                    data-feather="trash-2" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Item de Treino 2 -->
+                    <div class="glass-card rounded-[20px] p-4 relative group border border-fit-cream/15">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-fit-accent/20 flex items-center justify-center border border-fit-accent/30 shrink-0">
+                                <i data-feather="video" class="w-5 h-5 text-fit-cream"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-sm text-white">Elevação Pélvica na Barra</h4>
+                                <div class="flex items-center gap-2 mt-2 text-xs text-fit-textMuted">
+                                    <span class="bg-black/30 px-2 py-1 rounded text-fit-cream border border-fit-cream/10">4 Séries</span>
+                                    <span class="bg-black/30 px-2 py-1 rounded text-fit-cream border border-fit-cream/10">12 Reps</span>
+                                </div>
+                            </div>
+                            <button class="no-print opacity-50 hover:opacity-100 hover:text-red-400 p-2"><i
+                                    data-feather="trash-2" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 no-print">
+                    <button
+                        class="w-full bg-white/5 hover:bg-white/10 border border-fit-cream/20 text-fit-cream py-3 text-sm font-semibold rounded-2xl flex items-center justify-center gap-2 border-dashed transition-all">
+                        <i data-feather="plus" class="w-4 h-4"></i> Adicionar Exercício ao Treino
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- View: Alunas e Planos -->
+        <div class="flex-1 overflow-y-auto px-6 pb-28 pt-4 scrollbar-hide hidden" id="view-alunos">
+            <div class="mb-6 fade-up">
+                <h1 class="font-heading font-bold text-2xl text-white">Alunas Registradas</h1>
+                <p class="text-xs text-fit-textMuted">Gestão de treinos e presenças no Treinão.</p>
+            </div>
+
+            <div class="space-y-4 fade-up delay-100">
+                <!-- Aluna Ativa 1 -->
+                <div class="glass-card rounded-[24px] p-4 relative overflow-hidden border border-fit-cream/15">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop"
+                                class="w-12 h-12 rounded-full border-2 border-fit-cream/30 object-cover">
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Amora Maria</h4>
+                                <span class="text-[10px] text-fit-textMuted flex items-center gap-1"><i
+                                        data-feather="calendar" class="w-3 h-3 text-fit-cream"></i> Plano Anual • Vence em 25 dias</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 text-xs">
+                        <div
+                            class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 px-3 py-1.5 rounded-lg flex-1 text-center font-semibold flex flex-col items-center justify-center gap-0.5">
+                            <span class="uppercase text-[9px] tracking-wider text-emerald-300/70">Status</span> Ativa
+                        </div>
+                        <div
+                            class="bg-[#C88C64]/20 border border-[#C88C64]/30 text-fit-cream px-3 py-1.5 rounded-lg flex-1 text-center font-semibold flex flex-col items-center justify-center gap-0.5">
+                            <span class="uppercase text-[9px] tracking-wider text-fit-cream/70">Treino Atual</span> Glúteos A
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aluna Ativa 2 -->
+                <div class="glass-card rounded-[24px] p-4 relative overflow-hidden border border-fit-cream/15">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop"
+                                class="w-12 h-12 rounded-full border-2 border-fit-cream/30 object-cover">
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Beatriz Lima</h4>
+                                <span class="text-[10px] text-fit-textMuted flex items-center gap-1"><i
+                                        data-feather="calendar" class="w-3 h-3 text-fit-cream"></i> Plano Trimestral • Vence em 14 dias</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 text-xs">
+                        <div
+                            class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 px-3 py-1.5 rounded-lg flex-1 text-center font-semibold flex flex-col items-center justify-center gap-0.5">
+                            <span class="uppercase text-[9px] tracking-wider text-emerald-300/70">Status</span> Ativa
+                        </div>
+                        <div
+                            class="bg-[#C88C64]/20 border border-[#C88C64]/30 text-fit-cream px-3 py-1.5 rounded-lg flex-1 text-center font-semibold flex flex-col items-center justify-center gap-0.5">
+                            <span class="uppercase text-[9px] tracking-wider text-fit-cream/70">Treino Atual</span> HIIT & Core
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View: Avaliações Físicas -->
+        <div class="flex-1 overflow-y-auto px-6 pb-28 pt-4 scrollbar-hide hidden" id="view-avalia">
+            <div class="mb-6 fade-up">
+                <h1 class="font-heading font-bold text-2xl text-white">Evolução & Medidas</h1>
+                <p class="text-xs text-fit-textMuted">Acompanhamento comparativo das alunas.</p>
+            </div>
+
+            <div class="glass-card rounded-[30px] p-5 mb-6 fade-up delay-100 border border-fit-cream/15">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-sm font-semibold text-fit-cream">Evolução (Amora Maria)</span>
+                </div>
+                <!-- Canvas pro ChartJS -->
+                <div class="w-full h-48 relative">
+                    <canvas id="evolucaoChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- View: Feedback e Chat com Alunas -->
+        <div class="flex-1 overflow-y-auto px-6 pb-28 pt-4 scrollbar-hide hidden" id="view-chat">
+            <div class="mb-6 fade-up">
+                <h1 class="font-heading font-bold text-2xl text-white">Mensagens das Gurias</h1>
+                <p class="text-xs text-fit-textMuted">Feedbacks e dúvidas de treino.</p>
+            </div>
+
+            <div class="space-y-3 fade-up delay-100">
+                <!-- Chat Item (Unread) -->
+                <div
+                    class="glass-card rounded-[24px] p-4 relative overflow-hidden group cursor-pointer border-l-4 border-l-fit-accent bg-fit-accent/10 border border-fit-cream/15">
+                    <div class="flex items-center gap-4">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&auto=format&fit=crop"
+                                class="w-12 h-12 rounded-full border-2 border-fit-cream/40 object-cover">
+                            <div
+                                class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-fit-bg">
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center mb-1">
+                                <h4 class="font-bold text-white text-sm">Amora Maria</h4>
+                                <span class="text-[10px] text-fit-cream font-bold">Agora</span>
+                            </div>
+                            <p class="text-xs text-white font-medium line-clamp-1">"Giu, amei a aula de hoje! Posso manter essa mesma carga na quinta?"</p>
+                        </div>
+                        <div
+                            class="w-5 h-5 bg-[#C88C64] rounded-full flex items-center justify-center text-[10px] font-bold text-white">
+                            1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Nav (Treinão das Gurias Style) -->
+        <div
+            class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] md:w-[65%] glass-card rounded-[30px] p-2 flex justify-around items-center z-50 border border-fit-cream/25 shadow-2xl backdrop-blur-2xl" style="background: rgba(35, 19, 13, 0.9);">
+            <a onclick="switchView('home')" id="nav-home"
+                class="nav-item active flex flex-col items-center justify-center gap-1 w-11 h-11 text-fit-textMuted relative transition-colors cursor-pointer rounded-2xl hover:bg-white/5">
+                <i data-feather="home" class="w-5 h-5"></i>
+            </a>
+            <a onclick="switchView('treino')" id="nav-treino"
+                class="nav-item flex flex-col items-center justify-center gap-1 w-11 h-11 text-fit-textMuted relative transition-colors cursor-pointer rounded-2xl hover:bg-white/5">
+                <i data-feather="dumbbell" class="w-5 h-5"></i>
+            </a>
+            <a onclick="switchView('alunos')" id="nav-alunos"
+                class="nav-item flex flex-col items-center justify-center gap-1 w-11 h-11 text-fit-textMuted relative transition-colors cursor-pointer rounded-2xl hover:bg-white/5">
+                <i data-feather="users" class="w-5 h-5"></i>
+            </a>
+            <a onclick="switchView('avalia')" id="nav-avalia"
+                class="nav-item flex flex-col items-center justify-center gap-1 w-11 h-11 text-fit-textMuted relative transition-colors cursor-pointer rounded-2xl hover:bg-white/5">
+                <i data-feather="activity" class="w-5 h-5"></i>
+            </a>
+            <a onclick="switchView('chat')" id="nav-chat"
+                class="nav-item flex flex-col items-center justify-center gap-1 w-11 h-11 text-fit-textMuted relative transition-colors cursor-pointer rounded-2xl hover:bg-white/5">
+                <i data-feather="message-circle" class="w-5 h-5"></i>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Initialization Scripts -->
+    <script>
+        feather.replace();
+
+        // Simple Vanilla SPA Routing
+        const views = {
+            'home': document.getElementById('view-home'),
+            'treino': document.getElementById('view-treino'),
+            'alunos': document.getElementById('view-alunos'),
+            'avalia': document.getElementById('view-avalia'),
+            'chat': document.getElementById('view-chat')
+        };
+        const navs = {
+            'home': document.getElementById('nav-home'),
+            'treino': document.getElementById('nav-treino'),
+            'alunos': document.getElementById('nav-alunos'),
+            'avalia': document.getElementById('nav-avalia'),
+            'chat': document.getElementById('nav-chat')
+        };
+
+        function switchView(target) {
+            Object.values(views).forEach(el => el.classList.add('hidden'));
+            Object.values(navs).forEach(el => el.classList.remove('active'));
+            views[target].classList.remove('hidden');
+            navs[target].classList.add('active');
+
+            if (target === 'avalia' && !window.chartRendered) {
+                renderChart();
+                window.chartRendered = true;
+            }
+        }
+
+        // --- Chart.js Initialization ---
+        function renderChart() {
+            const ctx = document.getElementById('evolucaoChart').getContext('2d');
+
+            Chart.defaults.color = '#C7B8AD';
+            Chart.defaults.font.family = 'Inter';
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai'],
+                    datasets: [
+                        {
+                            label: 'Massa Magra (kg)',
+                            data: [44, 45, 46, 47, 48],
+                            borderColor: '#EFE1C6',
+                            backgroundColor: 'rgba(239, 225, 198, 0.15)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            pointBackgroundColor: '#EFE1C6'
+                        },
+                        {
+                            label: '% Gordura',
+                            data: [24, 22, 21, 19, 18],
+                            borderColor: '#C88C64',
+                            backgroundColor: 'rgba(200, 140, 100, 0.15)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            pointBackgroundColor: '#C88C64'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: { boxWidth: 10, usePointStyle: true, font: { size: 10 } }
+                        }
+                    },
+                    scales: {
+                        y: { display: false, grid: { display: false } },
+                        x: { grid: { color: 'rgba(239, 225, 198, 0.08)' } }
+                    }
+                }
+            });
+        }
+
+        // --- Data Bridge (Local Storage Backend) ---
+        function salvarTreinoAluno() {
+            const treinoData = [
+                { name: 'Agachamento Búlgaro com Halteres', series: '4 Séries', reps: '10 a 12 Reps' },
+                { name: 'Elevação Pélvica na Barra', series: '4 Séries', reps: '12 Reps + Isometria' },
+                { name: 'Cadeira Extensora Drop-set', series: '3 Séries', reps: 'Até a Falha' }
+            ];
+
+            localStorage.setItem('daviApp_treinoA', JSON.stringify(treinoData));
+            localStorage.setItem('treinaoGurias_treinoA', JSON.stringify(treinoData));
+            alert("Treinão salvo com Sucesso! 🌟\nSua aluna já pode visualizar a nova ficha no app!");
+        }
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(err => console.log('SW error:', err));
+        }
+    </script>
+</body>
+
+</html>

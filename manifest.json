@@ -1,0 +1,22 @@
+{
+  "name": "Treinão das Gurias - Personal Giu Baldissera",
+  "short_name": "App das Gurias",
+  "description": "Aplicativo de treinos e acompanhamento da Personal Giu Baldissera.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#2A1710",
+  "theme_color": "#C88C64",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./assets/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
