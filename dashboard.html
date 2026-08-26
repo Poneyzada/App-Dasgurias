@@ -75,7 +75,6 @@
             background: rgba(239, 225, 198, 0.2);
         }
 
-        /* Active highlight for bottom nav */
         .nav-item.active {
             color: #EFE1C6;
         }
@@ -92,7 +91,6 @@
             border-radius: 50%;
         }
 
-        /* SVG Circular Progress Bar Logic */
         .progress-ring__circle {
             transition: stroke-dashoffset 0.8s ease-in-out;
             transform: rotate(-90deg);
@@ -101,7 +99,6 @@
             stroke-dashoffset: 283;
         }
 
-        /* Slide up animations */
         .fade-up {
             animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
@@ -115,24 +112,15 @@
             }
         }
 
-        .delay-100 {
-            animation-delay: 0.1s;
-        }
-
-        .delay-200 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-300 {
-            animation-delay: 0.3s;
-        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
     </style>
 </head>
 
 <body
     class="antialiased min-h-screen flex items-center justify-center p-4 selection:bg-fit-accent selection:text-white relative">
 
-    <!-- Atmospheric background image -->
     <div class="fixed top-0 left-0 w-full h-[50vh] pointer-events-none z-0">
         <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2070&auto=format&fit=crop"
             class="w-full h-full object-cover opacity-20 mix-blend-screen"
@@ -140,11 +128,11 @@
             alt="Treinão das Gurias">
     </div>
 
-    <!-- Mobile-sized App Container -->
+    <!-- Mobile Container -->
     <div
         class="glass-card w-full max-w-[400px] h-[850px] max-h-[90vh] rounded-[40px] relative z-10 flex flex-col overflow-hidden shadow-2xl">
 
-        <!-- Header (Greeting & Logo) -->
+        <!-- Header -->
         <div class="px-6 pt-9 pb-3 flex justify-between items-center fade-up">
             <div class="flex items-center gap-3">
                 <img src="./assets/logo.png" alt="Logo Treinão das Gurias" class="w-10 h-10 object-cover rounded-full border border-fit-cream/30 shadow-md">
@@ -159,10 +147,10 @@
             </a>
         </div>
 
-        <!-- View: Home (Treino do Dia) -->
+        <!-- View: Home -->
         <div class="flex-1 overflow-y-auto px-6 pb-36 scrollbar-hide" id="view-home">
 
-            <!-- Section: Minha Saúde & Métricas -->
+            <!-- Minha Evolução -->
             <div class="mt-3 mb-3 fade-up delay-100">
                 <h3 class="font-heading font-semibold text-base mb-2.5 text-fit-cream">Minha Evolução & Saúde</h3>
 
@@ -170,21 +158,16 @@
                     <div>
                         <p class="text-fit-textMain font-medium text-xs mb-2.5">Frequência Semanal</p>
                         <div class="flex gap-2.5">
-                            <!-- Mini icons -->
-                            <div
-                                class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-cream">
+                            <div class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-cream">
                                 <i data-feather="activity" class="w-4 h-4"></i>
                             </div>
-                            <div
-                                class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-accent">
+                            <div class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-accent">
                                 <i data-feather="clock" class="w-4 h-4"></i>
                             </div>
-                            <div
-                                class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-cream">
+                            <div class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-cream">
                                 <i data-feather="flame" class="w-4 h-4"></i>
                             </div>
-                            <div
-                                class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-accent">
+                            <div class="w-8 h-8 rounded-full glass-button flex items-center justify-center text-fit-accent">
                                 <i data-feather="award" class="w-4 h-4"></i>
                             </div>
                         </div>
@@ -198,43 +181,40 @@
                 </div>
             </div>
 
-            <!-- Section: Calendário de Treinos -->
-            <div
-                class="mt-3 mb-3 fade-up delay-100 flex justify-between items-center bg-fit-panelDark p-2 rounded-2xl glass-card border border-fit-cream/10">
-                <div class="text-center px-3.5 py-1.5 opacity-50">
-                    <p class="text-[10px] text-fit-textMuted uppercase mb-0.5">Seg</p>
-                    <p class="font-bold text-xs">09</p>
-                </div>
-                <div class="text-center px-3.5 py-1.5 bg-[#C88C64] text-white rounded-xl shadow-lg shadow-fit-accent/20">
-                    <p class="text-[10px] font-semibold uppercase mb-0.5">Ter</p>
-                    <p class="font-bold text-xs">10</p>
-                </div>
-                <div class="text-center px-3.5 py-1.5 opacity-50">
-                    <p class="text-[10px] text-fit-textMuted uppercase mb-0.5">Qua</p>
-                    <p class="font-bold text-xs">11</p>
-                </div>
-                <div class="text-center px-3.5 py-1.5 opacity-50">
-                    <p class="text-[10px] text-fit-textMuted uppercase mb-0.5">Qui</p>
-                    <p class="font-bold text-xs">12</p>
-                </div>
-                <div class="text-center px-3.5 py-1.5 opacity-50">
-                    <p class="text-[10px] text-fit-textMuted uppercase mb-0.5">Sex</p>
-                    <p class="font-bold text-xs">13</p>
+            <!-- MODALIDADE / ONDE VOCÊ VAI TREINAR HOJE? (RECURSO IA DE ACADEMIA CHEIA / EM CASA) -->
+            <div class="mt-3 mb-3 fade-up delay-100">
+                <label class="text-[10px] text-fit-cream uppercase font-bold tracking-wider mb-1.5 block flex items-center gap-1">
+                    <i data-feather="map-pin" class="w-3 h-3 text-amber-400"></i> Onde você vai treinar hoje?
+                </label>
+
+                <div class="grid grid-cols-3 gap-1.5 p-1 bg-black/40 rounded-2xl border border-fit-cream/15">
+                    <button onclick="trocarModoLocal('academia')" id="btn-modo-academia" 
+                        class="py-2 rounded-xl text-[10px] font-bold transition-all bg-[#C88C64] text-white shadow-md flex flex-col items-center gap-0.5">
+                        <span>🏋️‍♀️ Academia</span>
+                    </button>
+                    <button onclick="trocarModoLocal('casa')" id="btn-modo-casa" 
+                        class="py-2 rounded-xl text-[10px] font-bold transition-all text-fit-textMuted hover:text-white flex flex-col items-center gap-0.5">
+                        <span>🏠 Em Casa</span>
+                    </button>
+                    <button onclick="trocarModoLocal('parque')" id="btn-modo-parque" 
+                        class="py-2 rounded-xl text-[10px] font-bold transition-all text-fit-textMuted hover:text-white flex flex-col items-center gap-0.5">
+                        <span>🌳 Ar Livre</span>
+                    </button>
                 </div>
             </div>
 
-            <!-- Section: Treino do Dia -->
-            <div class="mt-5 mb-3 fade-up delay-200">
-                <h3 class="font-heading font-semibold text-base mb-2.5 text-fit-cream">Treino de Hoje</h3>
+            <!-- Treino do Dia Card -->
+            <div class="mt-4 mb-3 fade-up delay-200">
+                <h3 class="font-heading font-semibold text-base mb-2 text-fit-cream">Treino de Hoje</h3>
 
                 <div
-                    class="glass-card rounded-3xl p-5 bg-gradient-to-br from-white/10 to-transparent relative overflow-hidden flex items-center justify-between border border-fit-cream/20">
+                    class="glass-card rounded-3xl p-4 bg-gradient-to-br from-white/10 to-transparent relative overflow-hidden flex items-center justify-between border border-fit-cream/20">
                     <div>
-                        <span
-                            class="inline-block px-2.5 py-0.5 bg-[#C88C64]/30 text-fit-cream rounded text-[10px] font-bold uppercase tracking-widest mb-2 border border-fit-cream/20">Plano
-                            Treinão das Gurias</span>
-                        <h4 class="font-heading font-bold text-xl text-white mb-2 leading-tight">Glúteos &<br>Pernas Complete
-                        </h4>
+                        <span id="badge-modo-treino"
+                            class="inline-block px-2.5 py-0.5 bg-[#C88C64]/30 text-fit-cream rounded text-[9px] font-bold uppercase tracking-widest mb-1.5 border border-fit-cream/20">
+                            🏋️‍♀️ Modo Academia
+                        </span>
+                        <h4 class="font-heading font-bold text-lg text-white mb-1.5 leading-tight" id="titulo-treino-aluna">Glúteos & Pernas Complete</h4>
                         <div class="flex items-center gap-2 text-fit-textMuted text-xs font-medium">
                             <i data-feather="clock" class="w-3.5 h-3.5 text-fit-cream"></i> 50 Min
                             <span class="px-1 text-fit-cream">•</span>
@@ -242,121 +222,110 @@
                         </div>
                     </div>
 
-                    <!-- Progress Ring Graphic -->
-                    <div class="relative w-22 h-22">
+                    <div class="relative w-20 h-20">
                         <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                            <circle class="text-white/10 stroke-current" stroke-width="8" cx="50" cy="50" r="40"
-                                fill="transparent"></circle>
-                            <circle id="workout-progress-ring"
-                                class="text-[#EFE1C6] progress-ring__circle stroke-current" stroke-width="8"
-                                stroke-linecap="round" cx="50" cy="50" r="40" fill="transparent"></circle>
+                            <circle class="text-white/10 stroke-current" stroke-width="8" cx="50" cy="50" r="40" fill="transparent"></circle>
+                            <circle id="workout-progress-ring" class="text-[#EFE1C6] progress-ring__circle stroke-current" stroke-width="8" stroke-linecap="round" cx="50" cy="50" r="40" fill="transparent"></circle>
                         </svg>
                         <div class="absolute inset-0 flex flex-col items-center justify-center">
-                            <span
-                                class="text-white text-[9px] text-center leading-tight font-medium uppercase tracking-widest text-fit-textMuted">Concluído<br><span
-                                    id="workout-progress-text" class="text-base font-bold text-fit-cream">0%</span></span>
+                            <span class="text-white text-[9px] text-center leading-tight font-medium uppercase tracking-widest text-fit-textMuted">Concluído<br><span id="workout-progress-text" class="text-sm font-bold text-fit-cream">0%</span></span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Section: Exercícios do Treinão -->
-            <div class="mt-5 fade-up delay-300">
-                <div class="flex justify-between items-end mb-3">
-                    <h3 class="font-heading font-semibold text-base text-fit-cream">Exercícios Prescritos (3)</h3>
+            <!-- Lista de Exercícios -->
+            <div class="mt-4 fade-up delay-300">
+                <div class="flex justify-between items-center mb-2.5">
+                    <h3 class="font-heading font-semibold text-sm text-fit-cream">Exercícios do Treinão</h3>
+                    <span class="text-[10px] text-amber-300 flex items-center gap-1 font-medium">
+                        <i data-feather="help-circle" class="w-3 h-3"></i> Aparelho cheio? Clique no botão!
+                    </span>
                 </div>
 
                 <div class="space-y-3" id="exercise-list">
 
                     <!-- Exec 1 -->
-                    <div class="glass-card rounded-2xl p-4 flex items-center justify-between exercise-item group transition-all cursor-pointer hover:bg-white/5 border border-fit-cream/15"
-                        data-status="pending" onclick="toggleExercise(this)">
-                        <div class="flex gap-3.5 items-center">
-                            <div
-                                class="w-14 h-14 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0">
-                                <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=200&auto=format&fit=crop"
-                                    class="w-full h-full object-cover opacity-75" alt="Exercicio">
-                                <div
-                                    class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-fit-accent/30 transition-colors">
-                                    <i data-feather="play" class="w-4 h-4 text-fit-cream fill-fit-cream"></i>
+                    <div class="glass-card rounded-2xl p-3.5 exercise-item group transition-all border border-fit-cream/15" data-status="pending" data-index="0">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex gap-3 items-center">
+                                <div class="w-12 h-12 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover opacity-75" alt="Exercicio">
+                                </div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white mb-1 nome-ex-aluna">Agachamento Búlgaro com Halteres</h5>
+                                    <span class="text-[10px] font-medium bg-black/40 border border-fit-cream/20 px-2 py-0.5 rounded text-fit-cream font-mono reps-ex-aluna">4x 10 A 12 REPS</span>
                                 </div>
                             </div>
-                            <div>
-                                <h5 class="text-sm font-bold text-white mb-1">Agachamento Búlgaro com Halteres</h5>
-                                <div class="flex items-center gap-2">
-                                    <span
-                                        class="text-[11px] font-medium bg-black/40 border border-fit-cream/20 px-2 py-0.5 rounded text-fit-cream font-mono">4x
-                                        10 A 12 REPS</span>
-                                </div>
+                            <div onclick="toggleExercise(this.closest('.exercise-item'))" class="w-7 h-7 rounded-full border border-fit-cream/20 bg-white/5 flex items-center justify-center transition-all text-white/30 status-icon cursor-pointer">
+                                <i data-feather="check" class="w-3.5 h-3.5"></i>
                             </div>
                         </div>
-                        <div
-                            class="w-8 h-8 rounded-full border border-fit-cream/20 bg-white/5 flex items-center justify-center transition-all text-white/30 status-icon">
-                            <i data-feather="check" class="w-4 h-4"></i>
+
+                        <!-- BOTÃO IA: APARELHO OCUPADO? SUBTITUIR EM 1 CLIQUE -->
+                        <div class="pt-2 border-t border-white/5 flex justify-between items-center">
+                            <button onclick="substituirAparelhoOcupado(0)" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/15 px-2.5 py-1 rounded-lg border border-amber-400/25">
+                                <i data-feather="refresh-cw" class="w-3 h-3"></i> Aparelho Ocupado? Trocar com IA
+                            </button>
+                            <span class="text-[9px] text-fit-textMuted">Giu IA Sugere</span>
                         </div>
                     </div>
 
                     <!-- Exec 2 -->
-                    <div class="glass-card rounded-2xl p-4 flex items-center justify-between exercise-item group transition-all cursor-pointer hover:bg-white/5 border border-fit-cream/15"
-                        data-status="pending" onclick="toggleExercise(this)">
-                        <div class="flex gap-3.5 items-center">
-                            <div
-                                class="w-14 h-14 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0">
-                                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=200&auto=format&fit=crop"
-                                    class="w-full h-full object-cover opacity-75" alt="Exercicio">
-                                <div
-                                    class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-fit-accent/30 transition-colors">
-                                    <i data-feather="play" class="w-4 h-4 text-fit-cream fill-fit-cream"></i>
+                    <div class="glass-card rounded-2xl p-3.5 exercise-item group transition-all border border-fit-cream/15" data-status="pending" data-index="1">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex gap-3 items-center">
+                                <div class="w-12 h-12 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover opacity-75" alt="Exercicio">
+                                </div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white mb-1 nome-ex-aluna">Elevação Pélvica na Barra</h5>
+                                    <span class="text-[10px] font-medium bg-black/40 border border-fit-cream/20 px-2 py-0.5 rounded text-fit-cream font-mono reps-ex-aluna">4x 12 REPS + ISOMETRIA</span>
                                 </div>
                             </div>
-                            <div>
-                                <h5 class="text-sm font-bold text-white mb-1">Elevação Pélvica na Barra</h5>
-                                <div class="flex items-center gap-2">
-                                    <span
-                                        class="text-[11px] font-medium bg-black/40 border border-fit-cream/20 px-2 py-0.5 rounded text-fit-cream font-mono">4x
-                                        12 REPS + ISOMETRIA</span>
-                                </div>
+                            <div onclick="toggleExercise(this.closest('.exercise-item'))" class="w-7 h-7 rounded-full border border-fit-cream/20 bg-white/5 flex items-center justify-center transition-all text-white/30 status-icon cursor-pointer">
+                                <i data-feather="check" class="w-3.5 h-3.5"></i>
                             </div>
                         </div>
-                        <div
-                            class="w-8 h-8 rounded-full border border-fit-cream/20 bg-white/5 flex items-center justify-center transition-all text-white/30 status-icon">
-                            <i data-feather="check" class="w-4 h-4"></i>
+
+                        <div class="pt-2 border-t border-white/5 flex justify-between items-center">
+                            <button onclick="substituirAparelhoOcupado(1)" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/15 px-2.5 py-1 rounded-lg border border-amber-400/25">
+                                <i data-feather="refresh-cw" class="w-3 h-3"></i> Aparelho Ocupado? Trocar com IA
+                            </button>
+                            <span class="text-[9px] text-fit-textMuted">Giu IA Sugere</span>
                         </div>
                     </div>
 
                     <!-- Exec 3 -->
-                    <div class="glass-card rounded-2xl p-4 flex items-center justify-between exercise-item group transition-all cursor-pointer hover:bg-white/5 border border-fit-cream/15"
-                        data-status="pending" onclick="toggleExercise(this)">
-                        <div class="flex gap-3.5 items-center">
-                            <div
-                                class="w-14 h-14 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0">
-                                <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=200&auto=format&fit=crop"
-                                    class="w-full h-full object-cover opacity-75" alt="Exercicio">
-                                <div
-                                    class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-fit-accent/30 transition-colors">
-                                    <i data-feather="play" class="w-4 h-4 text-fit-cream fill-fit-cream"></i>
+                    <div class="glass-card rounded-2xl p-3.5 exercise-item group transition-all border border-fit-cream/15" data-status="pending" data-index="2">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex gap-3 items-center">
+                                <div class="w-12 h-12 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover opacity-75" alt="Exercicio">
+                                </div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white mb-1 nome-ex-aluna">Cadeira Extensora Drop-set</h5>
+                                    <span class="text-[10px] font-medium bg-black/40 border border-fit-cream/20 px-2 py-0.5 rounded text-fit-cream font-mono reps-ex-aluna">3x ATÉ A FALHA</span>
                                 </div>
                             </div>
-                            <div>
-                                <h5 class="text-sm font-bold text-white mb-1">Cadeira Extensora Drop-set</h5>
-                                <div class="flex items-center gap-2">
-                                    <span
-                                        class="text-[11px] font-medium bg-black/40 border border-fit-cream/20 px-2 py-0.5 rounded text-fit-cream font-mono">3x
-                                        ATÉ A FALHA</span>
-                                </div>
+                            <div onclick="toggleExercise(this.closest('.exercise-item'))" class="w-7 h-7 rounded-full border border-fit-cream/20 bg-white/5 flex items-center justify-center transition-all text-white/30 status-icon cursor-pointer">
+                                <i data-feather="check" class="w-3.5 h-3.5"></i>
                             </div>
                         </div>
-                        <div
-                            class="w-8 h-8 rounded-full border border-fit-cream/20 bg-white/5 flex items-center justify-center transition-all text-white/30 status-icon">
-                            <i data-feather="check" class="w-4 h-4"></i>
+
+                        <div class="pt-2 border-t border-white/5 flex justify-between items-center">
+                            <button onclick="substituirAparelhoOcupado(2)" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/15 px-2.5 py-1 rounded-lg border border-amber-400/25">
+                                <i data-feather="refresh-cw" class="w-3 h-3"></i> Aparelho Ocupado? Trocar com IA
+                            </button>
+                            <span class="text-[9px] text-fit-textMuted">Giu IA Sugere</span>
                         </div>
                     </div>
 
-                    <!-- Botão Finalizar Treino -->
-                    <div class="pt-4">
+                    <!-- Botão Finalizar -->
+                    <div class="pt-3">
                         <button id="finish-workout-btn" onclick="finishWorkout()"
-                            class="w-full glass-button bg-[#EFE1C6]/15 text-[#EFE1C6] font-bold py-4 rounded-2xl flex items-center justify-center gap-2 transition-all opacity-50 cursor-not-allowed border border-fit-cream/20">
-                            <i data-feather="award" class="w-5 h-5"></i>
+                            class="w-full glass-button bg-[#EFE1C6]/15 text-[#EFE1C6] font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-all opacity-50 cursor-not-allowed border border-fit-cream/20 text-xs">
+                            <i data-feather="award" class="w-4 h-4"></i>
                             FINALIZAR TREINÃO
                         </button>
                     </div>
@@ -366,21 +335,20 @@
 
             <div class="h-8"></div>
 
-        </div> <!-- End view-home -->
+        </div>
 
-        <!-- View: Analytics (Histórico) -->
+        <!-- View: Analytics -->
         <div class="flex-1 overflow-y-auto px-6 pb-24 scrollbar-hide hidden" id="view-analytics">
             <div class="mt-4 mb-3 fade-up">
                 <h3 class="font-heading font-semibold text-lg mb-3 text-fit-cream">Seu Progresso no Treinão</h3>
-                <div
-                    class="glass-card rounded-3xl p-6 flex flex-col items-center justify-center h-64 border border-fit-cream/15 text-center">
+                <div class="glass-card rounded-3xl p-6 flex flex-col items-center justify-center h-64 border border-fit-cream/15 text-center">
                     <i data-feather="bar-chart-2" class="w-10 h-10 text-fit-cream/40 mb-3"></i>
                     <p class="text-sm text-fit-textMuted leading-relaxed">Sua evolução de cargas e avaliação física com a Personal Giu estarão disponíveis aqui em breve.</p>
                 </div>
             </div>
         </div>
 
-        <!-- View: Chat (Mensagens com Giu) -->
+        <!-- View: Chat -->
         <div class="flex-1 overflow-y-auto px-6 scrollbar-hide hidden relative" id="view-chat">
             <div class="min-h-full flex flex-col pb-36">
                 <div class="mt-4 mb-3 fade-up flex-1">
@@ -390,7 +358,7 @@
                         <div class="flex gap-3 items-end">
                             <img src="./assets/logo.png" alt="Giu Personal" class="w-8 h-8 rounded-full border border-fit-cream/30 object-cover shrink-0">
                             <div class="bg-fit-panelDark p-3.5 rounded-2xl rounded-bl-sm max-w-[85%] text-sm text-white/90 border border-fit-cream/15">
-                                Fala, Guria! Pronta para o Treinão de hoje? Qualquer dúvida nas séries me avisa aqui! 💪✨
+                                Fala, Guria! Pronta para o Treinão de hoje? Se a academia tiver cheia é só usar o botão "Aparelho Ocupado" que a IA troca o exercício na hora! 💪✨
                             </div>
                         </div>
                     </div>
@@ -399,40 +367,32 @@
                 <div class="w-full flex gap-2 mt-auto pt-4 sticky bottom-2 z-10 fade-up delay-100">
                     <input type="text" placeholder="Digite sua mensagem..."
                         class="flex-1 bg-[#1A0E0A] border border-fit-cream/20 rounded-full px-4 py-3 text-sm text-white focus:outline-none focus:border-fit-cream shadow-lg">
-                    <button
-                        class="w-12 h-12 bg-[#C88C64] hover:bg-[#d49a6a] rounded-full flex items-center justify-center text-white shrink-0 shadow-lg shadow-fit-accent/30"><i
-                            data-feather="send" class="w-4 h-4 ml-[-2px]"></i></button>
+                    <button class="w-12 h-12 bg-[#C88C64] hover:bg-[#d49a6a] rounded-full flex items-center justify-center text-white shrink-0 shadow-lg shadow-fit-accent/30"><i data-feather="send" class="w-4 h-4 ml-[-2px]"></i></button>
                 </div>
             </div>
         </div>
 
-        <!-- View: Profile (Configurações) -->
+        <!-- View: Profile -->
         <div class="flex-1 overflow-y-auto px-6 pb-24 scrollbar-hide hidden" id="view-profile">
             <div class="mt-4 mb-3 fade-up">
                 <h3 class="font-heading font-semibold text-lg mb-3 text-fit-cream">Seu Perfil no App</h3>
                 <div class="space-y-2.5">
-                    <div
-                        class="glass-card rounded-2xl p-4 flex items-center justify-between cursor-pointer hover:bg-white/5 border border-fit-cream/15">
-                        <div class="flex items-center gap-3 text-white"><i data-feather="user"
-                                class="w-4 h-4 text-fit-cream"></i> Dados Cadastrais</div>
+                    <div class="glass-card rounded-2xl p-4 flex items-center justify-between cursor-pointer hover:bg-white/5 border border-fit-cream/15">
+                        <div class="flex items-center gap-3 text-white"><i data-feather="user" class="w-4 h-4 text-fit-cream"></i> Dados Cadastrais</div>
                         <i data-feather="chevron-right" class="w-4 h-4 text-fit-cream/40"></i>
                     </div>
-                    <div
-                        class="glass-card rounded-2xl p-4 flex items-center justify-between cursor-pointer hover:bg-white/5 border border-fit-cream/15">
-                        <div class="flex items-center gap-3 text-white"><i data-feather="credit-card"
-                                class="w-4 h-4 text-fit-cream"></i> Plano Treinão das Gurias</div>
+                    <div class="glass-card rounded-2xl p-4 flex items-center justify-between cursor-pointer hover:bg-white/5 border border-fit-cream/15">
+                        <div class="flex items-center gap-3 text-white"><i data-feather="credit-card" class="w-4 h-4 text-fit-cream"></i> Plano Treinão das Gurias</div>
                         <i data-feather="chevron-right" class="w-4 h-4 text-fit-cream/40"></i>
                     </div>
-                    <a href="index.html"
-                        class="glass-card rounded-2xl p-4 flex items-center justify-between cursor-pointer hover:bg-red-500/10 mt-6 border-red-500/30 text-red-300">
-                        <div class="flex items-center gap-3"><i data-feather="log-out" class="w-4 h-4"></i> Sair do App
-                        </div>
+                    <a href="index.html" class="glass-card rounded-2xl p-4 flex items-center justify-between cursor-pointer hover:bg-red-500/10 mt-6 border-red-500/30 text-red-300">
+                        <div class="flex items-center gap-3"><i data-feather="log-out" class="w-4 h-4"></i> Sair do App</div>
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Sticky Bottom Navigation -->
+        <!-- Bottom Nav -->
         <div
             class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[85%] glass-card rounded-full p-2 flex justify-between items-center z-50 border border-fit-cream/25 shadow-xl" style="background: rgba(35, 19, 13, 0.9);">
             <a onclick="switchStudentView('home')" id="nav-student-home"
@@ -459,7 +419,7 @@
 
     </div>
 
-    <!-- Initialization Scripts -->
+    <!-- Scripts do App da Aluna -->
     <script>
         feather.replace();
 
@@ -472,7 +432,6 @@
         const progressText = document.getElementById('workout-progress-text');
         const finishBtn = document.getElementById('finish-workout-btn');
 
-        // SPA Navigation Logic
         const studentViews = {
             'home': document.getElementById('view-home'),
             'analytics': document.getElementById('view-analytics'),
@@ -498,6 +457,94 @@
             alert("📍 Check-in presencial no Treinão das Gurias realizado!\nBom treino, Guria! 💪✨");
         }
 
+        // SUBSTITUIÇÃO DE APARELHO OCUPADO (RECURSO IA DA ALUNA NA HORA)
+        const sugestoesAparelhoOcupado = {
+            0: [
+                { name: "Elevação Pélvica com Halter no Banco", reps: "4x 12 REPS" },
+                { name: "Passada com Halteres", reps: "3x 10 REPS CADA LADO" }
+            ],
+            1: [
+                { name: "Glúteo no Cabo Unilateral", reps: "4x 15 REPS" },
+                { name: "Abdução com Mini-band e Peso Corporal", reps: "4x 20 REPS" }
+            ],
+            2: [
+                { name: "Sissy Squat Corporal com Anilha", reps: "3x ATÉ A FALHA" },
+                { name: "Agachamento Isométrico na Parede", reps: "3x 45 SEGUNDOS" }
+            ]
+        };
+
+        function substituirAparelhoOcupado(index) {
+            const item = document.querySelector(`.exercise-item[data-index="${index}"]`);
+            if (item) {
+                const opcs = sugestoesAparelhoOcupado[index] || sugestoesAparelhoOcupado[0];
+                const opt = opcs[Math.floor(Math.random() * opcs.length)];
+                
+                item.querySelector('.nome-ex-aluna').textContent = opt.name;
+                item.querySelector('.reps-ex-aluna').textContent = opt.reps;
+
+                item.querySelector('.nome-ex-aluna').classList.add('text-amber-300');
+                setTimeout(() => item.querySelector('.nome-ex-aluna').classList.remove('text-amber-300'), 1200);
+
+                alert(`💡 IA Treinão: Aparelho ocupado?\nSubstituído com sucesso por "${opt.name}" (${opt.reps})! Good workout, Guria! 🔥`);
+            }
+        }
+
+        // TROCA DE MODO / LOCAL DE TREINO (ACADEMIA / EM CASA / AR LIVRE)
+        const treinosPorModo = {
+            'academia': {
+                badge: '🏋️‍♀️ Modo Academia',
+                titulo: 'Glúteos & Pernas Complete',
+                exs: [
+                    { name: 'Agachamento Búlgaro com Halteres', reps: '4x 10 A 12 REPS' },
+                    { name: 'Elevação Pélvica na Barra', reps: '4x 12 REPS + ISOMETRIA' },
+                    { name: 'Cadeira Extensora Drop-set', reps: '3x ATÉ A FALHA' }
+                ]
+            },
+            'casa': {
+                badge: '🏠 Modo Em Casa (Elásticos & Halteres)',
+                titulo: 'Glúteos & Pernas em Casa',
+                exs: [
+                    { name: 'Agachamento Sumô com Mini-band', reps: '4x 15 REPS' },
+                    { name: 'Elevação Pélvica Solo com Anilha/Halter', reps: '4x 20 REPS' },
+                    { name: 'Abdução de Quadril em 4 Apoios', reps: '3x 20 REPS CADA LADO' }
+                ]
+            },
+            'parque': {
+                badge: '🌳 Modo Ar Livre / Parque',
+                titulo: 'Cardio, Pernas & Core no Parque',
+                exs: [
+                    { name: 'Passada Afundo em Movimento', reps: '4x 20 PASSOS' },
+                    { name: 'Subida no Banco do Parque', reps: '4x 12 REPS CADA LADO' },
+                    { name: 'Prancha Ventral Isométrica', reps: '3x 1 MINUTO' }
+                ]
+            }
+        };
+
+        function trocarModoLocal(modo) {
+            ['academia', 'casa', 'parque'].forEach(m => {
+                const b = document.getElementById(`btn-modo-${m}`);
+                if (b) {
+                    if (m === modo) {
+                        b.className = "py-2 rounded-xl text-[10px] font-bold transition-all bg-[#C88C64] text-white shadow-md flex flex-col items-center gap-0.5";
+                    } else {
+                        b.className = "py-2 rounded-xl text-[10px] font-bold transition-all text-fit-textMuted hover:text-white flex flex-col items-center gap-0.5";
+                    }
+                }
+            });
+
+            const data = treinosPorModo[modo] || treinosPorModo['academia'];
+            document.getElementById('badge-modo-treino').textContent = data.badge;
+            document.getElementById('titulo-treino-aluna').textContent = data.titulo;
+
+            const items = document.querySelectorAll('.exercise-item');
+            data.exs.forEach((ex, idx) => {
+                if (items[idx]) {
+                    items[idx].querySelector('.nome-ex-aluna').textContent = ex.name;
+                    items[idx].querySelector('.reps-ex-aluna').textContent = ex.reps;
+                }
+            });
+        }
+
         function getDynamicExercises() {
             return document.querySelectorAll('.exercise-item');
         }
@@ -509,7 +556,6 @@
             const percent = Math.round((completed / totalExercises) * 100);
 
             progressText.textContent = `${percent}%`;
-
             const offset = circumference - (percent / 100) * circumference;
             circle.style.strokeDashoffset = offset;
 
@@ -553,43 +599,7 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            const listEl = document.getElementById('exercise-list');
-            const savedData = localStorage.getItem('daviApp_treinoA');
-
-            if (savedData) {
-                try {
-                    const exercises = JSON.parse(savedData);
-                    let html = '';
-                    exercises.forEach(ex => {
-                        html += `
-                        <div class="glass-card rounded-2xl p-4 flex items-center justify-between exercise-item group transition-all cursor-pointer hover:bg-white/5 border border-fit-cream/15"
-                            data-status="pending" onclick="toggleExercise(this)">
-                            <div class="flex gap-3.5 items-center">
-                                <div class="w-14 h-14 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0 flex items-center justify-center">
-                                    <i data-feather="video" class="w-5 h-5 text-fit-cream opacity-60"></i>
-                                </div>
-                                <div>
-                                    <h5 class="text-sm font-bold text-white mb-1">${ex.name}</h5>
-                                    <div class="flex items-center gap-2">
-                                        <span class="text-[11px] font-medium bg-black/40 border border-fit-cream/20 px-2 py-0.5 rounded text-fit-cream font-mono">${ex.series}</span>
-                                        <span class="text-[11px] font-medium bg-black/40 border border-fit-cream/20 px-2 py-0.5 rounded text-fit-cream font-mono">${ex.reps}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-8 h-8 rounded-full border border-fit-cream/20 bg-white/5 flex items-center justify-center transition-all text-white/30 status-icon">
-                                <i data-feather="check" class="w-4 h-4"></i>
-                            </div>
-                        </div>`;
-                    });
-                    listEl.innerHTML = html;
-                    feather.replace();
-                } catch (e) { console.error("Error loading saved workout:", e); }
-            }
-
-            setTimeout(() => {
-                updateProgress();
-            }, 100);
-
+            setTimeout(() => { updateProgress(); }, 100);
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('sw.js').catch(err => console.log('SW error', err));
             }
