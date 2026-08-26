@@ -231,7 +231,7 @@
                 <div class="flex justify-between items-center mb-2.5">
                     <h3 class="font-heading font-semibold text-sm text-fit-cream">Exercícios do Treinão</h3>
                     <span class="text-[10px] text-amber-300 flex items-center gap-1 font-medium">
-                        <i data-feather="mic" class="w-3 h-3 text-fit-cream"></i> Áudios Guiados Automáticos
+                        <i data-feather="video" class="w-3 h-3 text-fit-cream"></i> Vídeos HD YouTube
                     </span>
                 </div>
 
@@ -241,8 +241,11 @@
                     <div class="glass-card rounded-2xl p-3.5 exercise-item group transition-all border border-fit-cream/15" data-status="pending" data-index="0">
                         <div class="flex items-center justify-between mb-2">
                             <div class="flex gap-3 items-center">
-                                <div class="w-12 h-12 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0">
+                                <div onclick="abrirVideoModal('Agachamento Búlgaro com Halteres')" class="w-12 h-12 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0 cursor-pointer group-hover:border-amber-400">
                                     <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover opacity-75" alt="Exercicio">
+                                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                                        <i data-feather="play" class="w-4 h-4 text-amber-300 fill-amber-300"></i>
+                                    </div>
                                 </div>
                                 <div>
                                     <h5 class="text-xs font-bold text-white mb-1 nome-ex-aluna">Agachamento Búlgaro com Halteres</h5>
@@ -255,10 +258,10 @@
                         </div>
 
                         <div class="pt-2 border-t border-white/5 flex flex-wrap justify-between items-center gap-2">
-                            <button onclick="tocarVozGiu('Agachamento Búlgaro com Halteres')" class="text-[10px] text-fit-cream hover:text-white font-semibold flex items-center gap-1 bg-[#C88C64]/20 px-2.5 py-1 rounded-lg border border-fit-cream/20">
-                                <i data-feather="volume-2" class="w-3 h-3 text-fit-cream animate-pulse"></i> 🎙️ Replay Voz Giu
+                            <button onclick="abrirVideoModal('Agachamento Búlgaro com Halteres')" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/20 px-2 py-1 rounded-lg border border-amber-400/30">
+                                <i data-feather="video" class="w-3 h-3 text-amber-400"></i> ▶️ Ver Vídeo (YouTube)
                             </button>
-                            <button onclick="substituirAparelhoOcupado(0)" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/15 px-2 py-1 rounded-lg border border-amber-400/25">
+                            <button onclick="substituirAparelhoOcupado(0)" class="text-[10px] text-fit-cream hover:text-white font-semibold flex items-center gap-1 bg-white/10 px-2 py-1 rounded-lg border border-fit-cream/15">
                                 <i data-feather="refresh-cw" class="w-3 h-3"></i> Ocupado? Trocar
                             </button>
                         </div>
@@ -268,8 +271,11 @@
                     <div class="glass-card rounded-2xl p-3.5 exercise-item group transition-all border border-fit-cream/15" data-status="pending" data-index="1">
                         <div class="flex items-center justify-between mb-2">
                             <div class="flex gap-3 items-center">
-                                <div class="w-12 h-12 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0">
+                                <div onclick="abrirVideoModal('Elevação Pélvica na Barra')" class="w-12 h-12 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0 cursor-pointer group-hover:border-amber-400">
                                     <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover opacity-75" alt="Exercicio">
+                                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                                        <i data-feather="play" class="w-4 h-4 text-amber-300 fill-amber-300"></i>
+                                    </div>
                                 </div>
                                 <div>
                                     <h5 class="text-xs font-bold text-white mb-1 nome-ex-aluna">Elevação Pélvica na Barra</h5>
@@ -282,10 +288,10 @@
                         </div>
 
                         <div class="pt-2 border-t border-white/5 flex flex-wrap justify-between items-center gap-2">
-                            <button onclick="tocarVozGiu('Elevação Pélvica na Barra')" class="text-[10px] text-fit-cream hover:text-white font-semibold flex items-center gap-1 bg-[#C88C64]/20 px-2.5 py-1 rounded-lg border border-fit-cream/20">
-                                <i data-feather="volume-2" class="w-3 h-3 text-fit-cream animate-pulse"></i> 🎙️ Replay Voz Giu
+                            <button onclick="abrirVideoModal('Elevação Pélvica na Barra')" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/20 px-2 py-1 rounded-lg border border-amber-400/30">
+                                <i data-feather="video" class="w-3 h-3 text-amber-400"></i> ▶️ Ver Vídeo (YouTube)
                             </button>
-                            <button onclick="substituirAparelhoOcupado(1)" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/15 px-2 py-1 rounded-lg border border-amber-400/25">
+                            <button onclick="substituirAparelhoOcupado(1)" class="text-[10px] text-fit-cream hover:text-white font-semibold flex items-center gap-1 bg-white/10 px-2 py-1 rounded-lg border border-fit-cream/15">
                                 <i data-feather="refresh-cw" class="w-3 h-3"></i> Ocupado? Trocar
                             </button>
                         </div>
@@ -295,8 +301,11 @@
                     <div class="glass-card rounded-2xl p-3.5 exercise-item group transition-all border border-fit-cream/15" data-status="pending" data-index="2">
                         <div class="flex items-center justify-between mb-2">
                             <div class="flex gap-3 items-center">
-                                <div class="w-12 h-12 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0">
+                                <div onclick="abrirVideoModal('Cadeira Extensora Drop-set')" class="w-12 h-12 rounded-xl bg-black/40 border border-white/10 overflow-hidden relative flex-shrink-0 cursor-pointer group-hover:border-amber-400">
                                     <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=200&auto=format&fit=crop" class="w-full h-full object-cover opacity-75" alt="Exercicio">
+                                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                                        <i data-feather="play" class="w-4 h-4 text-amber-300 fill-amber-300"></i>
+                                    </div>
                                 </div>
                                 <div>
                                     <h5 class="text-xs font-bold text-white mb-1 nome-ex-aluna">Cadeira Extensora Drop-set</h5>
@@ -309,10 +318,10 @@
                         </div>
 
                         <div class="pt-2 border-t border-white/5 flex flex-wrap justify-between items-center gap-2">
-                            <button onclick="tocarVozGiu('Cadeira Extensora Drop-set')" class="text-[10px] text-fit-cream hover:text-white font-semibold flex items-center gap-1 bg-[#C88C64]/20 px-2.5 py-1 rounded-lg border border-fit-cream/20">
-                                <i data-feather="volume-2" class="w-3 h-3 text-fit-cream animate-pulse"></i> 🎙️ Replay Voz Giu
+                            <button onclick="abrirVideoModal('Cadeira Extensora Drop-set')" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/20 px-2 py-1 rounded-lg border border-amber-400/30">
+                                <i data-feather="video" class="w-3 h-3 text-amber-400"></i> ▶️ Ver Vídeo (YouTube)
                             </button>
-                            <button onclick="substituirAparelhoOcupado(2)" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/15 px-2 py-1 rounded-lg border border-amber-400/25">
+                            <button onclick="substituirAparelhoOcupado(2)" class="text-[10px] text-fit-cream hover:text-white font-semibold flex items-center gap-1 bg-white/10 px-2 py-1 rounded-lg border border-fit-cream/15">
                                 <i data-feather="refresh-cw" class="w-3 h-3"></i> Ocupado? Trocar
                             </button>
                         </div>
@@ -455,7 +464,7 @@
                         <div class="flex gap-3 items-end">
                             <img src="./assets/logo.png" alt="Giu Personal" class="w-8 h-8 rounded-full border border-fit-cream/30 object-cover shrink-0">
                             <div class="bg-fit-panelDark p-3.5 rounded-2xl rounded-bl-sm max-w-[85%] text-sm text-white/90 border border-fit-cream/15">
-                                Fala, Guria! Qualquer dúvida no treino, na lista de compras ou nos áudios automáticos com IA é só me mandar aqui! 💪✨
+                                Fala, Guria! Qualquer dúvida no treino, na lista de compras ou nos vídeos de execução é só me mandar aqui! 💪✨
                             </div>
                         </div>
                     </div>
@@ -516,6 +525,25 @@
 
     </div>
 
+    <!-- MODAL REPRODUTOR DE VÍDEO DO YOUTUBE NÃO LISTADO -->
+    <div id="modal-video-youtube" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="glass-card w-full max-w-sm rounded-3xl p-4 border border-fit-cream/30 relative">
+            <div class="flex justify-between items-center mb-3">
+                <span class="text-xs font-bold text-fit-cream flex items-center gap-1.5">
+                    <i data-feather="video" class="w-4 h-4 text-amber-400"></i> Execução em Vídeo (YouTube)
+                </span>
+                <button onclick="fecharVideoModal()" class="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xs font-bold">✕</button>
+            </div>
+            <div class="rounded-2xl overflow-hidden aspect-video bg-black border border-white/10 relative flex items-center justify-center">
+                <iframe id="iframe-youtube" class="w-full h-full" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=0" title="Vídeo do Exercício" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="mt-3 flex justify-between items-center">
+                <span class="text-[10px] text-fit-textMuted" id="nome-video-modal">Agachamento Búlgaro com Halteres</span>
+                <span class="text-[9px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded">Vídeo Não Listado (Privado)</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts do App da Aluna -->
     <script>
         feather.replace();
@@ -556,9 +584,18 @@
             alert("📍 Check-in presencial no Treinão das Gurias realizado!\nBom treino, Guria! 💪✨");
         }
 
-        // SIMULAÇÃO DA VOZ DA GIU COM IA (EXECUÇÃO AUTOMÁTICA NOS FONES)
+        // SIMULAÇÃO DA VOZ DA GIU COM IA
         function tocarVozGiu(exercicio) {
             alert(`🔊 [VOZ DA GIU TOCANDO AUTOMATICAMENTE NO FONE]:\n\n"Bora guria! No ${exercicio}, mantenha a postura firme, solta o ar na subida e foca na contração! Vamos juntas!" ✨💪`);
+        }
+
+        function abrirVideoModal(exercicioNome) {
+            document.getElementById('nome-video-modal').textContent = exercicioNome;
+            document.getElementById('modal-video-youtube').classList.remove('hidden');
+        }
+
+        function fecharVideoModal() {
+            document.getElementById('modal-video-youtube').classList.add('hidden');
         }
 
         function curtirPost(btn) {
@@ -664,7 +701,6 @@
             }
         }
 
-        // REPRODUÇÃO AUTOMÁTICA DE VOZ QUANDO A ALUNA INICIA / MARCA EXERCÍCIO
         function toggleExercise(el) {
             const statusIcon = el.querySelector('.status-icon');
             const nomeEx = el.querySelector('.nome-ex-aluna').textContent;
@@ -675,7 +711,6 @@
                 statusIcon.classList.add('bg-[#EFE1C6]', 'border-[#EFE1C6]', 'text-[#2A1710]');
                 el.classList.add('bg-white/10');
 
-                // TOCAR VOZ AUTOMATICAMENTE NOS FONES
                 tocarVozGiu(nomeEx);
             } else {
                 el.setAttribute('data-status', 'pending');
