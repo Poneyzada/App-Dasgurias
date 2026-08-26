@@ -262,10 +262,13 @@
 
                         <div class="pt-2 border-t border-white/5 flex flex-wrap justify-between items-center gap-2">
                             <button onclick="abrirVideoModal('Agachamento Búlgaro com Halteres')" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/20 px-2 py-1 rounded-lg border border-amber-400/30">
-                                <i data-feather="video" class="w-3 h-3 text-amber-400"></i> ▶️ Ver Vídeo (YouTube)
+                                <i data-feather="video" class="w-3 h-3 text-amber-400"></i> ▶️ Ver Vídeo
                             </button>
-                            <button onclick="substituirAparelhoOcupado(0)" class="text-[10px] text-fit-cream hover:text-white font-semibold flex items-center gap-1 bg-white/10 px-2 py-1 rounded-lg border border-fit-cream/15">
-                                <i data-feather="refresh-cw" class="w-3 h-3"></i> Ocupado? Trocar
+                            <button onclick="gravarVideo5s('Agachamento Búlgaro com Halteres')" class="text-[10px] text-fit-cream hover:text-white font-semibold flex items-center gap-1 bg-white/10 px-2 py-1 rounded-lg border border-fit-cream/15">
+                                <i data-feather="camera" class="w-3 h-3"></i> 📹 Check 5s
+                            </button>
+                            <button onclick="substituirAparelhoOcupado(0)" class="text-[10px] text-amber-300 hover:text-amber-200 font-semibold flex items-center gap-1 bg-amber-400/15 px-2 py-1 rounded-lg border border-amber-400/25">
+                                <i data-feather="refresh-cw" class="w-3 h-3"></i> Ocupado?
                             </button>
                         </div>
                     </div>
@@ -590,6 +593,10 @@
         // SIMULAÇÃO DA VOZ DA GIU COM IA
         function tocarVozGiu(exercicio) {
             alert(`🔊 [VOZ DA GIU TOCANDO AUTOMATICAMENTE NO FONE]:\n\n"Bora guria! No ${exercicio}, mantenha a postura firme, solta o ar na subida e foca na contração! Vamos juntas!" ✨💪`);
+        }
+
+        function gravarVideo5s(exercicio) {
+            alert(`📹 Gravando 5 segundos da sua execução de "${exercicio}"...\n\n✨ Análise prévia da IA de Visão realizada!\nVídeo enviado para a Personal Giu com sucesso! Ela enviará um áudio de feedback em breve.`);
         }
 
         function abrirVideoModal(exercicioNome) {

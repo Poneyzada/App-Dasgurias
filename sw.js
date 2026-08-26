@@ -1,4 +1,4 @@
-const CACHE_NAME = 'treinao-das-gurias-v11';
+const CACHE_NAME = 'treinao-das-gurias-v12';
 const urlsToCache = [
     './',
     './index.html',

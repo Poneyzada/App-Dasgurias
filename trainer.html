@@ -187,10 +187,10 @@
             <!-- Welcome Header -->
             <div class="mb-4 fade-up">
                 <div class="flex items-center gap-2 mb-1">
-                    <span class="text-[10px] bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded font-mono font-bold uppercase">✨ Sistema Completo com Biblioteca</span>
+                    <span class="text-[10px] bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded font-mono font-bold uppercase">✨ Análise de Vídeo 5s & Fotos IA</span>
                 </div>
                 <h1 class="font-heading font-bold text-2xl text-white">Olá, Personal! ✨</h1>
-                <p class="text-xs text-fit-textMuted">Biblioteca de treinos, gerador com IA e acompanhamento.</p>
+                <p class="text-xs text-fit-textMuted">Biblioteca, pré-análise de vídeos de 5s e scanner de fotos com IA.</p>
             </div>
 
             <!-- CARD DESTAQUE: GERADOR & BIBLIOTECA -->
@@ -199,30 +199,30 @@
                     <div class="flex justify-between items-start mb-2">
                         <div class="flex items-center gap-2">
                             <div class="w-8 h-8 rounded-xl bg-[#C88C64]/30 flex items-center justify-center text-fit-cream border border-fit-cream/20">
-                                <i data-feather="book-open" class="w-4 h-4 text-amber-300"></i>
+                                <i data-feather="video" class="w-4 h-4 text-amber-300"></i>
                             </div>
                             <div>
-                                <h3 class="font-heading font-bold text-sm text-fit-cream">Biblioteca de Treinos & IA</h3>
-                                <p class="text-[10px] text-fit-textMuted">Templates prontos • Exercícios em Vídeo/GIF</p>
+                                <h3 class="font-heading font-bold text-sm text-fit-cream">Check-Up de Vídeos 5s & IA</h3>
+                                <p class="text-[10px] text-fit-textMuted">Vídeos curtos • Scanner corporal por fotos</p>
                             </div>
                         </div>
-                        <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">Acervo Próprio</span>
+                        <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">Segurança 100%</span>
                     </div>
 
                     <p class="text-xs text-white/90 mb-3 leading-relaxed">
-                        Acesse fichas modelos salvas, acervo completo com vídeos de execução ou crie com IA em 1 clique!
+                        A IA pré-analisa desvios em vídeos curtos de 5s e scanner de fotos. Você assiste e valida com áudio em 1 clique!
                     </p>
 
                     <div class="grid grid-cols-2 gap-2">
-                        <button onclick="switchView('biblio')"
+                        <button onclick="switchView('avalia')"
                             class="bg-[#C88C64] hover:bg-[#d49a6a] text-white font-bold py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all text-xs shadow-md">
+                            <i data-feather="check-square" class="w-3.5 h-3.5 text-amber-300"></i>
+                            VER VÍDEOS 5S
+                        </button>
+                        <button onclick="switchView('biblio')"
+                            class="bg-white/10 hover:bg-white/20 text-white font-bold py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all text-xs shadow-md border border-fit-cream/20">
                             <i data-feather="book-open" class="w-3.5 h-3.5 text-amber-300"></i>
                             BIBLIOTECA
-                        </button>
-                        <button onclick="switchView('treino')"
-                            class="bg-white/10 hover:bg-white/20 text-white font-bold py-2.5 rounded-xl flex items-center justify-center gap-1.5 transition-all text-xs shadow-md border border-fit-cream/20">
-                            <i data-feather="cpu" class="w-3.5 h-3.5 text-amber-300"></i>
-                            GERADOR IA
                         </button>
                     </div>
                 </div>
@@ -329,7 +329,7 @@
 
         </div>
 
-        <!-- VIEW: BIBLIOTECA DE TREINOS & BANCO DE EXERCÍCIOS (NOVO) -->
+        <!-- VIEW: BIBLIOTECA DE TREINOS & BANCO DE EXERCÍCIOS -->
         <div class="flex-1 overflow-y-auto px-6 pb-28 pt-4 scrollbar-hide hidden" id="view-biblio">
             <div class="mb-4 fade-up flex justify-between items-start">
                 <div>
@@ -347,7 +347,6 @@
                 <h3 class="font-heading font-semibold text-sm text-fit-cream mb-2.5">Fichas Modelos Salvas (Templates)</h3>
 
                 <div class="space-y-3">
-                    <!-- Template 1 -->
                     <div class="glass-card rounded-2xl p-3.5 border border-fit-cream/20 bg-black/40">
                         <div class="flex justify-between items-start mb-2">
                             <div>
@@ -366,111 +365,11 @@
                             </button>
                         </div>
                     </div>
-
-                    <!-- Template 2 -->
-                    <div class="glass-card rounded-2xl p-3.5 border border-fit-cream/20 bg-black/40">
-                        <div class="flex justify-between items-start mb-2">
-                            <div>
-                                <span class="text-[9px] bg-fit-cream/20 text-fit-cream font-bold px-2 py-0.5 rounded uppercase">Foco Curvas</span>
-                                <h4 class="font-bold text-sm text-white mt-1">Treinão B: Glúteo Isolado & Posterior</h4>
-                            </div>
-                            <span class="text-[10px] text-fit-textMuted font-mono">5 Exercícios</span>
-                        </div>
-                        <p class="text-[11px] text-fit-textMuted mb-3">Stiff c/ Halter • Glúteo 4 Apoios • Mesa Flexora • Abdução Cabo</p>
-                        <div class="flex gap-2">
-                            <button onclick="aplicarTemplate('Treinão B: Glúteo Isolado')" class="flex-1 bg-[#C88C64] hover:bg-[#d49a6a] text-white py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider">
-                                ➕ Aplicar na Aluna
-                            </button>
-                            <button onclick="alert('✏️ Abrindo editor de template...')" class="bg-white/10 hover:bg-white/20 text-fit-cream px-3 py-2 rounded-xl text-[10px] font-bold">
-                                ✏️ Editar
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Template 3 -->
-                    <div class="glass-card rounded-2xl p-3.5 border border-fit-cream/20 bg-black/40">
-                        <div class="flex justify-between items-start mb-2">
-                            <div>
-                                <span class="text-[9px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded uppercase">Postura & Core</span>
-                                <h4 class="font-bold text-sm text-white mt-1">Treinão C: Superior, Postura & Core Feminino</h4>
-                            </div>
-                            <span class="text-[10px] text-fit-textMuted font-mono">4 Exercícios</span>
-                        </div>
-                        <p class="text-[11px] text-fit-textMuted mb-3">Puxada Frontal • Remada Baixa • Desenvolvimento Halter • Prancha</p>
-                        <div class="flex gap-2">
-                            <button onclick="aplicarTemplate('Treinão C: Superior & Postura')" class="flex-1 bg-[#C88C64] hover:bg-[#d49a6a] text-white py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider">
-                                ➕ Aplicar na Aluna
-                            </button>
-                            <button onclick="alert('✏️ Abrindo editor de template...')" class="bg-white/10 hover:bg-white/20 text-fit-cream px-3 py-2 rounded-xl text-[10px] font-bold">
-                                ✏️ Editar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BANCO DE EXERCÍCIOS COM VÍDEO/GIF -->
-            <div class="fade-up delay-100">
-                <div class="flex justify-between items-center mb-2.5">
-                    <h3 class="font-heading font-semibold text-sm text-fit-cream">Banco de Exercícios com Vídeo/GIF (350+)</h3>
-                    <span class="text-[10px] text-amber-300 font-mono">Acervo Atualizado</span>
-                </div>
-
-                <div class="mb-3">
-                    <input type="text" placeholder="🔍 Buscar exercício por nome ou músculo..." 
-                        class="w-full bg-black/50 border border-fit-cream/20 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-fit-cream">
-                </div>
-
-                <div class="space-y-2 text-xs">
-                    <div class="p-3 rounded-xl bg-white/5 border border-fit-cream/10 flex justify-between items-center">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-lg bg-black/40 overflow-hidden border border-white/10 shrink-0">
-                                <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=100&h=100&auto=format&fit=crop" class="w-full h-full object-cover">
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-white">Agachamento Búlgaro c/ Halteres</h5>
-                                <span class="text-[10px] text-fit-textMuted">Glúteos & Quadríceps • Halteres</span>
-                            </div>
-                        </div>
-                        <button onclick="alert('▶️ Abrindo vídeo HD de execução do Agachamento Búlgaro!')" class="bg-white/10 hover:bg-white/20 text-fit-cream px-2.5 py-1.5 rounded-lg text-[10px] font-bold flex items-center gap-1">
-                            <i data-feather="play-circle" class="w-3 h-3 text-amber-400"></i> Vídeo HD
-                        </button>
-                    </div>
-
-                    <div class="p-3 rounded-xl bg-white/5 border border-fit-cream/10 flex justify-between items-center">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-lg bg-black/40 overflow-hidden border border-white/10 shrink-0">
-                                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=100&h=100&auto=format&fit=crop" class="w-full h-full object-cover">
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-white">Elevação Pélvica na Barra</h5>
-                                <span class="text-[10px] text-fit-textMuted">Glúteo Máximo • Barra</span>
-                            </div>
-                        </div>
-                        <button onclick="alert('▶️ Abrindo vídeo HD de execução da Elevação Pélvica!')" class="bg-white/10 hover:bg-white/20 text-fit-cream px-2.5 py-1.5 rounded-lg text-[10px] font-bold flex items-center gap-1">
-                            <i data-feather="play-circle" class="w-3 h-3 text-amber-400"></i> Vídeo HD
-                        </button>
-                    </div>
-
-                    <div class="p-3 rounded-xl bg-white/5 border border-fit-cream/10 flex justify-between items-center">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-lg bg-black/40 overflow-hidden border border-white/10 shrink-0">
-                                <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=100&h=100&auto=format&fit=crop" class="w-full h-full object-cover">
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-white">Stiff Unilateral c/ Halter</h5>
-                                <span class="text-[10px] text-fit-textMuted">Posterior & Glúteo • Halter</span>
-                            </div>
-                        </div>
-                        <button onclick="alert('▶️ Abrindo vídeo HD de execução do Stiff Unilateral!')" class="bg-white/10 hover:bg-white/20 text-fit-cream px-2.5 py-1.5 rounded-lg text-[10px] font-bold flex items-center gap-1">
-                            <i data-feather="play-circle" class="w-3 h-3 text-amber-400"></i> Vídeo HD
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- View: GERADOR & PAINEL DE EDIÇÃO DINÂMICA DA PROFESSORA -->
+        <!-- VIEW: GERADOR & PAINEL DE EDIÇÃO DINÂMICA DA PROFESSORA -->
         <div class="flex-1 overflow-y-auto px-6 pb-28 pt-4 scrollbar-hide hidden" id="view-treino">
             <div class="mb-4 fade-up flex justify-between items-start">
                 <div>
@@ -516,50 +415,6 @@
                 </div>
             </div>
 
-            <!-- PAINEL DE CONTROLE DE TROCAS (EDITÁVEL A QUALQUER MOMENTO) -->
-            <div class="glass-card rounded-2xl p-3.5 mb-4 border border-fit-cream/20 bg-black/30 no-print">
-                <div class="flex justify-between items-center mb-1">
-                    <h4 class="text-xs font-bold text-fit-cream flex items-center gap-1.5">
-                        <i data-feather="sliders" class="w-3.5 h-3.5 text-amber-400"></i> Substitutos Pré-Aprovados (Editáveis)
-                    </h4>
-                    <button onclick="executarGeracaoIA()" class="text-[9px] bg-amber-400/20 text-amber-300 hover:bg-amber-400/30 px-2 py-0.5 rounded font-bold flex items-center gap-1">
-                        <i data-feather="refresh-cw" class="w-2.5 h-2.5"></i> Recriar Variantes por IA
-                    </button>
-                </div>
-                <p class="text-[10px] text-fit-textMuted mb-3">
-                    Você pode clicar diretamente em qualquer texto abaixo para editar a troca a qualquer semana:
-                </p>
-
-                <div class="space-y-2">
-                    <!-- Alternativa 1: Academia Cheia -->
-                    <div class="p-2.5 rounded-xl bg-white/5 border border-fit-cream/10 text-xs flex justify-between items-center">
-                        <div class="flex-1 pr-2">
-                            <span class="text-[9px] text-amber-300 font-bold uppercase block">⚡ Troca p/ Academia Lotada</span>
-                            <span class="text-white font-medium cursor-pointer hover:text-amber-200" contenteditable="true" id="txt-troca-1">Agachamento Búlgaro $\rightarrow$ Elevação Pélvica c/ Halter</span>
-                        </div>
-                        <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded shrink-0">Editável</span>
-                    </div>
-
-                    <!-- Alternativa 2: Modo Em Casa -->
-                    <div class="p-2.5 rounded-xl bg-white/5 border border-fit-cream/10 text-xs flex justify-between items-center">
-                        <div class="flex-1 pr-2">
-                            <span class="text-[9px] text-fit-cream font-bold uppercase block">🏠 Variante Modo Em Casa</span>
-                            <span class="text-white font-medium cursor-pointer hover:text-fit-cream" contenteditable="true" id="txt-troca-2">Agachamento Sumô c/ Mini-band + Elevação Solo</span>
-                        </div>
-                        <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded shrink-0">Editável</span>
-                    </div>
-
-                    <!-- Alternativa 3: Modo Ar Livre -->
-                    <div class="p-2.5 rounded-xl bg-white/5 border border-fit-cream/10 text-xs flex justify-between items-center">
-                        <div class="flex-1 pr-2">
-                            <span class="text-[9px] text-fit-cream font-bold uppercase block">🌳 Variante Ar Livre / Parque</span>
-                            <span class="text-white font-medium cursor-pointer hover:text-fit-cream" contenteditable="true" id="txt-troca-3">Passada Afundo + Subida no Banco do Parque</span>
-                        </div>
-                        <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded shrink-0">Editável</span>
-                    </div>
-                </div>
-            </div>
-
             <!-- FICHA PRINCIPAL DA ACADEMIA -->
             <div class="space-y-3" id="lista-exercicios-ia">
                 <div class="flex justify-between items-center mb-1 no-print">
@@ -591,56 +446,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Exercício 2 -->
-                <div class="glass-card rounded-[20px] p-4 relative group border border-fit-cream/15 card-exercicio" data-index="1">
-                    <div class="flex items-start justify-between gap-3 mb-2">
-                        <div>
-                            <span class="text-[10px] text-fit-cream font-mono font-bold uppercase tracking-wider bg-black/40 px-2 py-0.5 rounded border border-fit-cream/10">Exercício 2</span>
-                            <h4 class="font-bold text-sm text-white mt-1 nome-ex" contenteditable="true">Elevação Pélvica na Barra</h4>
-                        </div>
-                        <button onclick="trocarExercicioIA(1)" class="no-print bg-amber-400/20 hover:bg-amber-400/30 text-amber-300 text-[10px] font-bold px-2.5 py-1 rounded-lg border border-amber-400/30 flex items-center gap-1">
-                            <i data-feather="refresh-cw" class="w-3 h-3"></i> Sugerir Outro (IA)
-                        </button>
-                    </div>
-
-                    <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-white/5">
-                        <div class="flex items-center gap-2 text-xs">
-                            <span class="bg-black/40 px-2.5 py-1 rounded text-fit-cream border border-fit-cream/15 font-mono text-[11px] series-ex" contenteditable="true">4 Séries</span>
-                            <span class="bg-black/40 px-2.5 py-1 rounded text-fit-cream border border-fit-cream/15 font-mono text-[11px] reps-ex" contenteditable="true">12 Reps + Isometria</span>
-                        </div>
-
-                        <div class="flex items-center gap-1 no-print">
-                            <button onclick="ajustarSeries(1, 1)" class="bg-white/10 hover:bg-white/20 text-fit-cream px-2 py-0.5 rounded text-[10px] font-bold">+1 Série</button>
-                            <button onclick="ajustarSeries(1, -1)" class="bg-white/10 hover:bg-white/20 text-fit-cream px-2 py-0.5 rounded text-[10px] font-bold">-1 Série</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Exercício 3 -->
-                <div class="glass-card rounded-[20px] p-4 relative group border border-fit-cream/15 card-exercicio" data-index="2">
-                    <div class="flex items-start justify-between gap-3 mb-2">
-                        <div>
-                            <span class="text-[10px] text-fit-cream font-mono font-bold uppercase tracking-wider bg-black/40 px-2 py-0.5 rounded border border-fit-cream/10">Exercício 3</span>
-                            <h4 class="font-bold text-sm text-white mt-1 nome-ex" contenteditable="true">Cadeira Extensora Drop-set</h4>
-                        </div>
-                        <button onclick="trocarExercicioIA(2)" class="no-print bg-amber-400/20 hover:bg-amber-400/30 text-amber-300 text-[10px] font-bold px-2.5 py-1 rounded-lg border border-amber-400/30 flex items-center gap-1">
-                            <i data-feather="refresh-cw" class="w-3 h-3"></i> Sugerir Outro (IA)
-                        </button>
-                    </div>
-
-                    <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-white/5">
-                        <div class="flex items-center gap-2 text-xs">
-                            <span class="bg-black/40 px-2.5 py-1 rounded text-fit-cream border border-fit-cream/15 font-mono text-[11px] series-ex" contenteditable="true">3 Séries</span>
-                            <span class="bg-black/40 px-2.5 py-1 rounded text-fit-cream border border-fit-cream/15 font-mono text-[11px] reps-ex" contenteditable="true">Até a Falha</span>
-                        </div>
-
-                        <div class="flex items-center gap-1 no-print">
-                            <button onclick="ajustarSeries(2, 1)" class="bg-white/10 hover:bg-white/20 text-fit-cream px-2 py-0.5 rounded text-[10px] font-bold">+1 Série</button>
-                            <button onclick="ajustarSeries(2, -1)" class="bg-white/10 hover:bg-white/20 text-fit-cream px-2 py-0.5 rounded text-[10px] font-bold">-1 Série</button>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="pt-5 no-print">
@@ -659,23 +464,6 @@
                 <p class="text-xs text-fit-textMuted">Gerenciamento de planos, mentorias e vigências.</p>
             </div>
 
-            <div class="mb-6 fade-up delay-100">
-                <h3 class="font-heading font-semibold text-sm text-fit-cream mb-2.5">Planos & Mentorias Ativas</h3>
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="glass-card rounded-2xl p-3.5 border border-fit-cream/20 bg-gradient-to-br from-[#3B2219] to-[#2A1710]">
-                        <span class="text-[9px] bg-amber-400/20 text-amber-300 font-bold px-2 py-0.5 rounded uppercase">Mentoria VIP</span>
-                        <h4 class="font-bold text-xs text-white mt-2">Acompanhamento 1-on-1</h4>
-                        <p class="text-[10px] text-fit-textMuted mt-1">12 Alunas inscritas</p>
-                    </div>
-
-                    <div class="glass-card rounded-2xl p-3.5 border border-fit-cream/20 bg-gradient-to-br from-[#3B2219] to-[#2A1710]">
-                        <span class="text-[9px] bg-fit-cream/20 text-fit-cream font-bold px-2 py-0.5 rounded uppercase">Consultoria Online</span>
-                        <h4 class="font-bold text-xs text-white mt-2">Treinos por IA + Avaliação</h4>
-                        <p class="text-[10px] text-fit-textMuted mt-1">36 Alunas inscritas</p>
-                    </div>
-                </div>
-            </div>
-
             <div class="space-y-3.5 fade-up delay-200">
                 <h3 class="font-heading font-semibold text-sm text-fit-cream">Alunas Registradas</h3>
 
@@ -691,58 +479,74 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex gap-2 text-xs">
-                        <div
-                            class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 px-3 py-1.5 rounded-lg flex-1 text-center font-semibold flex flex-col items-center justify-center gap-0.5">
-                            <span class="uppercase text-[9px] tracking-wider text-emerald-300/70">Status</span> Ativa
-                        </div>
-                        <button onclick="gerarTreinoIA('Amora Maria', 'Glúteos & Pernas')"
-                            class="bg-[#C88C64]/20 border border-[#C88C64]/30 text-fit-cream px-3 py-1.5 rounded-lg flex-1 text-center font-semibold flex flex-col items-center justify-center gap-0.5 hover:bg-[#C88C64]/40">
-                            <span class="uppercase text-[9px] tracking-wider text-fit-cream/70">Treino Atual</span> Ver / Editar
-                        </button>
-                    </div>
-                </div>
-
-                <div class="glass-card rounded-[24px] p-4 relative overflow-hidden border border-fit-cream/15">
-                    <div class="flex items-center justify-between mb-3">
-                        <div class="flex items-center gap-3">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop"
-                                class="w-11 h-11 rounded-full border-2 border-fit-cream/30 object-cover">
-                            <div>
-                                <h4 class="font-bold text-white text-sm">Beatriz Lima</h4>
-                                <span class="text-[10px] text-fit-textMuted flex items-center gap-1"><i
-                                        data-feather="award" class="w-3 h-3 text-fit-cream"></i> Consultoria Online • Vence em 14 dias</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex gap-2 text-xs">
-                        <div
-                            class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 px-3 py-1.5 rounded-lg flex-1 text-center font-semibold flex flex-col items-center justify-center gap-0.5">
-                            <span class="uppercase text-[9px] tracking-wider text-emerald-300/70">Status</span> Ativa
-                        </div>
-                        <button onclick="gerarTreinoIA('Beatriz Lima', 'Sem Impacto Lombar')"
-                            class="bg-[#C88C64]/20 border border-[#C88C64]/30 text-fit-cream px-3 py-1.5 rounded-lg flex-1 text-center font-semibold flex flex-col items-center justify-center gap-0.5 hover:bg-[#C88C64]/40">
-                            <span class="uppercase text-[9px] tracking-wider text-fit-cream/70">Treino Atual</span> Ver / Editar
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- View: Avaliações Físicas -->
+        <!-- View: AVALIAÇÕES FÍSICAS, VÍDEOS 5S & SCANNER DE FOTOS COM IA -->
         <div class="flex-1 overflow-y-auto px-6 pb-28 pt-4 scrollbar-hide hidden" id="view-avalia">
-            <div class="mb-6 fade-up">
-                <h1 class="font-heading font-bold text-2xl text-white">Evolução & Medidas</h1>
-                <p class="text-xs text-fit-textMuted">Acompanhamento comparativo das alunas.</p>
+            <div class="mb-4 fade-up">
+                <h1 class="font-heading font-bold text-2xl text-white">Central de Avaliação & IA 📹</h1>
+                <p class="text-xs text-fit-textMuted">Check-up de vídeos de 5s e scanner postural com fotos.</p>
             </div>
 
-            <div class="glass-card rounded-[30px] p-5 mb-6 fade-up delay-100 border border-fit-cream/15">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-sm font-semibold text-fit-cream">Evolução (Amora Maria)</span>
+            <!-- VÍDEOS DE 5 SEGUNDOS PARA CORREÇÃO RÁPIDA -->
+            <div class="glass-card rounded-3xl p-4 mb-5 border border-amber-400/30 bg-gradient-to-br from-[#3B2219] to-[#2A1710] shadow-xl">
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <span class="text-[9px] bg-amber-400/20 text-amber-300 font-bold px-2 py-0.5 rounded uppercase">📹 Vídeos de 5s (Fila de Análise)</span>
+                        <h4 class="font-bold text-sm text-white mt-1">Amora Maria - Agachamento Búlgaro</h4>
+                    </div>
+                    <span class="text-[9px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded">Pré-Analizado por IA</span>
                 </div>
-                <div class="w-full h-48 relative">
-                    <canvas id="evolucaoChart"></canvas>
+
+                <div class="p-2.5 rounded-xl bg-black/40 border border-amber-400/30 mb-3 text-xs">
+                    <span class="text-amber-300 font-bold block mb-0.5">⚠️ Sugestão da IA de Visão:</span>
+                    <p class="text-white/90 text-[11px]">"Possível leve desvio no joelho direito no 3º segundo (Valgo dinâmico). Sugere-se orientação de rotação externa de quadril."</p>
                 </div>
+
+                <div class="flex gap-2">
+                    <button onclick="alert('▶️ Assistindo vídeo de 5s da aluna Amora Maria no 3º segundo...')" class="flex-1 bg-white/10 hover:bg-white/20 text-white font-bold py-2 rounded-xl text-[10px] flex items-center justify-center gap-1">
+                        <i data-feather="play-circle" class="w-3.5 h-3.5 text-amber-400"></i> Assistir 5s
+                    </button>
+                    <button onclick="responderComAudio('Amora Maria')" class="flex-1 bg-[#C88C64] hover:bg-[#d49a6a] text-white font-bold py-2 rounded-xl text-[10px] flex items-center justify-center gap-1 shadow-md">
+                        <i data-feather="mic" class="w-3.5 h-3.5"></i> Responder com Áudio Curto
+                    </button>
+                </div>
+            </div>
+
+            <!-- SCANNER DE FOTOS DE AVALIAÇÃO POSTURAL COM IA -->
+            <div class="glass-card rounded-3xl p-4 mb-5 border border-fit-cream/20 bg-black/30">
+                <div class="flex justify-between items-start mb-2">
+                    <div>
+                        <span class="text-[9px] bg-fit-cream/20 text-fit-cream font-bold px-2 py-0.5 rounded uppercase">📸 Scanner Postural por Foto (IA)</span>
+                        <h4 class="font-bold text-sm text-white mt-1">Beatriz Lima - Fotos de Avaliação Inicial</h4>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 mb-3 text-center text-[9px] text-fit-textMuted">
+                    <div class="bg-black/50 p-1.5 rounded-xl border border-white/10">
+                        <span class="block text-white font-bold mb-1">Frente</span>
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop" class="w-full h-16 object-cover rounded-lg">
+                    </div>
+                    <div class="bg-black/50 p-1.5 rounded-xl border border-white/10">
+                        <span class="block text-white font-bold mb-1">Perfil</span>
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop" class="w-full h-16 object-cover rounded-lg">
+                    </div>
+                    <div class="bg-black/50 p-1.5 rounded-xl border border-white/10">
+                        <span class="block text-white font-bold mb-1">Costas</span>
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&auto=format&fit=crop" class="w-full h-16 object-cover rounded-lg">
+                    </div>
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-white/5 border border-fit-cream/10 mb-3 text-[11px] text-white">
+                    <span class="text-fit-cream font-bold block mb-0.5">✨ Métricas Estimadas por Visão Computacional:</span>
+                    <p class="text-fit-textMuted">Cintura: 67cm • Quadril: 97cm • Alinhamento escapular: Normal</p>
+                </div>
+
+                <button onclick="alert('✅ Medidas e fotos posturais aprovadas e salvas no histórico da Beatriz Lima!')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1 shadow-md">
+                    <i data-feather="check-circle" class="w-4 h-4"></i> APROVAR & SALVAR NO HISTÓRICO DA ALUNA
+                </button>
             </div>
         </div>
 
@@ -766,7 +570,7 @@
                                 <h4 class="font-bold text-white text-sm">Amora Maria</h4>
                                 <span class="text-[10px] text-fit-cream font-bold">Agora</span>
                             </div>
-                            <p class="text-xs text-white font-medium line-clamp-1">"Giu, amei o treino gerado por IA! A troca da elevação pélvica ficou perfeita!"</p>
+                            <p class="text-xs text-white font-medium line-clamp-1">"Giu, amei a correção do vídeo de 5s! Corrigi o joelho e ficou perfeito!"</p>
                         </div>
                         <div class="w-5 h-5 bg-[#C88C64] rounded-full flex items-center justify-center text-[10px] font-bold text-white">1</div>
                     </div>
@@ -789,13 +593,13 @@
                 class="nav-item flex flex-col items-center justify-center gap-1 w-10 h-10 text-fit-textMuted relative transition-colors cursor-pointer rounded-2xl hover:bg-white/5">
                 <i data-feather="cpu" class="w-5 h-5"></i>
             </a>
+            <a onclick="switchView('avalia')" id="nav-avalia"
+                class="nav-item flex flex-col items-center justify-center gap-1 w-10 h-10 text-fit-textMuted relative transition-colors cursor-pointer rounded-2xl hover:bg-white/5">
+                <i data-feather="video" class="w-5 h-5"></i>
+            </a>
             <a onclick="switchView('alunos')" id="nav-alunos"
                 class="nav-item flex flex-col items-center justify-center gap-1 w-10 h-10 text-fit-textMuted relative transition-colors cursor-pointer rounded-2xl hover:bg-white/5">
                 <i data-feather="users" class="w-5 h-5"></i>
-            </a>
-            <a onclick="switchView('avalia')" id="nav-avalia"
-                class="nav-item flex flex-col items-center justify-center gap-1 w-10 h-10 text-fit-textMuted relative transition-colors cursor-pointer rounded-2xl hover:bg-white/5">
-                <i data-feather="activity" class="w-5 h-5"></i>
             </a>
         </div>
 
@@ -817,8 +621,8 @@
             'home': document.getElementById('nav-home'),
             'biblio': document.getElementById('nav-biblio'),
             'treino': document.getElementById('nav-treino'),
-            'alunos': document.getElementById('nav-alunos'),
-            'avalia': document.getElementById('nav-avalia')
+            'avalia': document.getElementById('nav-avalia'),
+            'alunos': document.getElementById('nav-alunos')
         };
 
         function switchView(target) {
@@ -831,6 +635,10 @@
                 renderChart();
                 window.chartRendered = true;
             }
+        }
+
+        function responderComAudio(alunaNome) {
+            alert(`🎙️ Áudio de resposta enviado para ${alunaNome}:\n"Perfeito, guria! Vi a indicação da IA no 3º segundo, abra um pouquinho mais a ponta do pé para fora que encaixa 100%!" ✨💪`);
         }
 
         function aplicarTemplate(nomeTemplate) {
@@ -863,13 +671,6 @@
             setTimeout(() => {
                 btn.innerHTML = `<i data-feather="cpu" class="w-4 h-4"></i> GERAR NOVO TREINO E RECRIAÇÃO DE TROCAS`;
                 feather.replace();
-
-                const t1 = document.getElementById('txt-troca-1');
-                const t2 = document.getElementById('txt-troca-2');
-                const t3 = document.getElementById('txt-troca-3');
-                if (t1) t1.textContent = "Agachamento Búlgaro ➔ Stiff Unilateral c/ Halter (Nova Troca IA)";
-                if (t2) t2.textContent = "Agachamento Sumô c/ Mini-band ➔ Glúteo 4 Apoios (Nova Troca IA)";
-                if (t3) t3.textContent = "Passada Afundo ➔ Subida no Banco + Salto no Parque (Nova Troca IA)";
 
                 alert(`✨ Treino e Novas Trocas Dinâmicas gerados com sucesso pela IA!\nVocê pode clicar nos textos para editar livremente antes de liberar.`);
             }, 800);
