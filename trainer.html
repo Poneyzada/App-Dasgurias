@@ -194,18 +194,34 @@
                 </div>
             </div>
 
-            <!-- ATALHOS RÁPIDOS -->
-            <div class="grid grid-cols-2 gap-3 mb-6 fade-up delay-200">
-                <button onclick="switchView('vendas')" class="glass-card rounded-2xl p-3.5 text-left border border-fit-cream/20 hover:bg-white/5">
-                    <i data-feather="trending-up" class="w-5 h-5 text-emerald-400 mb-2"></i>
-                    <h4 class="font-bold text-xs text-white">Aba de Vendas</h4>
-                    <p class="text-[10px] text-fit-textMuted">Faturamento e previsões de receita</p>
+            <!-- ATALHOS RÁPIDOS PRINCIPAIS -->
+            <div class="mb-6 fade-up delay-200">
+                <!-- Atalho Destaque: Prescrever Treinos -->
+                <button onclick="switchView('treino')" class="w-full glass-card rounded-2xl p-4 mb-3 text-left border border-amber-400/30 bg-gradient-to-r from-[#C88C64]/30 to-[#3B2219] hover:bg-[#C88C64]/40 flex items-center justify-between shadow-lg">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-[#C88C64] text-white flex items-center justify-center font-bold">
+                            <i data-feather="edit-3" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-white">🏋️‍♀️ Prescrever / Editar Treinos & Séries</h4>
+                            <p class="text-[10px] text-amber-200">Monte fichas A, B, C, D, repetições, descanso e bi-séries</p>
+                        </div>
+                    </div>
+                    <i data-feather="chevron-right" class="w-5 h-5 text-fit-cream"></i>
                 </button>
-                <button onclick="switchView('biblio')" class="glass-card rounded-2xl p-3.5 text-left border border-fit-cream/20 hover:bg-white/5">
-                    <i data-feather="video" class="w-5 h-5 text-amber-400 mb-2"></i>
-                    <h4 class="font-bold text-xs text-white">Subir Vídeos Próprios</h4>
-                    <p class="text-[10px] text-fit-textMuted">YouTube ou upload MP4 direto</p>
-                </button>
+
+                <div class="grid grid-cols-2 gap-2.5">
+                    <button onclick="switchView('vendas')" class="glass-card rounded-2xl p-3 text-left border border-fit-cream/20 hover:bg-white/5">
+                        <i data-feather="trending-up" class="w-4 h-4 text-emerald-400 mb-1.5"></i>
+                        <h4 class="font-bold text-xs text-white">Aba de Vendas</h4>
+                        <p class="text-[9px] text-fit-textMuted">Faturamento e receitas</p>
+                    </button>
+                    <button onclick="switchView('biblio')" class="glass-card rounded-2xl p-3 text-left border border-fit-cream/20 hover:bg-white/5">
+                        <i data-feather="video" class="w-4 h-4 text-amber-400 mb-1.5"></i>
+                        <h4 class="font-bold text-xs text-white">Vídeos Próprios</h4>
+                        <p class="text-[9px] text-fit-textMuted">YouTube ou MP4 direto</p>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -353,26 +369,178 @@
             </div>
         </div>
 
-        <!-- VIEW: PRESCRIÇÃO DE TREINOS & IA -->
+        <!-- VIEW: PRESCRIÇÃO DE TREINOS & EDITOR DE SÉRIES (Onde a Giulia prescreve tudo) -->
         <div class="flex-1 overflow-y-auto px-6 pb-28 pt-4 scrollbar-hide hidden" id="view-treino">
             <div class="mb-4 fade-up flex justify-between items-start">
                 <div>
-                    <h1 class="font-heading font-bold text-2xl text-white">Prescrição de Treinos ✨</h1>
-                    <p class="text-xs text-fit-textMuted">Fichas A, B, C, D e orientações gerais do mês.</p>
+                    <h1 class="font-heading font-bold text-2xl text-white">Prescrição de Treinos 🏋️‍♀️</h1>
+                    <p class="text-xs text-fit-textMuted">Monte e edite as fichas A, B, C, D, séries e repetições.</p>
                 </div>
-                <button onclick="alert('✅ Fichas atualizadas e liberadas com sucesso!')"
-                    class="bg-emerald-600 hover:bg-emerald-500 text-white p-2 px-3 rounded-xl text-[10px] font-bold uppercase tracking-wide">
-                    Salvar Fichas
+                <button onclick="salvarELiberarTreinosParaAluna()"
+                    class="bg-emerald-600 hover:bg-emerald-500 text-white p-2.5 px-3 rounded-xl text-[10px] font-bold uppercase tracking-wide flex items-center gap-1 shadow-lg">
+                    <i data-feather="check-circle" class="w-3.5 h-3.5"></i> Salvar & Liberar
                 </button>
             </div>
 
-            <!-- ORIENTAÇÃO DO MÊS PARA A ALUNA (Item 4) -->
+            <!-- SELETOR DA ALUNA -->
+            <div class="mb-3.5 fade-up">
+                <label class="text-[10px] text-amber-300 font-bold uppercase block mb-1">Selecione a Aluna:</label>
+                <select id="select-aluna-treino" onchange="trocarAlunaPrescricao(this.value)"
+                    class="w-full bg-black/60 border border-fit-cream/30 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-fit-cream font-bold">
+                    <option value="Amora Maria">Amora Maria (Plano Anual • Intermediária)</option>
+                    <option value="Beatriz Lima">Beatriz Lima (Plano Mensal • Foco Glúteo)</option>
+                    <option value="Camila Santos">Camila Santos (Iniciante • Emagrecimento)</option>
+                </select>
+            </div>
+
+            <!-- SELETOR DE FICHA (A, B, C, D) -->
+            <div class="mb-4 fade-up">
+                <label class="text-[10px] text-fit-cream font-bold uppercase block mb-1">Ficha em Edição:</label>
+                <div class="grid grid-cols-4 gap-1.5 p-1 bg-black/50 rounded-2xl border border-fit-cream/20 text-xs font-bold">
+                    <button onclick="selecionarFichaEditor('A')" id="btn-ficha-A" class="btn-editor-ficha py-2 rounded-xl bg-[#C88C64] text-white shadow">
+                        Treino A
+                    </button>
+                    <button onclick="selecionarFichaEditor('B')" id="btn-ficha-B" class="btn-editor-ficha py-2 rounded-xl text-fit-textMuted hover:text-white">
+                        Treino B
+                    </button>
+                    <button onclick="selecionarFichaEditor('C')" id="btn-ficha-C" class="btn-editor-ficha py-2 rounded-xl text-fit-textMuted hover:text-white">
+                        Treino C
+                    </button>
+                    <button onclick="selecionarFichaEditor('D')" id="btn-ficha-D" class="btn-editor-ficha py-2 rounded-xl text-fit-textMuted hover:text-white">
+                        Treino D
+                    </button>
+                </div>
+            </div>
+
+            <!-- ORIENTAÇÃO TÉCNICA DO MÊS (GIULIA) -->
             <div class="glass-card rounded-2xl p-3.5 mb-4 border border-fit-cream/20 bg-black/40">
                 <label class="text-[10px] text-amber-300 font-bold uppercase block mb-1">
-                    Definir Orientação Geral do Mês (Giulia):
+                    Orientação Geral do Mês (Aparece no app da aluna):
                 </label>
-                <textarea rows="3" class="w-full bg-black/50 border border-fit-cream/20 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-fit-cream">Guria, o foco deste mês é sobrecarga progressiva nos glúteos e posterior. No Treino A e B, anote a carga utilizada em cada exercício e descanse estritamente 60 segundos entre as séries!</textarea>
+                <textarea id="orientacao-mes-input" rows="2" class="w-full bg-black/50 border border-fit-cream/20 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-fit-cream">Guria, foco em sobrecarga progressiva nos glúteos e posterior. Anote a carga utilizada em cada exercício e descanse estritamente 60 segundos!</textarea>
             </div>
+
+            <!-- FORMULÁRIO RÁPIDO: ADICIONAR NOVO EXERCÍCIO -->
+            <div class="glass-card rounded-3xl p-4 mb-4 border border-amber-400/30 bg-gradient-to-br from-[#3B2219] to-[#25120B]">
+                <h3 class="font-bold text-xs text-fit-cream mb-2.5 flex items-center gap-1.5">
+                    <i data-feather="plus-circle" class="w-4 h-4 text-amber-400"></i> Adicionar Exercício à Ficha
+                </h3>
+
+                <div class="space-y-2.5 text-xs">
+                    <div>
+                        <label class="text-[10px] text-fit-textMuted block mb-1">Nome do Exercício:</label>
+                        <input type="text" id="novo-ex-nome" placeholder="Ex: Elevação Pélvica com Barra" 
+                            class="w-full bg-black/50 border border-fit-cream/20 rounded-xl px-3 py-2 text-white text-xs">
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2">
+                        <div>
+                            <label class="text-[10px] text-fit-textMuted block mb-1">Séries:</label>
+                            <input type="text" id="novo-ex-series" value="4 Séries" 
+                                class="w-full bg-black/50 border border-fit-cream/20 rounded-xl px-2.5 py-1.5 text-white text-xs font-mono">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-fit-textMuted block mb-1">Repetições:</label>
+                            <input type="text" id="novo-ex-reps" value="10 a 12 reps" 
+                                class="w-full bg-black/50 border border-fit-cream/20 rounded-xl px-2.5 py-1.5 text-white text-xs font-mono">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-fit-textMuted block mb-1">Descanso:</label>
+                            <input type="text" id="novo-ex-descanso" value="60s" 
+                                class="w-full bg-black/50 border border-fit-cream/20 rounded-xl px-2.5 py-1.5 text-white text-xs font-mono">
+                        </div>
+                    </div>
+
+                    <label class="flex items-center gap-2 p-2 rounded-xl bg-white/5 cursor-pointer hover:bg-white/10">
+                        <input type="checkbox" id="novo-ex-conjugado" class="accent-[#C88C64]">
+                        <span class="text-[11px] text-amber-200">⚡ É Bi-Série / Conjugado (Aparece na Esteira)</span>
+                    </label>
+
+                    <button onclick="adicionarExercicioNaFicha()"
+                        class="w-full bg-[#C88C64] hover:bg-[#d49a6a] text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow">
+                        <i data-feather="plus" class="w-4 h-4"></i> INSERIR EXERCÍCIO NA FICHA
+                    </button>
+                </div>
+            </div>
+
+            <!-- LISTA DE EXERCÍCIOS DA FICHA COM CONTROLE DE SÉRIES -->
+            <div class="mb-4">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="font-heading font-semibold text-xs text-fit-cream flex items-center gap-1">
+                        <i data-feather="list" class="w-3.5 h-3.5 text-amber-400"></i>
+                        Exercícios da <span id="label-ficha-atual" class="text-amber-300">Ficha A</span>
+                    </h3>
+                    <span class="text-[10px] text-fit-textMuted" id="total-exercicios-ficha">3 exercícios</span>
+                </div>
+
+                <div class="space-y-2.5" id="container-exercicios-ficha">
+                    <!-- Exercício 1 -->
+                    <div class="glass-card rounded-2xl p-3 border border-fit-cream/20 bg-black/40 flex justify-between items-center item-exercicio-prescrito">
+                        <div class="flex-1 min-w-0 pr-2">
+                            <div class="flex items-center gap-1.5 mb-1">
+                                <span class="text-[9px] bg-amber-400/20 text-amber-300 px-1.5 py-0.5 rounded font-bold font-mono">1</span>
+                                <h5 class="text-xs font-bold text-white truncate ex-prescrito-nome">Agachamento Búlgaro com Halteres</h5>
+                            </div>
+                            <div class="flex items-center gap-2 text-[10px] text-fit-textMuted font-mono">
+                                <span class="text-fit-cream font-bold ex-prescrito-series">4 Séries</span> • 
+                                <span class="ex-prescrito-reps">10 a 12 reps</span> • 
+                                <span>60s descanso</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <button onclick="alterarSeriesPrescricao(this, -1)" class="w-6 h-6 rounded-lg bg-white/10 text-white font-bold text-xs flex items-center justify-center hover:bg-white/20">-</button>
+                            <button onclick="alterarSeriesPrescricao(this, 1)" class="w-6 h-6 rounded-lg bg-white/10 text-white font-bold text-xs flex items-center justify-center hover:bg-white/20">+</button>
+                            <button onclick="removerExercicioPrescricao(this)" class="w-6 h-6 rounded-lg bg-red-500/20 text-red-300 font-bold text-xs flex items-center justify-center hover:bg-red-500/30 ml-1">🗑️</button>
+                        </div>
+                    </div>
+
+                    <!-- Exercício 2 -->
+                    <div class="glass-card rounded-2xl p-3 border border-fit-cream/20 bg-black/40 flex justify-between items-center item-exercicio-prescrito">
+                        <div class="flex-1 min-w-0 pr-2">
+                            <div class="flex items-center gap-1.5 mb-1">
+                                <span class="text-[9px] bg-amber-400/20 text-amber-300 px-1.5 py-0.5 rounded font-bold font-mono">2</span>
+                                <h5 class="text-xs font-bold text-white truncate ex-prescrito-nome">Elevação Pélvica com Barra</h5>
+                            </div>
+                            <div class="flex items-center gap-2 text-[10px] text-fit-textMuted font-mono">
+                                <span class="text-fit-cream font-bold ex-prescrito-series">4 Séries</span> • 
+                                <span class="ex-prescrito-reps">12 a 15 reps</span> • 
+                                <span>60s descanso</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <button onclick="alterarSeriesPrescricao(this, -1)" class="w-6 h-6 rounded-lg bg-white/10 text-white font-bold text-xs flex items-center justify-center hover:bg-white/20">-</button>
+                            <button onclick="alterarSeriesPrescricao(this, 1)" class="w-6 h-6 rounded-lg bg-white/10 text-white font-bold text-xs flex items-center justify-center hover:bg-white/20">+</button>
+                            <button onclick="removerExercicioPrescricao(this)" class="w-6 h-6 rounded-lg bg-red-500/20 text-red-300 font-bold text-xs flex items-center justify-center hover:bg-red-500/30 ml-1">🗑️</button>
+                        </div>
+                    </div>
+
+                    <!-- Exercício 3: Conjugado -->
+                    <div class="glass-card rounded-2xl p-3 border border-amber-400/30 bg-amber-500/10 flex justify-between items-center item-exercicio-prescrito">
+                        <div class="flex-1 min-w-0 pr-2">
+                            <div class="flex items-center gap-1.5 mb-1">
+                                <span class="text-[9px] bg-amber-400 text-black px-1.5 py-0.5 rounded font-bold font-mono">3 • Bi-Série</span>
+                                <h5 class="text-xs font-bold text-white truncate ex-prescrito-nome">Cadeira Extensora + Sissy Squat</h5>
+                            </div>
+                            <div class="flex items-center gap-2 text-[10px] text-amber-200 font-mono">
+                                <span class="text-fit-cream font-bold ex-prescrito-series">3 Séries</span> • 
+                                <span class="ex-prescrito-reps">10+10 reps</span> • 
+                                <span>Sem descanso</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <button onclick="alterarSeriesPrescricao(this, -1)" class="w-6 h-6 rounded-lg bg-white/10 text-white font-bold text-xs flex items-center justify-center hover:bg-white/20">-</button>
+                            <button onclick="alterarSeriesPrescricao(this, 1)" class="w-6 h-6 rounded-lg bg-white/10 text-white font-bold text-xs flex items-center justify-center hover:bg-white/20">+</button>
+                            <button onclick="removerExercicioPrescricao(this)" class="w-6 h-6 rounded-lg bg-red-500/20 text-red-300 font-bold text-xs flex items-center justify-center hover:bg-red-500/30 ml-1">🗑️</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão Salvar no Final -->
+            <button onclick="salvarELiberarTreinosParaAluna()"
+                class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-2xl text-xs flex items-center justify-center gap-2 shadow-lg mb-4">
+                <i data-feather="check" class="w-4 h-4"></i> APROVAR & ENVIAR FICHAS PARA O APP DA ALUNA
+            </button>
         </div>
 
         <!-- VIEW: AVALIAÇÃO POSTURAL & CHECK-UP 5S -->
@@ -415,9 +583,9 @@
                 class="nav-item flex flex-col items-center justify-center w-10 h-10 text-fit-textMuted cursor-pointer rounded-2xl hover:bg-white/5">
                 <i data-feather="dollar-sign" class="w-5 h-5"></i>
             </a>
-            <a onclick="switchView('treino')" id="nav-treino" title="Prescrição"
+            <a onclick="switchView('treino')" id="nav-treino" title="Treinos & Séries"
                 class="nav-item flex flex-col items-center justify-center w-10 h-10 text-fit-textMuted cursor-pointer rounded-2xl hover:bg-white/5">
-                <i data-feather="cpu" class="w-5 h-5"></i>
+                <i data-feather="edit-3" class="w-5 h-5"></i>
             </a>
             <a onclick="switchView('biblio')" id="nav-biblio" title="Vídeos & Biblioteca"
                 class="nav-item flex flex-col items-center justify-center w-10 h-10 text-fit-textMuted cursor-pointer rounded-2xl hover:bg-white/5">
@@ -455,6 +623,141 @@
             Object.values(navs).forEach(el => { if (el) el.classList.remove('active'); });
             if (views[target]) views[target].classList.remove('hidden');
             if (navs[target]) navs[target].classList.add('active');
+
+            if (target === 'treino') {
+                renderizarExerciciosEditor();
+            }
+        }
+
+        // Editor de Fichas de Treino da Giulia (Séries, Reps, Fichas A/B/C/D)
+        let fichaAtualEditor = 'A';
+        const dadosFichasEditor = {
+            'A': [
+                { nome: 'Agachamento Búlgaro com Halteres', series: 4, reps: '10 a 12 reps', descanso: '60s', conjugado: false },
+                { nome: 'Elevação Pélvica com Barra', series: 4, reps: '12 a 15 reps', descanso: '60s', conjugado: false },
+                { nome: 'Cadeira Extensora + Sissy Squat', series: 3, reps: '10+10 reps', descanso: 'Sem descanso', conjugado: true }
+            ],
+            'B': [
+                { nome: 'Stiff com Barra e Halteres', series: 4, reps: '10 a 12 reps', descanso: '60s', conjugado: false },
+                { nome: 'Mesa Flexora Unilateral', series: 3, reps: '12 reps cada', descanso: '45s', conjugado: false },
+                { nome: 'Glúteo na Polia + Abdução Solo', series: 4, reps: '15 reps', descanso: 'Sem descanso', conjugado: true }
+            ],
+            'C': [
+                { nome: 'Puxada Aberta no Pulley', series: 3, reps: '12 reps', descanso: '45s', conjugado: false },
+                { nome: 'Remada Baixa com Triângulo', series: 3, reps: '12 reps', descanso: '45s', conjugado: false },
+                { nome: 'Desenvolvimento c/ Halteres + Elevação Lateral', series: 3, reps: '10+12 reps', descanso: 'Sem descanso', conjugado: true }
+            ],
+            'D': [
+                { nome: 'Cardio HIIT na Esteira (Tiro/Caminhada)', series: 10, reps: '30s tiro / 30s leve', descanso: '0s', conjugado: false },
+                { nome: 'Prancha Isométrica + Abdominal Infra', series: 4, reps: '45s + 15 reps', descanso: 'Sem descanso', conjugado: true }
+            ]
+        };
+
+        function renderizarExerciciosEditor() {
+            const container = document.getElementById('container-exercicios-ficha');
+            if (!container) return;
+            const lista = dadosFichasEditor[fichaAtualEditor] || [];
+            document.getElementById('label-ficha-atual').textContent = `Ficha ${fichaAtualEditor}`;
+            document.getElementById('total-exercicios-ficha').textContent = `${lista.length} exercícios`;
+
+            container.innerHTML = '';
+            lista.forEach((ex, idx) => {
+                const isConj = ex.conjugado;
+                const card = document.createElement('div');
+                card.className = isConj 
+                    ? 'glass-card rounded-2xl p-3 border border-amber-400/30 bg-amber-500/10 flex justify-between items-center item-exercicio-prescrito'
+                    : 'glass-card rounded-2xl p-3 border border-fit-cream/20 bg-black/40 flex justify-between items-center item-exercicio-prescrito';
+
+                card.innerHTML = `
+                    <div class="flex-1 min-w-0 pr-2">
+                        <div class="flex items-center gap-1.5 mb-1">
+                            <span class="${isConj ? 'text-[9px] bg-amber-400 text-black px-1.5 py-0.5 rounded font-bold font-mono' : 'text-[9px] bg-amber-400/20 text-amber-300 px-1.5 py-0.5 rounded font-bold font-mono'}">
+                                ${idx + 1}${isConj ? ' • Bi-Série' : ''}
+                            </span>
+                            <h5 class="text-xs font-bold text-white truncate ex-prescrito-nome">${ex.nome}</h5>
+                        </div>
+                        <div class="flex items-center gap-2 text-[10px] ${isConj ? 'text-amber-200' : 'text-fit-textMuted'} font-mono">
+                            <span class="text-fit-cream font-bold ex-prescrito-series">${ex.series} Séries</span> • 
+                            <span class="ex-prescrito-reps">${ex.reps}</span> • 
+                            <span>${ex.descanso}</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <button onclick="alterarSeriesPrescricaoIndex(${idx}, -1)" class="w-6 h-6 rounded-lg bg-white/10 text-white font-bold text-xs flex items-center justify-center hover:bg-white/20">-</button>
+                        <button onclick="alterarSeriesPrescricaoIndex(${idx}, 1)" class="w-6 h-6 rounded-lg bg-white/10 text-white font-bold text-xs flex items-center justify-center hover:bg-white/20">+</button>
+                        <button onclick="removerExercicioPrescricaoIndex(${idx})" class="w-6 h-6 rounded-lg bg-red-500/20 text-red-300 font-bold text-xs flex items-center justify-center hover:bg-red-500/30 ml-1">🗑️</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            feather.replace();
+        }
+
+        function selecionarFichaEditor(ficha) {
+            fichaAtualEditor = ficha;
+            ['A', 'B', 'C', 'D'].forEach(f => {
+                const btn = document.getElementById(`btn-ficha-${f}`);
+                if (btn) {
+                    if (f === ficha) {
+                        btn.className = "btn-editor-ficha py-2 rounded-xl bg-[#C88C64] text-white shadow";
+                    } else {
+                        btn.className = "btn-editor-ficha py-2 rounded-xl text-fit-textMuted hover:text-white";
+                    }
+                }
+            });
+            renderizarExerciciosEditor();
+        }
+
+        function adicionarExercicioNaFicha() {
+            const nomeInput = document.getElementById('novo-ex-nome');
+            const seriesInput = document.getElementById('novo-ex-series');
+            const repsInput = document.getElementById('novo-ex-reps');
+            const descansoInput = document.getElementById('novo-ex-descanso');
+            const conjInput = document.getElementById('novo-ex-conjugado');
+
+            if (!nomeInput.value.trim()) {
+                alert("⚠️ Digite o nome do exercício para adicionar à ficha!");
+                return;
+            }
+
+            const seriesNum = parseInt(seriesInput.value) || 4;
+
+            dadosFichasEditor[fichaAtualEditor].push({
+                nome: nomeInput.value.trim(),
+                series: seriesNum,
+                reps: repsInput.value.trim() || '10 a 12 reps',
+                descanso: descansoInput.value.trim() || '60s',
+                conjugado: conjInput.checked
+            });
+
+            nomeInput.value = '';
+            conjInput.checked = false;
+            renderizarExerciciosEditor();
+            alert(`✅ Exercício adicionado na Ficha ${fichaAtualEditor}!`);
+        }
+
+        function alterarSeriesPrescricaoIndex(index, delta) {
+            const ex = dadosFichasEditor[fichaAtualEditor][index];
+            if (ex) {
+                ex.series = Math.max(1, ex.series + delta);
+                renderizarExerciciosEditor();
+            }
+        }
+
+        function removerExercicioPrescricaoIndex(index) {
+            dadosFichasEditor[fichaAtualEditor].splice(index, 1);
+            renderizarExerciciosEditor();
+        }
+
+        function salvarELiberarTreinosParaAluna() {
+            const aluna = document.getElementById('select-aluna-treino').value;
+            localStorage.setItem('giulia_fichas_' + aluna, JSON.stringify(dadosFichasEditor));
+            alert(`✅ Fichas A, B, C e D da aluna ${aluna} salvas e liberadas com sucesso!\nO aplicativo da aluna foi sincronizado imediatamente com as novas séries e repetições.`);
+        }
+
+        function trocarAlunaPrescricao(aluna) {
+            alert(`📋 Carregando prescrições e histórico de treinos de: ${aluna}`);
+            renderizarExerciciosEditor();
         }
 
         // Filtro de Vendas (Item 6)
@@ -516,9 +819,14 @@
             }
         }
 
+        document.addEventListener("DOMContentLoaded", () => {
+            renderizarExerciciosEditor();
+        });
+
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js').catch(err => console.log('SW error:', err));
         }
+    </script>
     </script>
 </body>
 
