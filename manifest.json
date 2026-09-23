@@ -1,7 +1,7 @@
 {
-  "name": "Treinão das Gurias - Personal Giu Baldissera",
-  "short_name": "App das Gurias",
-  "description": "Aplicativo de treinos e acompanhamento da Personal Giu Baldissera.",
+  "name": "Consultoria Giulia Baldissera",
+  "short_name": "Giu Baldissera",
+  "description": "Aplicativo de treinos e consultoria fitness exclusiva por Giulia Baldissera.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2A1710",
