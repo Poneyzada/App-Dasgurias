@@ -489,21 +489,21 @@
                     </div>
                 </div>
 
-                <!-- FILTROS DE RECEITAS -->
+                <!-- FILTROS DE RECEITAS (CLICÁVEIS) -->
                 <div class="flex gap-1.5 overflow-x-auto py-2 scrollbar-hide mb-3 text-[10px]">
-                    <button class="bg-[#C88C64] text-white px-3 py-1 rounded-full font-bold shrink-0">Todas</button>
-                    <button class="bg-white/10 text-fit-cream px-3 py-1 rounded-full font-medium shrink-0">Pré-Treino</button>
-                    <button class="bg-white/10 text-fit-cream px-3 py-1 rounded-full font-medium shrink-0">Pós-Treino</button>
-                    <button class="bg-white/10 text-fit-cream px-3 py-1 rounded-full font-medium shrink-0">Doces Fit</button>
+                    <button onclick="filtrarReceitas(this, 'todas')" class="btn-filtro-receita bg-[#C88C64] text-white px-3 py-1.5 rounded-full font-bold shrink-0 transition-all shadow-sm">Todas</button>
+                    <button onclick="filtrarReceitas(this, 'pre-treino')" class="btn-filtro-receita bg-white/10 text-fit-cream hover:text-white px-3 py-1.5 rounded-full font-medium shrink-0 transition-all">Pré-Treino</button>
+                    <button onclick="filtrarReceitas(this, 'pos-treino')" class="btn-filtro-receita bg-white/10 text-fit-cream hover:text-white px-3 py-1.5 rounded-full font-medium shrink-0 transition-all">Pós-Treino</button>
+                    <button onclick="filtrarReceitas(this, 'doces-fit')" class="btn-filtro-receita bg-white/10 text-fit-cream hover:text-white px-3 py-1.5 rounded-full font-medium shrink-0 transition-all">Doces Fit</button>
                 </div>
 
                 <!-- CARDS DE RECEITAS SAUDÁVEIS (Item 1) -->
-                <div class="space-y-3 mb-5">
-                    <!-- Receita 1 -->
-                    <div class="glass-card rounded-2xl p-3.5 border border-fit-cream/20 bg-black/40">
+                <div class="space-y-3 mb-5" id="lista-receitas-container">
+                    <!-- Receita 1: Pós-Treino -->
+                    <div class="glass-card card-receita rounded-2xl p-3.5 border border-fit-cream/20 bg-black/40" data-categoria="pos-treino">
                         <div class="flex justify-between items-start mb-2">
                             <div>
-                                <span class="text-[9px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded uppercase">Pós-Treino Rápido</span>
+                                <span class="text-[9px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded uppercase">Pós-Treino</span>
                                 <h4 class="font-bold text-xs text-white mt-1">Panqueca Proteica de Banana & Aveia</h4>
                             </div>
                             <span class="text-[10px] text-amber-300 font-mono font-bold">24g Prot</span>
@@ -515,11 +515,27 @@
                         </div>
                     </div>
 
-                    <!-- Receita 2 -->
-                    <div class="glass-card rounded-2xl p-3.5 border border-fit-cream/20 bg-black/40">
+                    <!-- Receita 2: Pré-Treino -->
+                    <div class="glass-card card-receita rounded-2xl p-3.5 border border-fit-cream/20 bg-black/40" data-categoria="pre-treino">
                         <div class="flex justify-between items-start mb-2">
                             <div>
-                                <span class="text-[9px] bg-amber-400/20 text-amber-300 font-bold px-2 py-0.5 rounded uppercase">Almoço / Jantar</span>
+                                <span class="text-[9px] bg-amber-400/20 text-amber-300 font-bold px-2 py-0.5 rounded uppercase">Pré-Treino</span>
+                                <h4 class="font-bold text-xs text-white mt-1">Toast Energético de Pasta de Amendoim & Frutas</h4>
+                            </div>
+                            <span class="text-[10px] text-amber-300 font-mono font-bold">16g Prot</span>
+                        </div>
+                        <p class="text-[11px] text-fit-textMuted mb-2">1 fatia de pão integral tostado + 1 colher de pasta de amendoim integral + rodelas de banana e canela em pó.</p>
+                        <div class="flex justify-between items-center text-[10px] text-fit-cream/70">
+                            <span>⏱️ 5 min de preparo</span>
+                            <span class="font-bold text-fit-cream">Energia Imediata</span>
+                        </div>
+                    </div>
+
+                    <!-- Receita 3: Pós-Treino / Almoço -->
+                    <div class="glass-card card-receita rounded-2xl p-3.5 border border-fit-cream/20 bg-black/40" data-categoria="pos-treino">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <span class="text-[9px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded uppercase">Pós-Treino / Almoço</span>
                                 <h4 class="font-bold text-xs text-white mt-1">Crepioca Fit de Frango Desfiado & Cottage</h4>
                             </div>
                             <span class="text-[10px] text-amber-300 font-mono font-bold">32g Prot</span>
@@ -528,6 +544,22 @@
                         <div class="flex justify-between items-center text-[10px] text-fit-cream/70">
                             <span>⏱️ 12 min de preparo</span>
                             <span class="font-bold text-fit-cream">Alta Saciedade</span>
+                        </div>
+                    </div>
+
+                    <!-- Receita 4: Doces Fit -->
+                    <div class="glass-card card-receita rounded-2xl p-3.5 border border-fit-cream/20 bg-black/40" data-categoria="doces-fit">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <span class="text-[9px] bg-rose-500/20 text-rose-300 font-bold px-2 py-0.5 rounded uppercase">Doce Fit</span>
+                                <h4 class="font-bold text-xs text-white mt-1">Mousse Proteico de Cacau & Whey</h4>
+                            </div>
+                            <span class="text-[10px] text-amber-300 font-mono font-bold">22g Prot</span>
+                        </div>
+                        <p class="text-[11px] text-fit-textMuted mb-2">1 pote de iogurte natural desnatado + 1 scoop de Whey de chocolate + 1 colher de cacau 100%. Misture e gele por 20 min.</p>
+                        <div class="flex justify-between items-center text-[10px] text-fit-cream/70">
+                            <span>⏱️ 5 min de preparo</span>
+                            <span class="font-bold text-fit-cream">Mata a vontade de doce!</span>
                         </div>
                     </div>
                 </div>
@@ -573,15 +605,16 @@
                 </div>
 
                 <div class="space-y-3 mt-3">
-                    <!-- Parceiro 1 -->
+                    <!-- Parceiro 1: MAX / GROWTH -->
                     <div class="glass-card rounded-2xl p-4 border border-fit-cream/20 bg-gradient-to-br from-[#3B2219] to-[#25120B]">
                         <div class="flex items-center gap-3 mb-2.5">
-                            <div class="w-12 h-12 rounded-xl bg-white/10 border border-fit-cream/20 flex items-center justify-center font-heading font-bold text-xs text-amber-300">
-                                MAX/GROWTH
+                            <div class="min-w-[68px] h-12 px-2 rounded-xl bg-white/10 border border-fit-cream/20 flex flex-col items-center justify-center font-heading font-extrabold text-[9px] text-amber-300 text-center leading-tight shrink-0">
+                                <span>MAX</span>
+                                <span>GROWTH</span>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-sm text-white">Suplementos & Whey</h4>
-                                <span class="text-[10px] text-emerald-400 font-bold">10% OFF em todo o site</span>
+                            <div class="flex-1 min-w-0">
+                                <h4 class="font-bold text-sm text-white truncate">Suplementos & Whey</h4>
+                                <span class="text-[10px] text-emerald-400 font-bold block truncate">10% OFF em todo o site</span>
                             </div>
                         </div>
                         <div class="flex items-center justify-between bg-black/40 p-2.5 rounded-xl border border-white/10">
@@ -592,15 +625,16 @@
                         </div>
                     </div>
 
-                    <!-- Parceiro 2 -->
+                    <!-- Parceiro 2: WEAR FIT -->
                     <div class="glass-card rounded-2xl p-4 border border-fit-cream/20 bg-gradient-to-br from-[#3B2219] to-[#25120B]">
                         <div class="flex items-center gap-3 mb-2.5">
-                            <div class="w-12 h-12 rounded-xl bg-white/10 border border-fit-cream/20 flex items-center justify-center font-heading font-bold text-xs text-amber-300">
-                                WEAR FIT
+                            <div class="min-w-[68px] h-12 px-2 rounded-xl bg-white/10 border border-fit-cream/20 flex flex-col items-center justify-center font-heading font-extrabold text-[9px] text-amber-300 text-center leading-tight shrink-0">
+                                <span>WEAR</span>
+                                <span>FIT</span>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-sm text-white">Roupas & Leggings Fitness</h4>
-                                <span class="text-[10px] text-emerald-400 font-bold">15% OFF na nova coleção</span>
+                            <div class="flex-1 min-w-0">
+                                <h4 class="font-bold text-sm text-white truncate">Roupas & Leggings</h4>
+                                <span class="text-[10px] text-emerald-400 font-bold block truncate">15% OFF na nova coleção</span>
                             </div>
                         </div>
                         <div class="flex items-center justify-between bg-black/40 p-2.5 rounded-xl border border-white/10">
@@ -611,15 +645,16 @@
                         </div>
                     </div>
 
-                    <!-- Parceiro 3 -->
+                    <!-- Parceiro 3: MARMITA FIT -->
                     <div class="glass-card rounded-2xl p-4 border border-fit-cream/20 bg-gradient-to-br from-[#3B2219] to-[#25120B]">
                         <div class="flex items-center gap-3 mb-2.5">
-                            <div class="w-12 h-12 rounded-xl bg-white/10 border border-fit-cream/20 flex items-center justify-center font-heading font-bold text-xs text-amber-300">
-                                MARMITA FIT
+                            <div class="min-w-[68px] h-12 px-2 rounded-xl bg-white/10 border border-fit-cream/20 flex flex-col items-center justify-center font-heading font-extrabold text-[9px] text-amber-300 text-center leading-tight shrink-0">
+                                <span>MARMITA</span>
+                                <span>FIT</span>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-sm text-white">Marmitas & Snacks Saudáveis</h4>
-                                <span class="text-[10px] text-emerald-400 font-bold">Frete Grátis + 10% OFF</span>
+                            <div class="flex-1 min-w-0">
+                                <h4 class="font-bold text-sm text-white truncate">Marmitas Saudáveis</h4>
+                                <span class="text-[10px] text-emerald-400 font-bold block truncate">Frete Grátis + 10% OFF</span>
                             </div>
                         </div>
                         <div class="flex items-center justify-between bg-black/40 p-2.5 rounded-xl border border-white/10">
@@ -628,7 +663,6 @@
                                 Copiar & Acessar
                             </button>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1097,6 +1131,23 @@
                 txt.textContent = "INSCREVER-ME NO DESAFIO";
                 btn.className = "w-full bg-[#C88C64] hover:bg-[#d49a6a] text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow";
             }
+        }
+
+        // Filtro Dinâmico de Receitas (Pré, Pós, Doces Fit, Todas)
+        function filtrarReceitas(btn, categoria) {
+            document.querySelectorAll('.btn-filtro-receita').forEach(b => {
+                b.className = "btn-filtro-receita bg-white/10 text-fit-cream hover:text-white px-3 py-1.5 rounded-full font-medium shrink-0 transition-all";
+            });
+            btn.className = "btn-filtro-receita bg-[#C88C64] text-white px-3 py-1.5 rounded-full font-bold shrink-0 transition-all shadow-sm";
+
+            const cards = document.querySelectorAll('.card-receita');
+            cards.forEach(card => {
+                if (categoria === 'todas' || card.getAttribute('data-categoria') === categoria) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
         }
 
         function copiarCupom(cupom) {
